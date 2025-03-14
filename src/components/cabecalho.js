@@ -30,6 +30,8 @@ const Cabecalho = () => {
             onMouseLeave={() => setIsLogoHovered(false)}
             style={{
               transition: 'width 0.3s ease, height 0.3s ease',
+              borderRadius: '50%',
+              objectFit: 'cover',
             }}
           />
         </Navbar.Brand>

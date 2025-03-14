@@ -3,6 +3,7 @@ import Pagina from '../components/pagina';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Rodape from '@/components/Rodape';
 
 const Index = () => {
   const [isClient, setIsClient] = useState(false);
@@ -112,6 +113,7 @@ const Index = () => {
     </button>
   </div>
 </div>
+<Rodape />
     </>
   );
 };
