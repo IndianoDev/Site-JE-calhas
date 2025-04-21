@@ -1,72 +1,75 @@
 import React, { useState } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 const Cabecalho = () => {
-  const [hoveredLink, setHoveredLink] = useState(null);
-  const [isLogoHovered, setIsLogoHovered] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <Navbar
+      expand="md"
+      expanded={expanded}
+      fixed="top"
       style={{
-        position: 'fixed', // Fixa a navbar
-        top: '33px', // Posiciona 20px abaixo do topo
-        left: 0, // Alinha à esquerda
-        width: '100%', // Ocupa toda a largura da tela
-        height: '80px', // Altura da navbar
-        zIndex: 1000, // Garante que a navbar fique acima de outros elementos
-        backgroundColor: 'white', // Cor de fundo da navbar
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Sombra para destacar a navbar
+        top: '0',
+        backgroundColor: 'white',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
       }}
     >
       <Container>
-        <Navbar.Brand className="mx-auto" href="/">
+        <Navbar.Brand href="/" className="mx-auto mx-md-0">
           <img
             src="/img/logo.png"
-            width={isLogoHovered ? 90 : 80}
-            height={isLogoHovered ? 90 : 80}
-            className="d-inline-block align-top"
+            width={80}
+            height={80}
             alt="Logo"
-            onMouseEnter={() => setIsLogoHovered(true)}
-            onMouseLeave={() => setIsLogoHovered(false)}
             style={{
-              transition: 'width 0.3s ease, height 0.3s ease',
               borderRadius: '50%',
               objectFit: 'cover',
+              transition: 'transform 0.3s ease',
             }}
+            className="d-inline-block align-top"
           />
         </Navbar.Brand>
-        <Nav className="me-auto">
-          {['Sobre', 'Contato', 'Peça seu Orçamento'].map((link, index) => (
+
+        <Navbar.Toggle 
+          aria-controls="navbar-nav" 
+          onClick={() => setExpanded(!expanded)}
+          style={{ border: 'none' }}
+        />
+
+        <Navbar.Collapse id="navbar-nav">
+          <Nav className="ms-auto">
+            {/* Link Home adicionado aqui */}
             <Nav.Link
-              key={index}
-              href={`/${link.toLowerCase().replace(/ /g, '-')}`}
+              href="/"
               style={{
                 fontSize: '15px',
-                marginRight: '20px',
                 color: '#333',
                 fontWeight: 'bold',
-                transform: hoveredLink === index ? 'translateY(-5px)' : 'translateY(0)',
-                transition: 'transform 0.3s ease',
+                margin: '0 10px',
               }}
-              onMouseEnter={() => setHoveredLink(index)}
-              onMouseLeave={() => setHoveredLink(null)}
+              onClick={() => setExpanded(false)}
             >
-              {link}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '-5px',
-                  left: 0,
-                  width: '100%',
-                  height: '2px',
-                  backgroundColor: '#0095a4',
-                  transition: 'opacity 0.3s ease',
-                  opacity: hoveredLink === index ? 1 : 0,
-                }}
-              ></div>
+              Home
             </Nav.Link>
-          ))}
-        </Nav>
+
+            {['Sobre', 'Contato', 'Peça seu Orçamento'].map((link, index) => (
+              <Nav.Link
+                key={index}
+                href={`/${link.toLowerCase().replace(/ /g, '-')}`}
+                style={{
+                  fontSize: '15px',
+                  color: '#333',
+                  fontWeight: 'bold',
+                  margin: '0 10px',
+                }}
+                onClick={() => setExpanded(false)}
+              >
+                {link}
+              </Nav.Link>
+            ))}
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
