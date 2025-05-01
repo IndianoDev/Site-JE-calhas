@@ -3,7 +3,8 @@ import Pagina from '../components/pagina';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Rodape from '@/components/Rodape';
+import Rodape from '@/components/Rodape'
+import FaixaContato from '@/components/FaixaContato';
 
 const Index = () => {
   const [isClient, setIsClient] = useState(false);
@@ -80,39 +81,8 @@ const Index = () => {
   </div>
 </div>
 
-<div style={{ position: 'relative', textAlign: 'center', color: 'white' }}>
-  <img src='/img/call us.jpg' alt='Ligue para nós' style={{ maxWidth: '100%', height: 'auto', margin: '0' }} />
-  <div style={{
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    padding: '20px',
-    borderRadius: '10px',
-    width: '80%',
-    maxWidth: '500px',
-  }}>
-    <h2>Entre em contato</h2>
-    <p>Oferecemos os melhores serviços em nosso campo. Sempre mantemos sua satisfação como principal prioridade. É assim que nós somos e nos orgulhamos disso.</p>
-    <button
-      style={{
-        position: 'absolute',
-        bottom: '10px',
-        right: '10px',
-        padding: '10px 20px',
-        backgroundColor: '#1D3D52',
-        color: 'white',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-      }}
-      onClick={() => window.location.href = '/contato'}
-    >
-      Contato
-    </button>
-  </div>
-</div>
+<FaixaContato/>
+
 <Rodape />
     </>
   );
