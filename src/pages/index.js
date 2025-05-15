@@ -35,6 +35,7 @@ const Index = () => {
     <>
       <Pagina />
       {isClient && (
+        <div style={{ marginTop: '5px' }}>
         <Slider {...settings}>
           {data.map((item) => (
             <div key={item.id}>
@@ -50,6 +51,7 @@ const Index = () => {
             </div>
           ))}
         </Slider>
+        </div>
       )}
      <div style={{ 
   backgroundColor: '#1D3D52', 

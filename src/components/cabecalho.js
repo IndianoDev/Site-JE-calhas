@@ -27,15 +27,19 @@ const Cabecalho = () => {
       collapseOnSelect
       fixed="top"
       style={{
-        top: '0',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        margin: 0,
         backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)',
         backdropFilter: 'blur(10px)',
         boxShadow: scrolled 
           ? '0 10px 30px -10px rgba(0, 0, 0, 0.1)'
           : '0 2px 8px rgba(0, 0, 0, 0.05)',
-        padding: scrolled ? '8px 0' : '15px 0',
+        padding: '8px 0',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        transform: `translateY(${expanded ? '0' : '0'})`,
+        zIndex: 1030
       }}
     >
       <Container style={{ maxWidth: '1200px', padding: '0 20px' }}>

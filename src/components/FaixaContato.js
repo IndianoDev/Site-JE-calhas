@@ -1,130 +1,125 @@
-import React from 'react'
+import React from 'react';
 
 const FaixaContato = () => {
   return (
-    <div style={{ 
-      position: 'relative', 
-      textAlign: 'center', 
-      color: 'white',
-      marginTop: '80px',
-      marginBottom: '80px',
-      padding: '0 20px'
+    <div style={{
+      position: 'relative',
+      width: '100%',
+      margin: '50px 0',
+      padding: '0',
+      overflow: 'hidden',
+      borderRadius: '0',
     }}>
+      {/* Container da imagem de fundo */}
       <div style={{
         position: 'relative',
-        overflow: 'hidden',
-        borderRadius: '20px',
-        boxShadow: '0 15px 35px rgba(0, 0, 0, 0.3)',
-        transform: 'translateY(0)',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-      }}
-      onMouseOver={(e) => {
-        e.currentTarget.style.transform = 'translateY(-10px)';
-        e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
-      }}
-      onMouseOut={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.3)';
+        width: '100%',
+        height: 'clamp(300px, 50vh, 600px)',
+        overflow: 'hidden'
       }}>
+        {/* Imagem de fundo */}
         <img 
           src='/img/call us.jpg' 
           alt='Ligue para nós' 
           style={{ 
+            position: 'absolute',
             width: '100%',
-            height: '500px',
+            height: '100%',
             objectFit: 'cover',
-            filter: 'brightness(0.5)',
+            filter: 'brightness(0.7)',
             transition: 'transform 0.5s ease, filter 0.5s ease',
           }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'scale(1.05)';
-            e.currentTarget.style.filter = 'brightness(0.4)';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.filter = 'brightness(0.5)';
-          }}
         />
+        
+        {/* Overlay escuro */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.4)'
+        }}></div>
+        
+        {/* Card de contato */}
         <div style={{
           position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          background: 'linear-gradient(135deg, rgba(29, 61, 82, 0.97) 0%, rgba(42, 84, 117, 0.97) 100%)',
-          padding: '50px',
-          borderRadius: '20px',
           width: '90%',
-          maxWidth: '700px',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          maxWidth: '600px',
+          padding: '30px',
+          backgroundColor: 'rgba(29, 61, 82, 0.95)',
+          borderRadius: '16px',
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+          textAlign: 'center',
+          color: 'white',
+          backdropFilter: 'blur(5px)',
+          border: '1px solid rgba(255, 255, 255, 0.1)'
         }}>
+          {/* Barra superior decorativa */}
           <div style={{
             position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
             height: '4px',
-            background: 'linear-gradient(90deg, #4a90e2, #357abd)',
-            borderTopLeftRadius: '20px',
-            borderTopRightRadius: '20px',
+            background: 'linear-gradient(90deg, #0095a4, #1D3D52)',
+            borderTopLeftRadius: '16px',
+            borderTopRightRadius: '16px',
           }} />
+          
           <h2 style={{
-            fontSize: '2.8rem',
-            marginBottom: '25px',
+            fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
+            marginBottom: '20px',
             fontWeight: '700',
-            background: 'linear-gradient(45deg, #fff, #e6e6e6)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-          }}>Entre em contato</h2>
-          <p style={{
-            fontSize: '1.2rem',
-            lineHeight: '1.8',
-            marginBottom: '35px',
-            color: 'rgba(255, 255, 255, 0.95)',
-            maxWidth: '90%',
-            margin: '0 auto 35px',
+            color: 'white',
+            lineHeight: '1.3'
           }}>
-            Oferecemos os melhores serviços em nosso campo. Sempre mantemos sua satisfação 
-            como principal prioridade. É assim que nós somos e nos orgulhamos disso.
+            Entre em contato
+          </h2>
+          
+          <p style={{
+            fontSize: 'clamp(1rem, 3vw, 1.2rem)',
+            lineHeight: '1.6',
+            marginBottom: '30px',
+            color: 'rgba(255, 255, 255, 0.9)'
+          }}>
+            Oferecemos os melhores serviços em nosso campo. Sempre mantemos sua satisfação como principal prioridade.
           </p>
+          
           <button
             style={{
-              padding: '18px 45px',
-              fontSize: '1.2rem',
-              backgroundColor: '#4a90e2',
+              padding: '12px 30px',
+              fontSize: '1rem',
+              backgroundColor: '#0095a4',
               color: 'white',
               border: 'none',
               borderRadius: '50px',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
-              transform: 'translateY(0)',
-              boxShadow: '0 4px 15px rgba(74, 144, 226, 0.3)',
               fontWeight: '600',
-              letterSpacing: '0.5px',
-              position: 'relative',
-              overflow: 'hidden',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px'
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = '#357abd';
-              e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(74, 144, 226, 0.5)';
+              e.currentTarget.style.backgroundColor = '#1D3D52';
+              e.currentTarget.style.transform = 'translateY(-2px)';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = '#4a90e2';
+              e.currentTarget.style.backgroundColor = '#0095a4';
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 15px rgba(74, 144, 226, 0.3)';
             }}
             onClick={() => window.location.href = '/contato'}
           >
-            <span style={{ marginRight: '10px' }}>✉</span>
-            Fale Conosco
+            <span>✉</span> Fale Conosco
           </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FaixaContato
+export default FaixaContato;
