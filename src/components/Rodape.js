@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Rodape = () => {
@@ -9,9 +9,19 @@ const Rodape = () => {
       color: 'white',
       padding: '60px 0 20px',
       marginTop: '60px',
-      boxShadow: '0 -4px 10px rgba(0,0,0,0.1)'
+      boxShadow: '0 -4px 10px rgba(0,0,0,0.1)',
+      width: '100vw',
+      position: 'relative',
+      left: '50%',
+      right: '50%',
+      marginLeft: '-50vw',
+      marginRight: '-50vw'
     }}>
-      <Container>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 20px'
+      }}>
         <Row className="align-items-start">
           {/* Coluna da Logo */}
           <Col lg={3} md={6} className="mb-4 mb-lg-0">
@@ -257,7 +267,7 @@ const Rodape = () => {
             }}>© {new Date().getFullYear()} JE Calhas. Todos os direitos reservados.</p>
           </Col>
         </Row>
-      </Container>
+      </div>
     </footer>
   );
 };
