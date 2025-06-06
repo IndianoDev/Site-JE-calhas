@@ -1,0 +1,53 @@
+.container {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .contentWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+  }
+  
+  .imageContainer {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .textContainer {
+    flex: 1;
+    text-align: left;
+  }
+  
+  /* Estilos para mobile */
+  @media (max-width: 768px) {
+    .contentWrapper {
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .imageContainer {
+      width: 100%;
+      min-width: auto;
+    }
+    
+    .textContainer {
+      text-align: center;
+      padding: 0 10px;
+    }
+    
+    .title {
+      font-size: 1.8rem !important;
+    }
+    
+    .description {
+      font-size: 1rem !important;
+    }
+  }

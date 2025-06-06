@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Pagina from '@/components/pagina';
+import SobreNos from '@/components/SobreNos';
+import Rodape from '@/components/Rodape';
 
 const Contato = () => {
   // Estilos
@@ -126,7 +128,7 @@ const Contato = () => {
           <Col lg={6}>
             <div style={styles.imageContainer}>
               <img 
-                src="/img/contato.jpg" // Substitua pelo caminho da sua imagem
+                src="/img/PHOTO-2024-03-31-16-05-40 2.jpg" // Substitua pelo caminho da sua imagem
                 alt="Entre em contato"
                 style={styles.image}
               />
@@ -134,7 +136,11 @@ const Contato = () => {
           </Col>
         </Row>
       </Container>
+       <SobreNos />
+      
+          <Rodape />
     </Pagina>
+    
   );
 };
 

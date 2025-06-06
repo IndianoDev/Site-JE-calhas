@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Rodape from '@/components/Rodape';
 import FaixaContato from '@/components/FaixaContato';
 import Head from 'next/head';
+import SobreNos from '@/components/SobreNos';
 
 const Index = () => {
   const [isClient, setIsClient] = useState(false);
@@ -15,9 +16,9 @@ const Index = () => {
   }, []);
 
   const data = [
-    { id: '1', image: '/img/carrosel imagem 1 (1).png', title: 'Soluções em Calhas', subtitle: 'Qualidade e Durabilidade' },
-    { id: '2', image: '/img/carrosel imagem 1 (2) (1).png', title: 'Instalação Profissional', subtitle: 'Precisão e Excelência' },
-    { id: '3', image: '/img/carrosel imagem 1 (3) (1).png', title: 'Variedade de Produtos', subtitle: 'Para Todas as Necessidades' },
+    { id: '1', image: '/img/1.png', title: 'Soluções em Calhas', subtitle: 'Telhado, Calhas, Rufos e Coifa' },
+    { id: '2', image: '/img/2.png', title: 'Serralheria em Geral', subtitle: 'Portões, grades etc.' },
+    { id: '3', image: '/img/3.png', title: 'Esturuta Metalicas', subtitle: 'Montagem de Telhado, galpão e Mezanino.' },
   ];
 
   const settings = {
@@ -259,6 +260,7 @@ const Index = () => {
       </div>
 
       <FaixaContato />
+    <SobreNos />
       <Rodape />
     </>
   );

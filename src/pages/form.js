@@ -1,4 +1,6 @@
 
+import Rodape from '@/components/Rodape';
+import SobreNos from '@/components/SobreNos';
 import React from 'react';
 
 const inputClasses = 'appearance-none block w-full bg-zinc-200 text-zinc-700 border border-zinc-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-zinc-500';
@@ -36,8 +38,13 @@ const ContactForm = () => {
           </form>
         </div>
       </div>
+      <SobreNos />
+
+    <Rodape />
     </div>
+   
   );
+  
 };
 
 export default ContactForm;

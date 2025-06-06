@@ -170,7 +170,7 @@ const Rodape = () => {
             </h5>
             <div style={{ display: 'flex', gap: '15px' }}>
               <a
-                href="https://www.instagram.com/suaempresa"
+                href="https://www.instagram.com/jecalhasbsb"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -197,7 +197,7 @@ const Rodape = () => {
                 <FaInstagram />
               </a>
               <a
-                href="https://www.facebook.com/suaempresa"
+                href="https://www.facebook.com/Jecalhas"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
