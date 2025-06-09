@@ -7,6 +7,7 @@ import Rodape from '@/components/Rodape';
 import FaixaContato from '@/components/FaixaContato';
 import Head from 'next/head';
 import SobreNos from '@/components/SobreNos';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
   const [isClient, setIsClient] = useState(false);
@@ -49,9 +50,9 @@ const Index = () => {
         <meta name="description" content="Especialistas em calhas e coberturas com qualidade superior e instalação profissional" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
       </Head>
-      
+
       <Pagina />
-      
+
       {isClient && (
         <div style={{ position: 'relative', overflow: 'hidden' }}>
           <Slider {...settings}>
@@ -118,8 +119,8 @@ const Index = () => {
         </div>
       )}
 
-      <div style={{ 
-        textAlign: 'center', 
+      <div style={{
+        textAlign: 'center',
         margin: '80px 0',
         padding: '0 20px',
         fontFamily: '"Montserrat", sans-serif'
@@ -152,7 +153,7 @@ const Index = () => {
             backgroundColor: '#0095a4'
           }}></span>
         </h2>
-        
+
         {/* Aqui você pode adicionar seus produtos em destaque */}
         <div style={{
           display: 'grid',
@@ -161,6 +162,55 @@ const Index = () => {
           marginTop: '50px',
           padding: '0 20px'
         }}>
+
+           {/* Adicione mais cards de produtos aqui */}
+          <div style={{
+            backgroundColor: '#fff',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+            transition: 'transform 0.3s ease',
+            ':hover': {
+              transform: 'translateY(-10px)'
+            }
+          }}>
+            <img
+              src="/img/PHOTO-2024-03-31-15-56-42 2.jpg"
+              alt="Rufos"
+              style={{
+                width: '100%',
+                height: '200px',
+                objectFit: 'cover'
+              }}
+            />
+            <div style={{ padding: '20px' }}>
+              <h3 style={{
+                fontSize: '1.5rem',
+                color: '#1D3D52',
+                marginBottom: '10px'
+              }}>Telhados e estuturas metálicas</h3>
+              <p style={{
+                color: '#666',
+                marginBottom: '20px'
+              }}> </p>
+              <button style={{
+                padding: '10px 20px',
+                backgroundColor: '#1D3D52',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                transition: 'background-color 0.3s ease',
+                ':hover': {
+                  backgroundColor: '#0095a4'
+                }
+              }}>
+                Detalhes
+              </button>
+              
+            </div>
+          </div>
+
           {/* Exemplo de card de produto */}
           <div style={{
             backgroundColor: '#fff',
@@ -172,9 +222,9 @@ const Index = () => {
               transform: 'translateY(-10px)'
             }
           }}>
-            <img 
-              src="/img/PHOTO-2024-03-31-15-56-42.jpg" 
-              alt="Calha Tipo X" 
+            <img
+              src="/img/foto de calha 1 (2).jpg"
+              alt="Calhas"
               style={{
                 width: '100%',
                 height: '200px',
@@ -186,11 +236,11 @@ const Index = () => {
                 fontSize: '1.5rem',
                 color: '#1D3D52',
                 marginBottom: '10px'
-              }}>Calha Tipo K</h3>
+              }}>Calhas</h3>
               <p style={{
                 color: '#666',
                 marginBottom: '20px'
-              }}>Ideal para telhados com grande área de captação de água.</p>
+              }}> </p>
               <button style={{
                 padding: '10px 20px',
                 backgroundColor: '#1D3D52',
@@ -207,9 +257,11 @@ const Index = () => {
               </button>
             </div>
           </div>
-          
-          {/* Adicione mais cards de produtos aqui */}
-          <div style={{
+
+         
+
+          {/* adicione mais um card abaixo */}
+            <div style={{
             backgroundColor: '#fff',
             borderRadius: '8px',
             overflow: 'hidden',
@@ -219,9 +271,9 @@ const Index = () => {
               transform: 'translateY(-10px)'
             }
           }}>
-            <img 
-              src="/img/PHOTO-2024-03-31-15-56-42.jpg" 
-              alt="Calha Tipo X" 
+            <img
+              src="/img/PHOTO-2024-03-31-21-31-30 2.jpg"
+              alt="Rufos"
               style={{
                 width: '100%',
                 height: '200px',
@@ -233,11 +285,11 @@ const Index = () => {
                 fontSize: '1.5rem',
                 color: '#1D3D52',
                 marginBottom: '10px'
-              }}>Calha Tipo K</h3>
+              }}> Rufos</h3>
               <p style={{
                 color: '#666',
                 marginBottom: '20px'
-              }}>Ideal para telhados com grande área de captação de água.</p>
+              }}> </p>
               <button style={{
                 padding: '10px 20px',
                 backgroundColor: '#1D3D52',
@@ -254,14 +306,15 @@ const Index = () => {
               </button>
             </div>
           </div>
-          
-          {/* adicione mais um card abaixo */}
+           {/* adicione mais um card abaixo */}
+
         </div>
       </div>
 
       <FaixaContato />
-    <SobreNos />
+      <SobreNos />
       <Rodape />
+      <WhatsAppButton />
     </>
   );
 };

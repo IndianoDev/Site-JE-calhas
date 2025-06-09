@@ -28,6 +28,8 @@
     "react-responsive": "^10.0.1",
     "react-router-dom": "^6.22.3",
     "react-slick": "^0.30.3",
+    "react-whatsapp": "^0.3.0",
+    "react-whatsapp-widget": "^2.2.0",
     "reactstrap": "^9.2.2",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.2.5",
