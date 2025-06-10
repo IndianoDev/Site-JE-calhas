@@ -17,7 +17,7 @@ const ProdutosPage = () => {
         'Calha Galvanizada',
         'Calha em Alumínio'
       ],
-      imagem: '/img/calhas.jpg'
+      imagem: '/img/Renderizadas/27.png'
     },
     {
       id: 2,
@@ -29,7 +29,7 @@ const ProdutosPage = () => {
         'Rufo para Telhado',
         'Rufo Personalizado'
       ],
-      imagem: '/img/rufos.jpg'
+      imagem: '/img/Renderizadas/11.png'
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ const ProdutosPage = () => {
         'Componentes para Exaustão',
         'Acessórios para Coifa'
       ],
-      imagem: '/img/coifas.jpg'
+      imagem: '/img/Renderizadas/28.png'
     },
     {
       id: 4,
@@ -53,7 +53,7 @@ const ProdutosPage = () => {
         'Soluções para Projetos Únicos',
         'Peças para Reformas'
       ],
-      imagem: '/img/sob-medida.jpg'
+      imagem: '/img/Renderizadas/je-png-trans.png'
     }
   ];
 

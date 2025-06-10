@@ -3,6 +3,13 @@ import { Row, Col } from 'react-bootstrap';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Rodape = () => {
+  const links = [
+  { nome: 'Home', href: '/' },
+  { nome: 'Empresa', href: '/sobre' },
+  { nome: 'Produtos', href: '/Produtos/ProdutosPage' },
+  { nome: 'Orçamento', href: '/contato' }
+];
+
   return (
     <footer style={{
       background: 'linear-gradient(135deg, #1D3D52 0%, #2a5475 100%)',
@@ -72,10 +79,10 @@ const Rodape = () => {
               }} />
             </h5>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              {['Início', 'Empresa', 'Produtos', 'Orçamento'].map((item, index) => (
+              {links.map((link, index) => (
                 <li key={index} style={{ marginBottom: '12px' }}>
                   <a
-                    href={item === 'Início' ? '/' : `/${item.toLowerCase()}`}
+                    href={link.href}
                     style={{
                       color: 'white',
                       textDecoration: 'none',
@@ -92,7 +99,7 @@ const Rodape = () => {
                       e.currentTarget.style.paddingLeft = '0';
                     }}
                   >
-                    {item}
+                    {link.nome}
                   </a>
                 </li>
               ))}
@@ -123,22 +130,22 @@ const Rodape = () => {
               <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
                 <FaPhone style={{ marginRight: '10px', color: '#4a90e2' }} />
                 <a href="tel:+5561991530796" style={{ color: 'white', textDecoration: 'none', transition: 'color 0.3s ease' }}
-                   onMouseOver={(e) => e.currentTarget.style.color = '#4a90e2'}
-                   onMouseOut={(e) => e.currentTarget.style.color = 'white'}
+                  onMouseOver={(e) => e.currentTarget.style.color = '#4a90e2'}
+                  onMouseOut={(e) => e.currentTarget.style.color = 'white'}
                 >(61) 99153-0796</a>
               </li>
               <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
                 <FaPhone style={{ marginRight: '10px', color: '#4a90e2' }} />
                 <a href="tel:+556132733582" style={{ color: 'white', textDecoration: 'none', transition: 'color 0.3s ease' }}
-                   onMouseOver={(e) => e.currentTarget.style.color = '#4a90e2'}
-                   onMouseOut={(e) => e.currentTarget.style.color = 'white'}
+                  onMouseOver={(e) => e.currentTarget.style.color = '#4a90e2'}
+                  onMouseOut={(e) => e.currentTarget.style.color = 'white'}
                 >(61) 3273-3582</a>
               </li>
               <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
                 <FaEnvelope style={{ marginRight: '10px', color: '#4a90e2' }} />
                 <a href="mailto:jecalhas@gmail.com" style={{ color: 'white', textDecoration: 'none', transition: 'color 0.3s ease' }}
-                   onMouseOver={(e) => e.currentTarget.style.color = '#4a90e2'}
-                   onMouseOut={(e) => e.currentTarget.style.color = 'white'}
+                  onMouseOver={(e) => e.currentTarget.style.color = '#4a90e2'}
+                  onMouseOut={(e) => e.currentTarget.style.color = 'white'}
                 >jecalhas@gmail.com</a>
               </li>
               <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
@@ -256,11 +263,11 @@ const Rodape = () => {
 
         <Row>
           <Col className="text-center">
-            <hr style={{ 
-              margin: '30px 0', 
-              borderColor: 'rgba(255,255,255,0.1)' 
+            <hr style={{
+              margin: '30px 0',
+              borderColor: 'rgba(255,255,255,0.1)'
             }} />
-            <p style={{ 
+            <p style={{
               margin: 0,
               fontSize: '0.9rem',
               opacity: 0.8

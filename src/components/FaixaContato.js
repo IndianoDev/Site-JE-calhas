@@ -38,12 +38,7 @@ const FaixaContato = () => {
               <FaEnvelope className="button-icon" /> Fale Conosco
             </button>
             
-            <button
-              className="contact-button phone-button"
-              onClick={() => window.location.href = 'tel:+5511999999999'}
-            >
-              <FaPhoneAlt className="button-icon" /> Ligar Agora
-            </button>
+           
           </div>
         </div>
       </div>
