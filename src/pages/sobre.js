@@ -4,6 +4,7 @@ import Pagina from '@/components/pagina';
 import Rodape2 from '@/components/Rodape2';
 import Head from 'next/head';
 import Rodape from '@/components/Rodape';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Sobre = () => {
   return (
@@ -130,6 +131,7 @@ const Sobre = () => {
           </div>
         </div>
       </div>
+      <WhatsAppButton />
 
       <Rodape />
 
@@ -367,6 +369,7 @@ const Sobre = () => {
         rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
       />
+   
     </Pagina>
   );
 };

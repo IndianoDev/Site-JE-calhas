@@ -204,7 +204,7 @@ const Rodape = () => {
                 <FaInstagram />
               </a>
               <a
-                href="https://www.facebook.com/Jecalhas"
+                href="https://www.facebook.com/profile.php?id=61558145102309"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

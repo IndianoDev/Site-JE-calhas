@@ -96,7 +96,8 @@ const Index = () => {
                       marginBottom: '20px',
                       textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
                     }}>{item.subtitle}</p>
-                    <button style={{
+                     <a href="/contato" style={{ textDecoration: 'none' }}>
+                     <button style={{
                       padding: '12px 30px',
                       backgroundColor: '#0095a4',
                       color: 'white',
@@ -111,8 +112,10 @@ const Index = () => {
                         transform: 'translateY(-2px)'
                       }
                     }}>
-                      Saiba Mais
+                      Faça um Orçamento
                     </button>
+                     </a>
+                    
                   </div>
                 </div>
               </div>
@@ -235,7 +238,7 @@ const Index = () => {
         }}>
           Soluções robustas e personalizadas para telhados, galpões e mezaninos.
         </p>
-        <a href="/Produtos/estrutura" style={{ textDecoration: 'none' }}>
+        <a href="/Produtos/EstruturasMetalicas" style={{ textDecoration: 'none' }}>
           <button style={{
             padding: '12px 30px',
             backgroundColor: 'transparent',

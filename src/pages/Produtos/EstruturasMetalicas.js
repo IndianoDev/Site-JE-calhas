@@ -8,7 +8,7 @@ import Pagina from '@/components/pagina';
 import Rodape from '@/components/Rodape';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
-const calhas = () => {
+const EstruturasMetalicas = () => {
   // Configurações do carrossel
   const sliderSettings = {
     dots: true,
@@ -22,61 +22,70 @@ const calhas = () => {
     adaptiveHeight: true
   };
 
-  // Imagens do produto (substitua pelas suas)
+  // Imagens do produto
   const imagensProduto = [
-    { id: 1, src: '/img/calhas/calha-1.jpg', alt: 'Calha Tipo K instalada' },
-    { id: 2, src: '/img/calhas/calha-2.jpg', alt: 'Detalhe da calha' },
-    { id: 3, src: '/img/calhas/calha-3.jpg', alt: 'Calha em residência' },
-    { id: 4, src: '/img/calhas/calha-4.jpg', alt: 'Instalação profissional' }
+    { id: 1, src: '/img/estruturas/estrutura-1.jpg', alt: 'Galpão industrial com estrutura metálica' },
+    { id: 2, src: '/img/estruturas/estrutura-2.jpg', alt: 'Detalhe da montagem estrutural' },
+    { id: 3, src: '/img/estruturas/estrutura-3.jpg', alt: 'Estrutura para telhado residencial' },
+    { id: 4, src: '/img/estruturas/estrutura-4.jpg', alt: 'Mezanino em estrutura metálica' }
+  ];
+
+  // Tipos de estruturas
+  const tiposEstruturas = [
+    { id: 1, nome: 'Telhados Industriais', descricao: 'Estruturas robustas para galpões e indústrias' },
+    { id: 2, nome: 'Coberturas Residenciais', descricao: 'Soluções elegantes para residências' },
+    { id: 3, nome: 'Mezaninos', descricao: 'Aproveitamento inteligente de espaços verticais' },
+    { id: 4, nome: 'Estruturas Customizadas', descricao: 'Projetos sob medida para necessidades específicas' }
   ];
 
   // Especificações técnicas
   const especificacoes = [
-    { id: 1, titulo: 'Material', valor: 'Alumínio 0,7mm' },
-    { id: 2, titulo: 'Cores Disponíveis', valor: 'Branco, Preto, Cinza, Terracota' },
-    { id: 3, titulo: 'Garantia', valor: '15 anos contra corrosão' },
-    { id: 4, titulo: 'Aplicação', valor: 'Residencial e Comercial' },
-    { id: 5, titulo: 'Capacidade', valor: 'Até 200m² de área de captação' },
-    { id: 6, titulo: 'Normas', valor: 'ABNT NBR 15575:2013' }
+    { id: 1, titulo: 'Material', valor: 'Aço galvanizado G-90' },
+    { id: 2, titulo: 'Espessura', valor: 'De 0,95mm a 3,00mm' },
+    { id: 3, titulo: 'Garantia', valor: '20 anos contra corrosão' },
+    { id: 4, titulo: 'Normas', valor: 'ABNT NBR 6355 e NBR 14762' },
+    { id: 5, titulo: 'Cobertura', valor: 'Até 30m de vão livre' },
+    { id: 6, titulo: 'Pintura', valor: 'Eletrostática ou galvanização' }
   ];
 
   // Vantagens do produto
   const vantagens = [
-    { id: 1, icone: 'fas fa-shield-alt', titulo: 'Durabilidade', descricao: 'Resistente à corrosão e intempéries' },
-    { id: 2, icone: 'fas fa-tint', titulo: 'Eficiência', descricao: 'Escoamento perfeito mesmo em chuvas intensas' },
-    { id: 3, icone: 'fas fa-paint-brush', titulo: 'Estética', descricao: 'Design limpo que complementa a arquitetura' },
-    { id: 4, icone: 'fas fa-cogs', titulo: 'Instalação', descricao: 'Sistema modular de fácil instalação' }
+    { id: 1, icone: 'fas fa-clock', titulo: 'Rapidez', descricao: 'Montagem até 70% mais rápida que alvenaria' },
+    { id: 2, icone: 'fas fa-ruler-combined', titulo: 'Precisão', descricao: 'Componentes fabricados com tolerância milimétrica' },
+    { id: 3, icone: 'fas fa-leaf', titulo: 'Sustentabilidade', descricao: 'Material 100% reciclável e menor desperdício' },
+    { id: 4, icone: 'fas fa-expand', titulo: 'Vãos Livres', descricao: 'Possibilidade de grandes espaços sem pilares' }
   ];
 
   return (
-    <Pagina titulo="Calhas">
+    <Pagina titulo="Estruturas Metálicas">
       <Head>
-        <title>Calhas Premium | JE Calhas - Soluções em Coberturas</title>
-        <meta name="description" content="Conheça nossa linha premium de calhas com garantia estendida e alta performance em drenagem" />
+        <title>Estruturas Metálicas | JE Calhas - Soluções em Coberturas</title>
+        <meta name="description" content="Soluções em estruturas metálicas para telhados, galpões e mezaninos com qualidade e durabilidade incomparáveis" />
       </Head>
 
       {/* Hero Section */}
       <div style={{
-        backgroundColor: '#1D3D52',
+        background: 'linear-gradient(135deg, rgba(29, 61, 82, 0.9), rgba(0, 149, 164, 0.8))',
         color: 'white',
-        padding: '60px 0',
+        padding: '80px 0',
         textAlign: 'center'
       }}>
         <Container>
           <h1 style={{
-            fontSize: '2.5rem',
+            fontSize: '2.8rem',
             fontWeight: '700',
-            marginBottom: '15px'
+            marginBottom: '15px',
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)'
           }}>
-            Calhas Premium
+            Estruturas Metálicas
           </h1>
           <p style={{
-            fontSize: '1.2rem',
+            fontSize: '1.3rem',
             maxWidth: '800px',
             margin: '0 auto',
-            opacity: '0.9'
+            lineHeight: '1.6'
           }}>
-            Solução completa em drenagem para seu telhado com qualidade e durabilidade incomparáveis
+            Soluções robustas e versáteis para telhados, galpões e mezaninos
           </p>
         </Container>
       </div>
@@ -113,7 +122,7 @@ const calhas = () => {
                   }}>Produtos</a>
                 </li>
                 <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
-                <li style={{ color: '#0095a4' }}>Calhas</li>
+                <li style={{ color: '#0095a4' }}>Estruturas Metálicas</li>
               </ol>
             </nav>
           </Col>
@@ -134,7 +143,7 @@ const calhas = () => {
                   <div key={imagem.id}>
                     <div style={{
                       position: 'relative',
-                      paddingTop: '56.25%', // Proporção 16:9
+                      paddingTop: '56.25%',
                       overflow: 'hidden'
                     }}>
                       <img
@@ -158,6 +167,75 @@ const calhas = () => {
         </Row>
       </Container>
 
+      {/* Seção Tipos de Estruturas */}
+      <Container style={{ marginBottom: '80px' }}>
+        <Row className="justify-content-center">
+          <Col lg={8} className="text-center mb-5">
+            <h2 style={{
+              color: '#1D3D52',
+              fontSize: '2rem',
+              fontWeight: '700',
+              marginBottom: '15px',
+              position: 'relative',
+              display: 'inline-block'
+            }}>
+              Nossas Soluções em Estruturas
+              <span style={{
+                position: 'absolute',
+                bottom: '-10px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '80px',
+                height: '3px',
+                backgroundColor: '#0095a4'
+              }}></span>
+            </h2>
+          </Col>
+        </Row>
+        
+        <Row className="g-4">
+          {tiposEstruturas.map((tipo) => (
+            <Col key={tipo.id} md={6} lg={3}>
+              <div style={{
+                backgroundColor: '#fff',
+                borderRadius: '10px',
+                padding: '30px',
+                height: '100%',
+                boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease',
+                borderTop: '4px solid #0095a4',
+                ':hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)'
+                }
+              }}>
+                <div style={{
+                  fontSize: '2.5rem',
+                  color: '#0095a4',
+                  marginBottom: '20px'
+                }}>
+                  <i className="fas fa-project-diagram"></i>
+                </div>
+                <h3 style={{
+                  color: '#1D3D52',
+                  fontSize: '1.3rem',
+                  marginBottom: '15px',
+                  fontWeight: '600'
+                }}>
+                  {tipo.nome}
+                </h3>
+                <p style={{
+                  color: '#666',
+                  fontSize: '0.95rem'
+                }}>
+                  {tipo.descricao}
+                </p>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+
       {/* Seção Sobre o Produto */}
       <Container style={{ marginBottom: '80px' }}>
         <Row className="align-items-center">
@@ -170,7 +248,7 @@ const calhas = () => {
               position: 'relative',
               paddingBottom: '10px'
             }}>
-              Sobre Nossas Calhas
+              Sobre Nossas Estruturas
               <span style={{
                 position: 'absolute',
                 bottom: '0',
@@ -186,7 +264,7 @@ const calhas = () => {
               marginBottom: '20px',
               color: '#333'
             }}>
-              Nossas calhas são fabricadas com <strong>alumínio de alta resistência</strong>, garantindo durabilidade e performance excepcionais. Desenvolvidas para o clima brasileiro, oferecem escoamento eficiente mesmo nas chuvas mais intensas.
+              Nossas estruturas metálicas são projetadas com <strong>aço galvanizado de alta resistência</strong>, garantindo durabilidade e segurança. Utilizamos perfis treliçados e vigas "I" que proporcionam a melhor relação resistência/peso do mercado.
             </p>
             <p style={{
               fontSize: '1.1rem',
@@ -194,7 +272,7 @@ const calhas = () => {
               marginBottom: '20px',
               color: '#333'
             }}>
-              O sistema exclusivo de encaixe <strong>evita vazamentos</strong> e a pintura eletrostática proporciona acabamento perfeito que mantém sua aparência por décadas.
+              Todos os componentes são <strong>pré-fabricados com precisão milimétrica</strong>, permitindo montagem rápida e com mínimo desperdício de material no local da obra.
             </p>
             <div style={{
               backgroundColor: '#f8f9fa',
@@ -207,7 +285,7 @@ const calhas = () => {
                 fontStyle: 'italic',
                 color: '#1D3D52'
               }}>
-                "Desde que instalamos as calhas JE, nunca mais tivemos problemas com infiltração ou transbordamento, mesmo em temporais."
+                "A estrutura metálica da JE reduziu em 40% o tempo da nossa obra e o resultado final ficou perfeito."
               </p>
             </div>
           </Col>
@@ -276,13 +354,13 @@ const calhas = () => {
                 fontWeight: '700',
                 marginBottom: '15px'
               }}>
-                Por que escolher nossas calhas?
+                Vantagens das Estruturas Metálicas
               </h2>
               <p style={{
                 color: '#555',
                 fontSize: '1.1rem'
               }}>
-                Tecnologia e qualidade que fazem a diferença na proteção do seu imóvel
+                Por que escolher estruturas metálicas para sua obra?
               </p>
             </Col>
           </Row>
@@ -328,7 +406,7 @@ const calhas = () => {
         </Container>
       </div>
 
-      {/* Galeria de Aplicações */}
+      {/* Galeria de Projetos */}
       <Container style={{ marginBottom: '80px' }}>
         <Row className="justify-content-center">
           <Col lg={8} className="text-center mb-5">
@@ -338,13 +416,13 @@ const calhas = () => {
               fontWeight: '700',
               marginBottom: '15px'
             }}>
-              Nossas Calhas em Ação
+              Nossos Projetos Realizados
             </h2>
             <p style={{
               color: '#555',
               fontSize: '1.1rem'
             }}>
-              Veja como nossas calhas estão protegendo imóveis em todo o país
+              Veja algumas de nossas estruturas metálicas em obras reais
             </p>
           </Col>
         </Row>
@@ -356,21 +434,23 @@ const calhas = () => {
                 paddingTop: '100%',
                 borderRadius: '8px',
                 overflow: 'hidden',
-                boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
+                boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
+                transition: 'transform 0.3s ease',
+                ':hover': {
+                  transform: 'scale(1.03)'
+                }
               }}>
                 <img
-                  src={`/img/calhas/galeria-${item}.jpg`}
-                  alt={`Aplicação de calhas ${item}`}
+                  src={`/img/estruturas/projeto-${item}.jpg`}
+                  alt={`Projeto de estrutura metálica ${item}`}
                   style={{
                     position: 'absolute',
                     top: '0',
                     left: '0',
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover',
-                    transition: 'transform 0.3s ease'
+                    objectFit: 'cover'
                   }}
-                  className="hover-zoom"
                 />
               </div>
             </Col>
@@ -391,7 +471,7 @@ const calhas = () => {
             marginBottom: '20px',
             fontWeight: '700'
           }}>
-            Pronto para proteger seu imóvel?
+            Pronto para transformar seu projeto?
           </h2>
           <p style={{
             fontSize: '1.2rem',
@@ -399,7 +479,7 @@ const calhas = () => {
             margin: '0 auto 30px',
             lineHeight: '1.6'
           }}>
-            Solicite um orçamento sem compromisso e receba a visita de um de nossos especialistas
+            Nossos engenheiros estão prontos para desenvolver a solução perfeita para sua necessidade
           </p>
           <a
             href="/contato"
@@ -422,7 +502,7 @@ const calhas = () => {
               }
             }}
           >
-            Solicitar Orçamento
+            Solicitar Projeto
           </a>
         </Container>
       </div>
@@ -432,9 +512,6 @@ const calhas = () => {
 
       {/* Estilos */}
       <style jsx global>{`
-        .hover-zoom:hover {
-          transform: scale(1.05);
-        }
         .slick-prev:before, .slick-next:before {
           color: #1D3D52 !important;
           font-size: 30px !important;
@@ -460,4 +537,4 @@ const calhas = () => {
   );
 };
 
-export default calhas;
+export default EstruturasMetalicas;

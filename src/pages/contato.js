@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Pagina from '@/components/pagina';
 import SobreNos from '@/components/SobreNos';
 import Rodape from '@/components/Rodape';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Contato = () => {
   // Estado do formulário e feedback
@@ -222,6 +223,7 @@ const Contato = () => {
       
       <SobreNos />
       <Rodape />
+      <WhatsAppButton />
     </Pagina>
   );
 };
