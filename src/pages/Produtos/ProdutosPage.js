@@ -63,9 +63,7 @@ const ProdutosPage = () => {
         <title>Produtos | JE Calhas - Soluções em Coberturas</title>
         <meta name="description" content="Conheça nossa linha completa de calhas, rufos e componentes para sistemas de drenagem e coberturas" />
       </Head>
-
-      {/* Hero Section */}
-      <div style={{
+<div style={{
         background: 'linear-gradient(135deg, rgba(29, 61, 82, 0.9), rgba(0, 149, 164, 0.8))',
         color: 'white',
         padding: '80px 0',
@@ -91,8 +89,7 @@ const ProdutosPage = () => {
           </p>
         </Container>
       </div>
-
-      {/* Breadcrumb */}
+{/* Breadcrumb */}
       <Container style={{ marginBottom: '40px' }}>
         <Row>
           <Col>
@@ -121,6 +118,336 @@ const ProdutosPage = () => {
         </Row>
       </Container>
 
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: '30px',
+        marginTop: '50px',
+        padding: '0 20px'
+      }}>
+
+        {/* Card 1 - Estruturas Metálicas */}
+        <div style={{
+          backgroundColor: '#fff',
+          borderRadius: '16px',
+          overflow: 'hidden',
+          boxShadow: '0 10px 30px rgba(29, 61, 82, 0.1)',
+          transition: 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)',
+          position: 'relative',
+          zIndex: '1',
+          ':hover': {
+            transform: 'translateY(-10px)',
+            boxShadow: '0 15px 35px rgba(29, 61, 82, 0.2)'
+          },
+          ':before': {
+            content: '""',
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            right: '0',
+            height: '4px',
+            background: 'linear-gradient(90deg, #1D3D52, #0095a4)',
+            zIndex: '2'
+          }
+        }}>
+          <div style={{
+            position: 'relative',
+            height: '220px',
+            overflow: 'hidden'
+          }}>
+            <img
+              src="/img/PHOTO-2024-03-31-15-56-42 2.jpg"
+              alt="Estruturas Metálicas"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                transition: 'transform 0.5s ease',
+                ':hover': {
+                  transform: 'scale(1.1)'
+                }
+              }}
+            />
+            <div style={{
+              position: 'absolute',
+              bottom: '0',
+              left: '0',
+              right: '0',
+              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
+              padding: '20px',
+              color: 'white',
+              textAlign: 'left'
+            }}>
+              <h3 style={{
+                fontSize: '1.5rem',
+                margin: '0',
+                fontWeight: '600',
+                textShadow: '1px 1px 3px rgba(0,0,0,0.5)'
+              }}>Estruturas Metálicas</h3>
+            </div>
+          </div>
+          <div style={{ padding: '25px' }}>
+            <p style={{
+              color: '#666',
+              marginBottom: '25px',
+              fontSize: '1rem',
+              lineHeight: '1.6'
+            }}>
+              Soluções robustas e personalizadas para telhados, galpões e mezaninos.
+            </p>
+            <a href="/Produtos/EstruturasMetalicas" style={{ textDecoration: 'none' }}>
+              <button style={{
+                padding: '12px 30px',
+                backgroundColor: 'transparent',
+                color: '#0095a4',
+                border: '2px solid #0095a4',
+                borderRadius: '50px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                position: 'relative',
+                overflow: 'hidden',
+                ':hover': {
+                  color: 'white',
+                  ':before': {
+                    width: '100%'
+                  }
+                },
+                ':before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  width: '0%',
+                  height: '100%',
+                  backgroundColor: '#0095a4',
+                  transition: 'width 0.3s ease',
+                  zIndex: '-1'
+                }
+              }}>
+                Ver Detalhes
+              </button>
+            </a>
+          </div>
+        </div>
+
+        {/* Card 2 - Calhas */}
+        <div style={{
+          backgroundColor: '#fff',
+          borderRadius: '16px',
+          overflow: 'hidden',
+          boxShadow: '0 10px 30px rgba(29, 61, 82, 0.1)',
+          transition: 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)',
+          position: 'relative',
+          zIndex: '1',
+          ':hover': {
+            transform: 'translateY(-10px)',
+            boxShadow: '0 15px 35px rgba(29, 61, 82, 0.2)'
+          },
+          ':before': {
+            content: '""',
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            right: '0',
+            height: '4px',
+            background: 'linear-gradient(90deg, #0095a4, #1D3D52)',
+            zIndex: '2'
+          }
+        }}>
+          <div style={{
+            position: 'relative',
+            height: '220px',
+            overflow: 'hidden'
+          }}>
+            <img
+              src="/img/foto de calha 1 (2).jpg"
+              alt="Calhas"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                transition: 'transform 0.5s ease',
+                ':hover': {
+                  transform: 'scale(1.1)'
+                }
+              }}
+            />
+            <div style={{
+              position: 'absolute',
+              bottom: '0',
+              left: '0',
+              right: '0',
+              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
+              padding: '20px',
+              color: 'white',
+              textAlign: 'left'
+            }}>
+              <h3 style={{
+                fontSize: '1.5rem',
+                margin: '0',
+                fontWeight: '600',
+                textShadow: '1px 1px 3px rgba(0,0,0,0.5)'
+              }}>Calhas Premium</h3>
+            </div>
+          </div>
+          <div style={{ padding: '25px' }}>
+            <p style={{
+              color: '#666',
+              marginBottom: '25px',
+              fontSize: '1rem',
+              lineHeight: '1.6'
+            }}>
+              Sistemas completos de drenagem com alta durabilidade e acabamento impecável.
+            </p>
+            <a href="/Produtos/calhas" style={{ textDecoration: 'none' }}>
+              <button style={{
+                padding: '12px 30px',
+                backgroundColor: 'transparent',
+                color: '#1D3D52',
+                border: '2px solid #1D3D52',
+                borderRadius: '50px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                position: 'relative',
+                overflow: 'hidden',
+                ':hover': {
+                  color: 'white',
+                  ':before': {
+                    width: '100%'
+                  }
+                },
+                ':before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  width: '0%',
+                  height: '100%',
+                  backgroundColor: '#1D3D52',
+                  transition: 'width 0.3s ease',
+                  zIndex: '-1'
+                }
+              }}>
+                Ver Detalhes
+              </button>
+            </a>
+          </div>
+        </div>
+
+        {/* Card 3 - Rufos */}
+        <div style={{
+          backgroundColor: '#fff',
+          borderRadius: '16px',
+          overflow: 'hidden',
+          boxShadow: '0 10px 30px rgba(29, 61, 82, 0.1)',
+          transition: 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)',
+          position: 'relative',
+          zIndex: '1',
+          ':hover': {
+            transform: 'translateY(-10px)',
+            boxShadow: '0 15px 35px rgba(29, 61, 82, 0.2)'
+          },
+          ':before': {
+            content: '""',
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            right: '0',
+            height: '4px',
+            background: 'linear-gradient(90deg, #1D3D52, #0095a4)',
+            zIndex: '2'
+          }
+        }}>
+          <div style={{
+            position: 'relative',
+            height: '220px',
+            overflow: 'hidden'
+          }}>
+            <img
+              src="/img/PHOTO-2024-03-31-21-31-30 2.jpg"
+              alt="Rufos"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                transition: 'transform 0.5s ease',
+                ':hover': {
+                  transform: 'scale(1.1)'
+                }
+              }}
+            />
+            <div style={{
+              position: 'absolute',
+              bottom: '0',
+              left: '0',
+              right: '0',
+              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
+              padding: '20px',
+              color: 'white',
+              textAlign: 'left'
+            }}>
+              <h3 style={{
+                fontSize: '1.5rem',
+                margin: '0',
+                fontWeight: '600',
+                textShadow: '1px 1px 3px rgba(0,0,0,0.5)'
+              }}>Rufos Profissionais</h3>
+            </div>
+          </div>
+          <div style={{ padding: '25px' }}>
+            <p style={{
+              color: '#666',
+              marginBottom: '25px',
+              fontSize: '1rem',
+              lineHeight: '1.6'
+            }}>
+              Proteção perfeita para as junções do seu telhado com 7 modelos diferentes.
+            </p>
+            <a href="/Produtos/rufos" style={{ textDecoration: 'none' }}>
+              <button style={{
+                padding: '12px 30px',
+                backgroundColor: 'transparent',
+                color: '#0095a4',
+                border: '2px solid #0095a4',
+                borderRadius: '50px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                position: 'relative',
+                overflow: 'hidden',
+                ':hover': {
+                  color: 'white',
+                  ':before': {
+                    width: '100%'
+                  }
+                },
+                ':before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  width: '0%',
+                  height: '100%',
+                  backgroundColor: '#0095a4',
+                  transition: 'width 0.3s ease',
+                  zIndex: '-1'
+                }
+              }}>
+                Ver Detalhes
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <br></br>
+      {/* Hero Section */}
+      
+      
       {/* Categorias de Produtos */}
       <Container style={{ marginBottom: '80px' }}>
         {categorias.map((categoria) => (
@@ -187,20 +514,14 @@ const ProdutosPage = () => {
                       <li key={index} style={{
                         padding: '10px 15px',
                         backgroundColor: '#f8f9fa',
-                        borderRadius: '5px',
-                        transition: 'all 0.3s ease',
-                        ':hover': {
-                          backgroundColor: '#e9f7f9',
-                          transform: 'translateX(5px)'
-                        }
+                        borderRadius: '5px'
                       }}>
-                        <a href={`/produtos/${categoria.nome.toLowerCase().replace(/ /g, '-')}/${item.toLowerCase().replace(/ /g, '-')}`}
-                          style={{
-                            color: '#1D3D52',
-                            textDecoration: 'none',
-                            display: 'flex',
-                            alignItems: 'center'
-                          }}>
+                        <div style={{
+                          color: '#1D3D52',
+                          textDecoration: 'none',
+                          display: 'flex',
+                          alignItems: 'center'
+                        }}>
                           <span style={{
                             display: 'inline-block',
                             width: '8px',
@@ -210,7 +531,7 @@ const ProdutosPage = () => {
                             marginRight: '10px'
                           }}></span>
                           {item}
-                        </a>
+                        </div>
                       </li>
                     ))}
                   </ul>
@@ -270,9 +591,10 @@ const ProdutosPage = () => {
         </Container>
       </div>
 
+
       <Rodape />
       <WhatsAppButton />
-      
+
     </Pagina>
   );
 };

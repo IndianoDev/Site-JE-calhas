@@ -28,46 +28,52 @@ const rufos = () => {
       id: 1,
       nome: 'Rufos de Encosto',
       descricao: 'Proteção lateral para paredes com acabamento perfeito',
-      imagem: '/img/rufos/rufo-encosto.jpg'
+      imagem: '/img/Renderizadas/1.jpg'
     },
     {
       id: 2,
       nome: 'Encosto com Pingadeira',
       descricao: 'Combinação de proteção lateral com sistema de escoamento',
-      imagem: '/img/rufos/encosto-pingadeira.jpg'
+      imagem: '/img/Renderizadas/2.jpg'
     },
     {
       id: 3,
       nome: 'Rufos de Capa',
       descricao: 'Proteção superior com dupla camada de vedação',
-      imagem: '/img/rufos/rufo-capa.jpg'
+      imagem: '/img/Renderizadas/3.jpg'
     },
     {
       id: 4,
       nome: 'Contra Rufo',
       descricao: 'Complemento essencial para instalações profissionais',
-      imagem: '/img/rufos/contra-rufo.jpg'
+      imagem: '/img/Renderizadas/4.jpg'
     },
     {
       id: 5,
       nome: 'Rufo Encosto com Capa',
       descricao: 'Solução completa para proteção lateral e superior',
-      imagem: '/img/rufos/encosto-capa.jpg'
+      imagem: '/img/Renderizadas/5.jpg'
     },
     {
       id: 6,
       nome: 'Rufo com 1 Pingadeira',
       descricao: 'Sistema de escoamento integrado com proteção',
-      imagem: '/img/rufos/rufo-pingadeira.jpg'
+      imagem: '/img/Renderizadas/6.jpg'
     },
     {
       id: 7,
       nome: 'Cumeeira',
       descricao: 'Proteção para o ponto mais alto do telhado',
-      imagem: '/img/rufos/cumeeira.jpg'
+      imagem: '/img/Renderizadas/7.jpg'
     }
   ];
-
+const imagensProduto = [
+    { id: 1, src: '/img/PHOTO-2024-07-03-21-10-31.jpg', alt: 'Calha Tipo K instalada' },
+    { id: 2, src: '/img/PHOTO-2024-07-03-21-10-33.jpg', alt: 'Detalhe da calha' },
+    { id: 3, src: '/img/PHOTO-2024-03-31-21-31-29 4.jpg', alt: 'Calha em residência' },
+    { id: 4, src: '/img/PHOTO-2024-07-03-21-10-31 2.jpg', alt: 'Instalação profissional' }
+  ];
+  
   // Especificações técnicas
   const especificacoes = [
     { id: 1, titulo: 'Material', valor: 'Alumínio 0,7mm galvanizado' },
@@ -254,9 +260,7 @@ const rufos = () => {
           ))}
         </Row>
       </Container>
-
-      {/* Carrossel de Detalhes */}
-      <Container style={{ marginBottom: '80px' }}>
+   <Container style={{ marginBottom: '60px' }}>
         <Row>
           <Col lg={8} className="mx-auto">
             <div style={{
@@ -265,16 +269,16 @@ const rufos = () => {
               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
             }}>
               <Slider {...sliderSettings}>
-                {modelosRufos.slice(0, 4).map((modelo) => (
-                  <div key={modelo.id}>
+                {imagensProduto.map((imagem) => (
+                  <div key={imagem.id}>
                     <div style={{
                       position: 'relative',
-                      paddingTop: '56.25%',
+                      paddingTop: '56.25%', // Proporção 16:9
                       overflow: 'hidden'
                     }}>
                       <img
-                        src={modelo.imagem}
-                        alt={`Detalhe ${modelo.nome}`}
+                        src={imagem.src}
+                        alt={imagem.alt}
                         style={{
                           position: 'absolute',
                           top: '0',
@@ -284,17 +288,6 @@ const rufos = () => {
                           objectFit: 'cover'
                         }}
                       />
-                      <div style={{
-                        position: 'absolute',
-                        bottom: '0',
-                        left: '0',
-                        right: '0',
-                        padding: '20px',
-                        background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)',
-                        color: 'white'
-                      }}>
-                        <h3 style={{ margin: '0', fontSize: '1.5rem' }}>{modelo.nome}</h3>
-                      </div>
                     </div>
                   </div>
                 ))}
@@ -303,7 +296,7 @@ const rufos = () => {
           </Col>
         </Row>
       </Container>
-
+      
       {/* Seção Técnica */}
       <Container style={{ marginBottom: '80px' }}>
         <Row className="align-items-center">

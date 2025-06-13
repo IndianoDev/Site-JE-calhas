@@ -24,10 +24,10 @@ const calhas = () => {
 
   // Imagens do produto (substitua pelas suas)
   const imagensProduto = [
-    { id: 1, src: '/img/calhas/calha-1.jpg', alt: 'Calha Tipo K instalada' },
-    { id: 2, src: '/img/calhas/calha-2.jpg', alt: 'Detalhe da calha' },
-    { id: 3, src: '/img/calhas/calha-3.jpg', alt: 'Calha em residência' },
-    { id: 4, src: '/img/calhas/calha-4.jpg', alt: 'Instalação profissional' }
+    { id: 1, src: '/img/PHOTO-2024-03-31-15-56-41.jpg', alt: 'Calha Tipo K instalada' },
+    { id: 2, src: '/img/PHOTO-2024-03-31-15-56-42.jpg', alt: 'Detalhe da calha' },
+    { id: 3, src: '/img/PHOTO-2024-03-31-16-05-40 5.jpg', alt: 'Calha em residência' },
+    { id: 4, src: '/img/foto de calha 1 (2).jpg', alt: 'Instalação profissional' }
   ];
 
   // Especificações técnicas
@@ -349,7 +349,7 @@ const calhas = () => {
           </Col>
         </Row>
         <Row className="g-4">
-          {[1, 2, 3, 4].map((item) => (
+          {[5, 27, 8, 20].map((item) => (
             <Col key={item} sm={6} md={3}>
               <div style={{
                 position: 'relative',
@@ -359,7 +359,7 @@ const calhas = () => {
                 boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
               }}>
                 <img
-                  src={`/img/calhas/galeria-${item}.jpg`}
+                  src={`/img/Renderizadas/${item}.png`}
                   alt={`Aplicação de calhas ${item}`}
                   style={{
                     position: 'absolute',

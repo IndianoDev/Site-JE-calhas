@@ -24,18 +24,18 @@ const EstruturasMetalicas = () => {
 
   // Imagens do produto
   const imagensProduto = [
-    { id: 1, src: '/img/estruturas/estrutura-1.jpg', alt: 'Galpão industrial com estrutura metálica' },
-    { id: 2, src: '/img/estruturas/estrutura-2.jpg', alt: 'Detalhe da montagem estrutural' },
-    { id: 3, src: '/img/estruturas/estrutura-3.jpg', alt: 'Estrutura para telhado residencial' },
-    { id: 4, src: '/img/estruturas/estrutura-4.jpg', alt: 'Mezanino em estrutura metálica' }
+    { id: 1, src: '/img/PHOTO-2022-07-13-14-06-52 2.jpg', alt: 'Galpão industrial com estrutura metálica' },
+    { id: 2, src: '/img/PHOTO-2022-08-03-16-33-57.jpg', alt: 'Detalhe da montagem estrutural' },
+    { id: 3, src: '/img/PHOTO-2024-03-31-15-56-40.jpg', alt: 'Estrutura para telhado residencial' },
+    { id: 4, src: '/img/PHOTO-2024-03-31-15-56-42 2.jpg', alt: 'Mezanino em estrutura metálica' }
   ];
 
   // Tipos de estruturas
   const tiposEstruturas = [
-    { id: 1, nome: 'Telhados Industriais', descricao: 'Estruturas robustas para galpões e indústrias' },
-    { id: 2, nome: 'Coberturas Residenciais', descricao: 'Soluções elegantes para residências' },
-    { id: 3, nome: 'Mezaninos', descricao: 'Aproveitamento inteligente de espaços verticais' },
-    { id: 4, nome: 'Estruturas Customizadas', descricao: 'Projetos sob medida para necessidades específicas' }
+    { id: 1, src: "/img/Renderizadas/25.png", nome: 'Telhados Industriais', descricao: 'Estruturas robustas para galpões e indústrias' },
+    { id: 2, src: "",nome: 'Coberturas Residenciais', descricao: 'Soluções elegantes para residências' },
+    { id: 3, src: "",nome: 'Mezaninos', descricao: 'Aproveitamento inteligente de espaços verticais' },
+    { id: 4, src: "",nome: 'Estruturas Customizadas', descricao: 'Projetos sob medida para necessidades específicas' }
   ];
 
   // Especificações técnicas
@@ -427,7 +427,7 @@ const EstruturasMetalicas = () => {
           </Col>
         </Row>
         <Row className="g-4">
-          {[1, 2, 3, 4].map((item) => (
+          {[26, 2, 25, 24].map((item) => (
             <Col key={item} sm={6} md={3}>
               <div style={{
                 position: 'relative',
@@ -441,7 +441,7 @@ const EstruturasMetalicas = () => {
                 }
               }}>
                 <img
-                  src={`/img/estruturas/projeto-${item}.jpg`}
+                  src={`/img/Renderizadas/${item}.png`}
                   alt={`Projeto de estrutura metálica ${item}`}
                   style={{
                     position: 'absolute',
