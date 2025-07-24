@@ -26,8 +26,8 @@ const Cabecalho = () => {
       name: 'Produtos ',
       href: '/Produtos/ProdutosPage',
       subItems: [
-        'Calhas', 'Rufos', 'Coifas e Componentes',
-        'Peças', 'Sob Medida', 'Telhado e Estrutura'
+        'Calhas', 'Rufos', 
+         'Telhado e Estrutura'
       ]
     }
   ];
