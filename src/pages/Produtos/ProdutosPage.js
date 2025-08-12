@@ -83,8 +83,8 @@ const ProdutosPage = () => {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb-list">
                 <li className="breadcrumb-item">
-                  <Link href="/" className="breadcrumb-link">
-                    Home
+                  <Link href="/" legacyBehavior>
+                    <a className="breadcrumb-link">Home</a>
                   </Link>
                 </li>
                 <li className="breadcrumb-separator">&gt;</li>
@@ -106,6 +106,7 @@ const ProdutosPage = () => {
               width={400}
               height={300}
               className="product-image"
+              priority
             />
             <div className="product-image-overlay">
               <h3>Estruturas Metálicas</h3>
@@ -115,10 +116,12 @@ const ProdutosPage = () => {
             <p className="product-description">
               Soluções robustas e personalizadas para telhados, galpões e mezaninos.
             </p>
-            <Link href="/Produtos/EstruturasMetalicas" className="product-link">
-              <button className="product-button">
-                Ver Detalhes
-              </button>
+            <Link href="/Produtos/EstruturasMetalicas" legacyBehavior>
+              <a className="product-link">
+                <button className="product-button">
+                  Ver Detalhes
+                </button>
+              </a>
             </Link>
           </div>
         </div>
@@ -132,6 +135,7 @@ const ProdutosPage = () => {
               width={400}
               height={300}
               className="product-image"
+              priority
             />
             <div className="product-image-overlay">
               <h3>Calhas Premium</h3>
@@ -141,10 +145,12 @@ const ProdutosPage = () => {
             <p className="product-description">
               Sistemas completos de drenagem com alta durabilidade e acabamento impecável.
             </p>
-            <Link href="/Produtos/calhas" className="product-link">
-              <button className="product-button">
-                Ver Detalhes
-              </button>
+            <Link href="/Produtos/calhas" legacyBehavior>
+              <a className="product-link">
+                <button className="product-button">
+                  Ver Detalhes
+                </button>
+              </a>
             </Link>
           </div>
         </div>
@@ -158,6 +164,7 @@ const ProdutosPage = () => {
               width={400}
               height={300}
               className="product-image"
+              priority
             />
             <div className="product-image-overlay">
               <h3>Rufos Profissionais</h3>
@@ -167,10 +174,12 @@ const ProdutosPage = () => {
             <p className="product-description">
               Proteção perfeita para as junções do seu telhado com 7 modelos diferentes.
             </p>
-            <Link href="/Produtos/rufos" className="product-link">
-              <button className="product-button">
-                Ver Detalhes
-              </button>
+            <Link href="/Produtos/rufos" legacyBehavior>
+              <a className="product-link">
+                <button className="product-button">
+                  Ver Detalhes
+                </button>
+              </a>
             </Link>
           </div>
         </div>
@@ -191,7 +200,19 @@ const ProdutosPage = () => {
 
             <Row className="g-4">
               <Col lg={5}>
-                <div className="category-image" style={{ backgroundImage: `url(${categoria.imagem})` }}></div>
+                <div className="category-image-wrapper">
+                  <Image
+                    src={categoria.imagem}
+                    alt={categoria.nome}
+                    width={500}
+                    height={300}
+                    className="category-image"
+                    style={{
+                      objectFit: 'cover',
+                      borderRadius: '10px'
+                    }}
+                  />
+                </div>
               </Col>
               <Col lg={7}>
                 <div className="category-content">
@@ -220,8 +241,10 @@ const ProdutosPage = () => {
           <p className="cta-text">
             Nossa equipe está pronta para desenvolver soluções personalizadas para seu projeto.
           </p>
-          <Link href="/contato" className="cta-button">
-            Solicitar Orçamento
+          <Link href="/contato" legacyBehavior>
+            <a className="cta-button">
+              Solicitar Orçamento
+            </a>
           </Link>
         </Container>
       </div>
@@ -435,11 +458,11 @@ const ProdutosPage = () => {
           background-color: #0095a4;
         }
         
-        .category-image {
+        .category-image-wrapper {
+          position: relative;
           height: 300px;
-          background-size: cover;
-          background-position: center;
           border-radius: 10px;
+          overflow: hidden;
           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         
