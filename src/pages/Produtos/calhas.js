@@ -4,12 +4,13 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Image from 'next/image';
+import Link from 'next/link';
 import Pagina from '@/components/pagina';
 import Rodape from '@/components/Rodape';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
-const calhas = () => {
-  // Configurações do carrossel
+const Calhas = () => {
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -22,7 +23,6 @@ const calhas = () => {
     adaptiveHeight: true
   };
 
-  // Imagens do produto (substitua pelas suas)
   const imagensProduto = [
     { id: 1, src: '/img/PHOTO-2024-03-31-15-56-41.jpg', alt: 'Calha Tipo K instalada' },
     { id: 2, src: '/img/PHOTO-2024-03-31-15-56-42.jpg', alt: 'Detalhe da calha' },
@@ -30,7 +30,6 @@ const calhas = () => {
     { id: 4, src: '/img/foto de calha 1 (2).jpg', alt: 'Instalação profissional' }
   ];
 
-  // Especificações técnicas
   const especificacoes = [
     { id: 1, titulo: 'Material', valor: 'Alumínio 0,7mm' },
     { id: 2, titulo: 'Cores Disponíveis', valor: 'Branco, Preto, Cinza, Terracota' },
@@ -40,7 +39,6 @@ const calhas = () => {
     { id: 6, titulo: 'Normas', valor: 'ABNT NBR 15575:2013' }
   ];
 
-  // Vantagens do produto
   const vantagens = [
     { id: 1, icone: 'fas fa-shield-alt', titulo: 'Durabilidade', descricao: 'Resistente à corrosão e intempéries' },
     { id: 2, icone: 'fas fa-tint', titulo: 'Eficiência', descricao: 'Escoamento perfeito mesmo em chuvas intensas' },
@@ -57,24 +55,26 @@ const calhas = () => {
 
       {/* Hero Section */}
       <div style={{
-        backgroundColor: '#1D3D52',
+        background: 'linear-gradient(135deg, rgba(29, 61, 82, 0.9), rgba(0, 149, 164, 0.8))',
         color: 'white',
-        padding: '60px 0',
-        textAlign: 'center'
+        padding: '80px 0',
+        textAlign: 'center',
+        marginBottom: '50px'
       }}>
         <Container>
           <h1 style={{
-            fontSize: '2.5rem',
+            fontSize: '2.8rem',
             fontWeight: '700',
-            marginBottom: '15px'
+            marginBottom: '20px',
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)'
           }}>
             Calhas Premium
           </h1>
           <p style={{
-            fontSize: '1.2rem',
+            fontSize: '1.3rem',
             maxWidth: '800px',
             margin: '0 auto',
-            opacity: '0.9'
+            lineHeight: '1.6'
           }}>
             Solução completa em drenagem para seu telhado com qualidade e durabilidade incomparáveis
           </p>
@@ -94,23 +94,27 @@ const calhas = () => {
                 fontSize: '0.9rem'
               }}>
                 <li style={{ marginRight: '10px' }}>
-                  <a href="/" style={{
+                  <Link href="/" style={{
                     color: '#1D3D52',
                     textDecoration: 'none',
                     ':hover': {
                       textDecoration: 'underline'
                     }
-                  }}>Home</a>
+                  }}>
+                    Home
+                  </Link>
                 </li>
                 <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
                 <li style={{ marginRight: '10px' }}>
-                  <a href="/produtos" style={{
+                  <Link href="/produtos" style={{
                     color: '#1D3D52',
                     textDecoration: 'none',
                     ':hover': {
                       textDecoration: 'underline'
                     }
-                  }}>Produtos</a>
+                  }}>
+                    Produtos
+                  </Link>
                 </li>
                 <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
                 <li style={{ color: '#0095a4' }}>Calhas</li>
@@ -134,20 +138,14 @@ const calhas = () => {
                   <div key={imagem.id}>
                     <div style={{
                       position: 'relative',
-                      paddingTop: '56.25%', // Proporção 16:9
+                      paddingTop: '56.25%',
                       overflow: 'hidden'
                     }}>
-                      <img
+                      <Image
                         src={imagem.src}
                         alt={imagem.alt}
-                        style={{
-                          position: 'absolute',
-                          top: '0',
-                          left: '0',
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover'
-                        }}
+                        fill
+                        style={{ objectFit: 'cover' }}
                       />
                     </div>
                   </div>
@@ -186,7 +184,7 @@ const calhas = () => {
               marginBottom: '20px',
               color: '#333'
             }}>
-              Nossas calhas são fabricadas com <strong>alumínio de alta resistência</strong>, garantindo durabilidade e performance excepcionais. Desenvolvidas para o clima brasileiro, oferecem escoamento eficiente mesmo nas chuvas mais intensas.
+              Nossas calhas são fabricadas com <strong>alumínio de alta resistência</strong>, garantindo durabilidade e performance excepcionais.
             </p>
             <p style={{
               fontSize: '1.1rem',
@@ -194,22 +192,8 @@ const calhas = () => {
               marginBottom: '20px',
               color: '#333'
             }}>
-              O sistema exclusivo de encaixe <strong>evita vazamentos</strong> e a pintura eletrostática proporciona acabamento perfeito que mantém sua aparência por décadas.
+              O sistema exclusivo de encaixe <strong>evita vazamentos</strong> e a pintura eletrostática proporciona acabamento perfeito.
             </p>
-            <div style={{
-              backgroundColor: '#f8f9fa',
-              padding: '20px',
-              borderRadius: '8px',
-              borderLeft: '4px solid #0095a4'
-            }}>
-              <p style={{
-                margin: '0',
-                fontStyle: 'italic',
-                color: '#1D3D52'
-              }}>
-                "Desde que instalamos as calhas JE, nunca mais tivemos problemas com infiltração ou transbordamento, mesmo em temporais."
-              </p>
-            </div>
           </Col>
           <Col lg={6}>
             <div style={{
@@ -296,10 +280,7 @@ const calhas = () => {
                   height: '100%',
                   textAlign: 'center',
                   boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
-                  transition: 'transform 0.3s ease',
-                  ':hover': {
-                    transform: 'translateY(-5px)'
-                  }
+                  transition: 'transform 0.3s ease'
                 }}>
                   <div style={{
                     fontSize: '2.5rem',
@@ -358,19 +339,11 @@ const calhas = () => {
                 overflow: 'hidden',
                 boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
               }}>
-                <img
+                <Image
                   src={`/img/Renderizadas/${item}.png`}
                   alt={`Aplicação de calhas ${item}`}
-                  style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    transition: 'transform 0.3s ease'
-                  }}
-                  className="hover-zoom"
+                  fill
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
             </Col>
@@ -401,7 +374,7 @@ const calhas = () => {
           }}>
             Solicite um orçamento sem compromisso e receba a visita de um de nossos especialistas
           </p>
-          <a
+          <Link
             href="/contato"
             style={{
               display: 'inline-block',
@@ -414,27 +387,31 @@ const calhas = () => {
               fontWeight: '600',
               fontSize: '1.1rem',
               transition: 'all 0.3s ease',
-              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
-              ':hover': {
-                backgroundColor: '#f0f0f0',
-                transform: 'translateY(-3px)',
-                boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)'
-              }
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)'
             }}
           >
             Solicitar Orçamento
-          </a>
+          </Link>
         </Container>
       </div>
 
-      <Rodape />
+      {/* Rodape com largura total */}
+      <div style={{ 
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw',
+        overflowX: 'hidden'
+      }}>
+        <Rodape />
+      </div>
+
       <WhatsAppButton />
 
-      {/* Estilos */}
+      {/* Estilos globais */}
       <style jsx global>{`
-        .hover-zoom:hover {
-          transform: scale(1.05);
-        }
         .slick-prev:before, .slick-next:before {
           color: #1D3D52 !important;
           font-size: 30px !important;
@@ -455,9 +432,8 @@ const calhas = () => {
         rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
       />
-      <WhatsAppButton />
     </Pagina>
   );
 };
 
-export default calhas;
+export default Calhas;

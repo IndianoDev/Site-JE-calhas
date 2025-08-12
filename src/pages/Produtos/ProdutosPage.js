@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import { Container, Row, Col } from 'react-bootstrap';
+import Image from 'next/image';
+import Link from 'next/link';
 import Pagina from '@/components/pagina';
 import Rodape from '@/components/Rodape';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -63,473 +65,142 @@ const ProdutosPage = () => {
         <title>Produtos | JE Calhas - Soluções em Coberturas</title>
         <meta name="description" content="Conheça nossa linha completa de calhas, rufos e componentes para sistemas de drenagem e coberturas" />
       </Head>
-<div style={{
-        background: 'linear-gradient(135deg, rgba(29, 61, 82, 0.9), rgba(0, 149, 164, 0.8))',
-        color: 'white',
-        padding: '80px 0',
-        textAlign: 'center',
-        marginBottom: '50px'
-      }}>
+
+      {/* Hero Section */}
+      <div className="hero-gradient">
         <Container>
-          <h1 style={{
-            fontSize: '2.8rem',
-            fontWeight: '700',
-            marginBottom: '20px',
-            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)'
-          }}>
-            Nossos Produtos
-          </h1>
-          <p style={{
-            fontSize: '1.3rem',
-            maxWidth: '800px',
-            margin: '0 auto',
-            lineHeight: '1.6'
-          }}>
+          <h1 className="hero-title">Nossos Produtos</h1>
+          <p className="hero-subtitle">
             Conheça nossa linha completa de soluções em calhas e sistemas de cobertura com a qualidade JE Calhas
           </p>
         </Container>
       </div>
-{/* Breadcrumb */}
-      <Container style={{ marginBottom: '40px' }}>
+
+      {/* Breadcrumb */}
+      <Container className="breadcrumb-container">
         <Row>
           <Col>
             <nav aria-label="breadcrumb">
-              <ol style={{
-                display: 'flex',
-                listStyle: 'none',
-                padding: 0,
-                margin: 0,
-                fontSize: '0.9rem'
-              }}>
-                <li style={{ marginRight: '10px' }}>
-                  <a href="/" style={{
-                    color: '#1D3D52',
-                    textDecoration: 'none',
-                    ':hover': {
-                      textDecoration: 'underline'
-                    }
-                  }}>Home</a>
+              <ol className="breadcrumb-list">
+                <li className="breadcrumb-item">
+                  <Link href="/" className="breadcrumb-link">
+                    Home
+                  </Link>
                 </li>
-                <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
-                <li style={{ color: '#0095a4' }}>Produtos</li>
+                <li className="breadcrumb-separator">&gt;</li>
+                <li className="breadcrumb-active">Produtos</li>
               </ol>
             </nav>
           </Col>
         </Row>
       </Container>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '30px',
-        marginTop: '50px',
-        padding: '0 20px'
-      }}>
-
+      {/* Product Cards */}
+      <div className="product-grid">
         {/* Card 1 - Estruturas Metálicas */}
-        <div style={{
-          backgroundColor: '#fff',
-          borderRadius: '16px',
-          overflow: 'hidden',
-          boxShadow: '0 10px 30px rgba(29, 61, 82, 0.1)',
-          transition: 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)',
-          position: 'relative',
-          zIndex: '1',
-          ':hover': {
-            transform: 'translateY(-10px)',
-            boxShadow: '0 15px 35px rgba(29, 61, 82, 0.2)'
-          },
-          ':before': {
-            content: '""',
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            right: '0',
-            height: '4px',
-            background: 'linear-gradient(90deg, #1D3D52, #0095a4)',
-            zIndex: '2'
-          }
-        }}>
-          <div style={{
-            position: 'relative',
-            height: '220px',
-            overflow: 'hidden'
-          }}>
-            <img
+        <div className="product-card">
+          <div className="product-image-container">
+            <Image
               src="/img/PHOTO-2024-03-31-15-56-42 2.jpg"
               alt="Estruturas Metálicas"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                transition: 'transform 0.5s ease',
-                ':hover': {
-                  transform: 'scale(1.1)'
-                }
-              }}
+              width={400}
+              height={300}
+              className="product-image"
             />
-            <div style={{
-              position: 'absolute',
-              bottom: '0',
-              left: '0',
-              right: '0',
-              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
-              padding: '20px',
-              color: 'white',
-              textAlign: 'left'
-            }}>
-              <h3 style={{
-                fontSize: '1.5rem',
-                margin: '0',
-                fontWeight: '600',
-                textShadow: '1px 1px 3px rgba(0,0,0,0.5)'
-              }}>Estruturas Metálicas</h3>
+            <div className="product-image-overlay">
+              <h3>Estruturas Metálicas</h3>
             </div>
           </div>
-          <div style={{ padding: '25px' }}>
-            <p style={{
-              color: '#666',
-              marginBottom: '25px',
-              fontSize: '1rem',
-              lineHeight: '1.6'
-            }}>
+          <div className="product-content">
+            <p className="product-description">
               Soluções robustas e personalizadas para telhados, galpões e mezaninos.
             </p>
-            <a href="/Produtos/EstruturasMetalicas" style={{ textDecoration: 'none' }}>
-              <button style={{
-                padding: '12px 30px',
-                backgroundColor: 'transparent',
-                color: '#0095a4',
-                border: '2px solid #0095a4',
-                borderRadius: '50px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                overflow: 'hidden',
-                ':hover': {
-                  color: 'white',
-                  ':before': {
-                    width: '100%'
-                  }
-                },
-                ':before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: '0',
-                  left: '0',
-                  width: '0%',
-                  height: '100%',
-                  backgroundColor: '#0095a4',
-                  transition: 'width 0.3s ease',
-                  zIndex: '-1'
-                }
-              }}>
+            <Link href="/Produtos/EstruturasMetalicas" className="product-link">
+              <button className="product-button">
                 Ver Detalhes
               </button>
-            </a>
+            </Link>
           </div>
         </div>
 
         {/* Card 2 - Calhas */}
-        <div style={{
-          backgroundColor: '#fff',
-          borderRadius: '16px',
-          overflow: 'hidden',
-          boxShadow: '0 10px 30px rgba(29, 61, 82, 0.1)',
-          transition: 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)',
-          position: 'relative',
-          zIndex: '1',
-          ':hover': {
-            transform: 'translateY(-10px)',
-            boxShadow: '0 15px 35px rgba(29, 61, 82, 0.2)'
-          },
-          ':before': {
-            content: '""',
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            right: '0',
-            height: '4px',
-            background: 'linear-gradient(90deg, #0095a4, #1D3D52)',
-            zIndex: '2'
-          }
-        }}>
-          <div style={{
-            position: 'relative',
-            height: '220px',
-            overflow: 'hidden'
-          }}>
-            <img
+        <div className="product-card">
+          <div className="product-image-container">
+            <Image
               src="/img/foto de calha 1 (2).jpg"
               alt="Calhas"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                transition: 'transform 0.5s ease',
-                ':hover': {
-                  transform: 'scale(1.1)'
-                }
-              }}
+              width={400}
+              height={300}
+              className="product-image"
             />
-            <div style={{
-              position: 'absolute',
-              bottom: '0',
-              left: '0',
-              right: '0',
-              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
-              padding: '20px',
-              color: 'white',
-              textAlign: 'left'
-            }}>
-              <h3 style={{
-                fontSize: '1.5rem',
-                margin: '0',
-                fontWeight: '600',
-                textShadow: '1px 1px 3px rgba(0,0,0,0.5)'
-              }}>Calhas Premium</h3>
+            <div className="product-image-overlay">
+              <h3>Calhas Premium</h3>
             </div>
           </div>
-          <div style={{ padding: '25px' }}>
-            <p style={{
-              color: '#666',
-              marginBottom: '25px',
-              fontSize: '1rem',
-              lineHeight: '1.6'
-            }}>
+          <div className="product-content">
+            <p className="product-description">
               Sistemas completos de drenagem com alta durabilidade e acabamento impecável.
             </p>
-            <a href="/Produtos/calhas" style={{ textDecoration: 'none' }}>
-              <button style={{
-                padding: '12px 30px',
-                backgroundColor: 'transparent',
-                color: '#1D3D52',
-                border: '2px solid #1D3D52',
-                borderRadius: '50px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                overflow: 'hidden',
-                ':hover': {
-                  color: 'white',
-                  ':before': {
-                    width: '100%'
-                  }
-                },
-                ':before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: '0',
-                  left: '0',
-                  width: '0%',
-                  height: '100%',
-                  backgroundColor: '#1D3D52',
-                  transition: 'width 0.3s ease',
-                  zIndex: '-1'
-                }
-              }}>
+            <Link href="/Produtos/calhas" className="product-link">
+              <button className="product-button">
                 Ver Detalhes
               </button>
-            </a>
+            </Link>
           </div>
         </div>
 
         {/* Card 3 - Rufos */}
-        <div style={{
-          backgroundColor: '#fff',
-          borderRadius: '16px',
-          overflow: 'hidden',
-          boxShadow: '0 10px 30px rgba(29, 61, 82, 0.1)',
-          transition: 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)',
-          position: 'relative',
-          zIndex: '1',
-          ':hover': {
-            transform: 'translateY(-10px)',
-            boxShadow: '0 15px 35px rgba(29, 61, 82, 0.2)'
-          },
-          ':before': {
-            content: '""',
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            right: '0',
-            height: '4px',
-            background: 'linear-gradient(90deg, #1D3D52, #0095a4)',
-            zIndex: '2'
-          }
-        }}>
-          <div style={{
-            position: 'relative',
-            height: '220px',
-            overflow: 'hidden'
-          }}>
-            <img
+        <div className="product-card">
+          <div className="product-image-container">
+            <Image
               src="/img/PHOTO-2024-03-31-21-31-30 2.jpg"
               alt="Rufos"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                transition: 'transform 0.5s ease',
-                ':hover': {
-                  transform: 'scale(1.1)'
-                }
-              }}
+              width={400}
+              height={300}
+              className="product-image"
             />
-            <div style={{
-              position: 'absolute',
-              bottom: '0',
-              left: '0',
-              right: '0',
-              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
-              padding: '20px',
-              color: 'white',
-              textAlign: 'left'
-            }}>
-              <h3 style={{
-                fontSize: '1.5rem',
-                margin: '0',
-                fontWeight: '600',
-                textShadow: '1px 1px 3px rgba(0,0,0,0.5)'
-              }}>Rufos Profissionais</h3>
+            <div className="product-image-overlay">
+              <h3>Rufos Profissionais</h3>
             </div>
           </div>
-          <div style={{ padding: '25px' }}>
-            <p style={{
-              color: '#666',
-              marginBottom: '25px',
-              fontSize: '1rem',
-              lineHeight: '1.6'
-            }}>
+          <div className="product-content">
+            <p className="product-description">
               Proteção perfeita para as junções do seu telhado com 7 modelos diferentes.
             </p>
-            <a href="/Produtos/rufos" style={{ textDecoration: 'none' }}>
-              <button style={{
-                padding: '12px 30px',
-                backgroundColor: 'transparent',
-                color: '#0095a4',
-                border: '2px solid #0095a4',
-                borderRadius: '50px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                overflow: 'hidden',
-                ':hover': {
-                  color: 'white',
-                  ':before': {
-                    width: '100%'
-                  }
-                },
-                ':before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: '0',
-                  left: '0',
-                  width: '0%',
-                  height: '100%',
-                  backgroundColor: '#0095a4',
-                  transition: 'width 0.3s ease',
-                  zIndex: '-1'
-                }
-              }}>
+            <Link href="/Produtos/rufos" className="product-link">
+              <button className="product-button">
                 Ver Detalhes
               </button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
-      <br></br>
-      {/* Hero Section */}
-      
-      
-      {/* Categorias de Produtos */}
-      <Container style={{ marginBottom: '80px' }}>
+
+      {/* Categories Section */}
+      <Container className="categories-container">
         {categorias.map((categoria) => (
-          <div key={categoria.id} style={{ marginBottom: '60px' }}>
+          <div key={categoria.id} className="category-section">
             <Row className="align-items-center mb-4">
               <Col>
-                <h2 style={{
-                  color: '#1D3D52',
-                  fontSize: '2rem',
-                  fontWeight: '700',
-                  position: 'relative',
-                  display: 'inline-block',
-                  paddingBottom: '10px'
-                }}>
+                <h2 className="category-title">
                   {categoria.nome}
-                  <span style={{
-                    position: 'absolute',
-                    bottom: '0',
-                    left: '0',
-                    width: '60px',
-                    height: '3px',
-                    backgroundColor: '#0095a4'
-                  }}></span>
+                  <span className="title-underline"></span>
                 </h2>
               </Col>
             </Row>
 
             <Row className="g-4">
               <Col lg={5}>
-                <div style={{
-                  height: '300px',
-                  backgroundImage: `url(${categoria.imagem})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  borderRadius: '10px',
-                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)'
-                }}></div>
+                <div className="category-image" style={{ backgroundImage: `url(${categoria.imagem})` }}></div>
               </Col>
               <Col lg={7}>
-                <div style={{
-                  backgroundColor: '#fff',
-                  borderRadius: '10px',
-                  padding: '30px',
-                  boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
-                  height: '100%'
-                }}>
-                  <h3 style={{
-                    color: '#0095a4',
-                    fontSize: '1.4rem',
-                    marginBottom: '20px',
-                    fontWeight: '600'
-                  }}>
-                    Linha Completa
-                  </h3>
-                  <ul style={{
-                    listStyle: 'none',
-                    padding: 0,
-                    margin: 0,
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                    gap: '15px'
-                  }}>
+                <div className="category-content">
+                  <h3 className="content-subtitle">Linha Completa</h3>
+                  <ul className="features-grid">
                     {categoria.itens.map((item, index) => (
-                      <li key={index} style={{
-                        padding: '10px 15px',
-                        backgroundColor: '#f8f9fa',
-                        borderRadius: '5px'
-                      }}>
-                        <div style={{
-                          color: '#1D3D52',
-                          textDecoration: 'none',
-                          display: 'flex',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{
-                            display: 'inline-block',
-                            width: '8px',
-                            height: '8px',
-                            backgroundColor: '#0095a4',
-                            borderRadius: '50%',
-                            marginRight: '10px'
-                          }}></span>
+                      <li key={index} className="feature-item">
+                        <div className="feature-content">
+                          <span className="feature-bullet"></span>
                           {item}
                         </div>
                       </li>
@@ -543,58 +214,322 @@ const ProdutosPage = () => {
       </Container>
 
       {/* CTA Section */}
-      <div style={{
-        backgroundColor: '#1D3D52',
-        color: 'white',
-        padding: '60px 0',
-        textAlign: 'center'
-      }}>
+      <div className="cta-section">
         <Container>
-          <h2 style={{
-            fontSize: '2.2rem',
-            marginBottom: '20px',
-            fontWeight: '700'
-          }}>
-            Precisa de algo específico?
-          </h2>
-          <p style={{
-            fontSize: '1.2rem',
-            maxWidth: '700px',
-            margin: '0 auto 30px',
-            lineHeight: '1.6'
-          }}>
+          <h2 className="cta-title">Precisa de algo específico?</h2>
+          <p className="cta-text">
             Nossa equipe está pronta para desenvolver soluções personalizadas para seu projeto.
           </p>
-          <a
-            href="/contato"
-            style={{
-              display: 'inline-block',
-              padding: '12px 30px',
-              backgroundColor: '#0095a4',
-              color: 'white',
-              border: 'none',
-              borderRadius: '50px',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '1rem',
-              transition: 'all 0.3s ease',
-              boxShadow: '0 4px 15px rgba(0, 149, 164, 0.4)',
-              ':hover': {
-                backgroundColor: '#007a87',
-                transform: 'translateY(-3px)',
-                boxShadow: '0 6px 20px rgba(0, 149, 164, 0.5)'
-              }
-            }}
-          >
+          <Link href="/contato" className="cta-button">
             Solicitar Orçamento
-          </a>
+          </Link>
         </Container>
       </div>
-
 
       <Rodape />
       <WhatsAppButton />
 
+      <style jsx>{`
+        /* Hero Section */
+        .hero-gradient {
+          background: linear-gradient(135deg, rgba(29, 61, 82, 0.9), rgba(0, 149, 164, 0.8));
+          color: white;
+          padding: 80px 0;
+          text-align: center;
+          margin-bottom: 50px;
+        }
+        
+        .hero-title {
+          font-size: 2.8rem;
+          font-weight: 700;
+          margin-bottom: 20px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+          font-size: 1.3rem;
+          max-width: 800px;
+          margin: 0 auto;
+          line-height: 1.6;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb-container {
+          margin-bottom: 40px;
+        }
+        
+        .breadcrumb-list {
+          display: flex;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          font-size: 0.9rem;
+        }
+        
+        .breadcrumb-item {
+          margin-right: 10px;
+        }
+        
+        .breadcrumb-separator {
+          margin-right: 10px;
+          color: #0095a4;
+        }
+        
+        .breadcrumb-active {
+          color: #0095a4;
+        }
+        
+        .breadcrumb-link {
+          color: #1D3D52;
+          text-decoration: none;
+          transition: text-decoration 0.3s ease;
+        }
+        
+        .breadcrumb-link:hover {
+          text-decoration: underline;
+        }
+        
+        /* Product Grid */
+        .product-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 30px;
+          margin-top: 50px;
+          padding: 0 20px;
+        }
+        
+        .product-card {
+          background-color: #fff;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 10px 30px rgba(29, 61, 82, 0.1);
+          transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+          position: relative;
+          z-index: 1;
+        }
+        
+        .product-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 15px 35px rgba(29, 61, 82, 0.2);
+        }
+        
+        .product-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: linear-gradient(90deg, #1D3D52, #0095a4);
+          z-index: 2;
+        }
+        
+        .product-image-container {
+          position: relative;
+          height: 220px;
+          overflow: hidden;
+        }
+        
+        .product-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image {
+          transform: scale(1.1);
+        }
+        
+        .product-image-overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+          padding: 20px;
+          color: white;
+          text-align: left;
+        }
+        
+        .product-image-overlay h3 {
+          font-size: 1.5rem;
+          margin: 0;
+          font-weight: 600;
+          text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .product-content {
+          padding: 25px;
+        }
+        
+        .product-description {
+          color: #666;
+          margin-bottom: 25px;
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+        
+        .product-link {
+          text-decoration: none;
+        }
+        
+        .product-button {
+          padding: 12px 30px;
+          background-color: transparent;
+          color: #0095a4;
+          border: 2px solid #0095a4;
+          border-radius: 50px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .product-button:hover {
+          color: white;
+        }
+        
+        .product-button::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 100%;
+          background-color: #0095a4;
+          transition: width 0.3s ease;
+          z-index: -1;
+        }
+        
+        .product-button:hover::before {
+          width: 100%;
+        }
+        
+        /* Categories Section */
+        .categories-container {
+          margin-bottom: 80px;
+        }
+        
+        .category-section {
+          margin-bottom: 60px;
+        }
+        
+        .category-title {
+          color: #1D3D52;
+          font-size: 2rem;
+          font-weight: 700;
+          position: relative;
+          display: inline-block;
+          padding-bottom: 10px;
+        }
+        
+        .title-underline {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 60px;
+          height: 3px;
+          background-color: #0095a4;
+        }
+        
+        .category-image {
+          height: 300px;
+          background-size: cover;
+          background-position: center;
+          border-radius: 10px;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-content {
+          background-color: #fff;
+          border-radius: 10px;
+          padding: 30px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          height: 100%;
+        }
+        
+        .content-subtitle {
+          color: #0095a4;
+          font-size: 1.4rem;
+          margin-bottom: 20px;
+          font-weight: 600;
+        }
+        
+        .features-grid {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 15px;
+        }
+        
+        .feature-item {
+          padding: 10px 15px;
+          background-color: #f8f9fa;
+          border-radius: 5px;
+        }
+        
+        .feature-content {
+          color: #1D3D52;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+        }
+        
+        .feature-bullet {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          background-color: #0095a4;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+          background-color: #1D3D52;
+          color: white;
+          padding: 60px 0;
+          text-align: center;
+        }
+        
+        .cta-title {
+          font-size: 2.2rem;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+        
+        .cta-text {
+          font-size: 1.2rem;
+          max-width: 700px;
+          margin: 0 auto 30px;
+          line-height: 1.6;
+        }
+        
+        .cta-button {
+          display: inline-block;
+          padding: 12px 30px;
+          background-color: #0095a4;
+          color: white;
+          border: none;
+          border-radius: 50px;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(0, 149, 164, 0.4);
+        }
+        
+        .cta-button:hover {
+          background-color: #007a87;
+          transform: translateY(-3px);
+          box-shadow: 0 6px 20px rgba(0, 149, 164, 0.5);
+        }
+      `}</style>
     </Pagina>
   );
 };

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { TiArrowSortedDown } from 'react-icons/ti';
-
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Cabecalho = () => {
   const [expanded, setExpanded] = useState(false);
@@ -26,8 +27,9 @@ const Cabecalho = () => {
       name: 'Produtos ',
       href: '/Produtos/ProdutosPage',
       subItems: [
-        'Calhas', 'Rufos', 
-         'Telhado e Estrutura'
+        { name: 'Calhas', href: '/Produtos/calhas' },
+        { name: 'Rufos', href: '/Produtos/rufos' },
+        { name: 'Telhado e Estrutura', href: '/Produtos/EstruturasMetalicas' }
       ]
     }
   ];
@@ -51,7 +53,7 @@ const Cabecalho = () => {
       >
         <Container style={{ maxWidth: '1200px' }}>
           <Navbar.Brand href="/" style={{ marginRight: '40px' }}>
-            <img
+            <Image
               src="/img/logo.png"
               width={scrolled ? 70 : 80}
               height={scrolled ? 70 : 80}
@@ -62,10 +64,6 @@ const Cabecalho = () => {
                 transition: 'all 0.3s ease',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
                 transform: scrolled ? 'scale(0.95)' : 'scale(1)',
-                ':hover': {
-                  transform: scrolled ? 'scale(1)' : 'scale(1.05)',
-                  boxShadow: '0 6px 15px rgba(0, 0, 0, 0.2)'
-                }
               }}
               className="d-inline-block align-top"
             />
@@ -77,7 +75,6 @@ const Cabecalho = () => {
               border: 'none',
               padding: '10px 15px',
               backgroundColor: 'transparent',
-              ':focus': { boxShadow: 'none' }
             }}
           >
             <span style={{
@@ -118,7 +115,6 @@ const Cabecalho = () => {
                   onMouseEnter={() => setHoveredItem(index)}
                   onMouseLeave={() => setHoveredItem(null)}
                 >
-                  {/* Faixa animada */}
                   <div
                     style={{
                       position: 'absolute',
@@ -136,7 +132,7 @@ const Cabecalho = () => {
                     }}
                   />
 
-                  <Nav.Link
+                  <Link
                     href={item.href}
                     style={{
                       color: '#1D3D52',
@@ -146,10 +142,7 @@ const Cabecalho = () => {
                       borderRadius: '6px',
                       transition: 'all 0.3s ease',
                       position: 'relative',
-                      ':hover': {
-                        color: '#0095a4',
-                        backgroundColor: 'rgba(0, 149, 164, 0.1)'
-                      }
+                      textDecoration: 'none',
                     }}
                     onClick={() => setExpanded(false)}
                   >
@@ -157,14 +150,10 @@ const Cabecalho = () => {
                       {item.name}
                       {item.subItems && <TiArrowSortedDown style={{ fontSize: '1rem' }} />}
                     </span>
-                  </Nav.Link>
+                  </Link>
 
-                  {/* Dropdown para Produtos */}
                   {item.subItems && hoveredItem === index && (
-
-
                     <div
-
                       style={{
                         position: 'absolute',
                         top: '100%',
@@ -179,14 +168,11 @@ const Cabecalho = () => {
                         animation: 'fadeIn 0.3s ease-out',
                         marginTop: '10px',
                       }}
-
                     >
                       {item.subItems.map((subItem, subIndex) => (
-
-                        <a
-
+                        <Link
                           key={subIndex}
-                          href={`/Produtos/${subItem.toLowerCase().replace(/ /g, '-')}`}
+                          href={subItem.href}
                           style={{
                             display: 'block',
                             padding: '8px 20px',
@@ -194,33 +180,17 @@ const Cabecalho = () => {
                             textDecoration: 'none',
                             transition: 'all 0.2s ease',
                             position: 'relative',
-                            ':hover': {
-                              color: '#0095a4',
-                              paddingLeft: '25px'
-                            },
-                            ':hover::before': {
-                              content: '""',
-                              position: 'absolute',
-                              left: '10px',
-                              top: '50%',
-                              transform: 'translateY(-50%)',
-                              width: '6px',
-                              height: '6px',
-                              backgroundColor: '#0095a4',
-                              borderRadius: '50%'
-                            }
                           }}
                           onClick={() => setExpanded(false)}
                         >
-                          {subItem}
-                        </a>
+                          {subItem.name}
+                        </Link>
                       ))}
                     </div>
                   )}
                 </div>
               ))}
 
-              {/* Botão de Orçamento com faixa animada */}
               <div
                 style={{ position: 'relative' }}
                 onMouseEnter={() => setHoveredItem(navItems.length)}
@@ -243,9 +213,8 @@ const Cabecalho = () => {
                   }}
                 />
 
-                <Button
+                <Link
                   href="/contato"
-                  variant="primary"
                   style={{
                     backgroundColor: '#0095a4',
                     border: 'none',
@@ -255,16 +224,14 @@ const Cabecalho = () => {
                     fontSize: '1rem',
                     transition: 'all 0.3s ease',
                     boxShadow: '0 4px 12px rgba(0, 149, 164, 0.3)',
-                    ':hover': {
-                      backgroundColor: '#007a87',
-                      transform: 'translateY(-2px)',
-                      boxShadow: '0 6px 16px rgba(0, 149, 164, 0.4)'
-                    }
+                    color: 'white',
+                    textDecoration: 'none',
+                    display: 'inline-block',
                   }}
                   onClick={() => setExpanded(false)}
                 >
                   Peça seu Orçamento
-                </Button>
+                </Link>
               </div>
             </Nav>
           </Navbar.Collapse>

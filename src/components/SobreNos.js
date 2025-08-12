@@ -1,22 +1,15 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const SobreNos = () => {
-  // Defina isMobile usando o hook useMediaQuery
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
     <div style={{
       backgroundColor: '#f9f9f9',
       padding: isMobile ? '40px 20px' : '60px 20px',
-      fontFamily: '"Montserrat", sans-serif'
-    }}>
-      {/* Restante do seu código... */}
-      <div style={{
-      backgroundColor: '#f9f9f9',
-      padding: isMobile ? '40px 20px' : '60px 20px',
-      fontFamily: '"Montserrat", sans-serif'
     }}>
       <div style={{
         maxWidth: '1200px',
@@ -26,7 +19,6 @@ const SobreNos = () => {
         alignItems: 'center',
         gap: isMobile ? '0' : '50px'
       }}>
-        {/* Imagem - Só aparece em desktop */}
         {!isMobile && (
           <div style={{
             flex: 1,
@@ -35,23 +27,20 @@ const SobreNos = () => {
             overflow: 'hidden',
             boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
           }}>
-            <img 
+            <Image 
               src="/img/PHOTO-2024-03-31-16-05-40 2.jpg"
               alt="Equipe JE Calhas"
+              width={600}
+              height={400}
               style={{
                 width: '100%',
                 height: 'auto',
                 display: 'block',
-                transition: 'transform 0.5s ease',
-                ':hover': {
-                  transform: 'scale(1.03)'
-                }
               }}
             />
           </div>
         )}
         
-        {/* Conteúdo - Ajustado para mobile */}
         <div style={{
           flex: 1,
           textAlign: isMobile ? 'center' : 'left',
@@ -91,32 +80,25 @@ const SobreNos = () => {
             textAlign: isMobile ? 'center' : 'left',
             marginTop: isMobile ? '20px' : '0'
           }}>
-           <Link 
-  href="/sobre"
-  style={{
-    display: 'inline-block',
-    padding: '12px 30px',
-    backgroundColor: '#1D3D52',
-    color: 'white',
-    textDecoration: 'none',
-    borderRadius: '4px',
-    fontWeight: 600,
-    fontSize: '1rem',
-    transition: 'all 0.3s ease',
-    ':hover': {
-      backgroundColor: '#0095a4',
-      transform: 'translateY(-3px)',
-      boxShadow: '0 5px 15px rgba(0,149,164,0.3)'
-    }
-  }}
->
-  Conheça Nossa História
-</Link>
+            <Link 
+              href="/sobre"
+              style={{
+                display: 'inline-block',
+                padding: '12px 30px',
+                backgroundColor: '#1D3D52',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: '4px',
+                fontWeight: 600,
+                fontSize: '1rem',
+                transition: 'all 0.3s ease',
+              }}
+            >
+              Conheça Nossa História
+            </Link>
           </div>
         </div>
       </div>
-    </div>
-  
     </div>
   );
 };

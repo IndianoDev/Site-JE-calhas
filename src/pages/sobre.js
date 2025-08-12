@@ -1,7 +1,6 @@
 import React from 'react';
 import BannerSobre from '../components/BannerSobre';
 import Pagina from '@/components/pagina';
-import Rodape2 from '@/components/Rodape2';
 import Head from 'next/head';
 import Rodape from '@/components/Rodape';
 import WhatsAppButton from '@/components/WhatsAppButton';

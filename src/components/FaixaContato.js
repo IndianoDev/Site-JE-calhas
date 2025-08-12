@@ -1,5 +1,7 @@
 import React from 'react';
 import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const FaixaContato = () => {
   return (
@@ -7,10 +9,20 @@ const FaixaContato = () => {
       {/* Background image container */}
       <div className="background-image-container">
         {/* Background image - Ajustada para mostrar mais área */}
-        <img 
+        <Image 
           src='/img/call us.jpg' 
           alt='Ligue para nós' 
           className="background-image"
+          width={1920}
+          height={1080}
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '110%',
+            objectFit: 'cover',
+            objectPosition: 'center 30%',
+            filter: 'brightness(0.7)',
+          }}
         />
         
         {/* Dark overlay */}
@@ -31,14 +43,12 @@ const FaixaContato = () => {
           
           {/* Container dos botões (modificado) */}
           <div className="contact-buttons">
-            <button
+            <Link
+              href="/contato"
               className="contact-button email-button"
-              onClick={() => window.location.href = '/contato'}
             >
               <FaEnvelope className="button-icon" /> Fale Conosco
-            </button>
-            
-           
+            </Link>
           </div>
         </div>
       </div>
@@ -57,21 +67,6 @@ const FaixaContato = () => {
           width: 100%;
           height: clamp(300px, 60vh, 700px);
           overflow: hidden;
-        }
-        
-        .background-image {
-          position: absolute;
-          width: 100%;
-          height: 110%;
-          object-fit: cover;
-          object-position: center 30%;
-          filter: brightness(0.7);
-          transition: transform 0.5s ease, filter 0.5s ease;
-        }
-        
-        .background-image-container:hover .background-image {
-          transform: scale(1.03);
-          filter: brightness(0.6);
         }
         
         .dark-overlay {
@@ -156,6 +151,7 @@ const FaixaContato = () => {
           align-items: center;
           gap: 0.6rem;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          text-decoration: none;
         }
         
         .email-button {

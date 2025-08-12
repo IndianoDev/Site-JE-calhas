@@ -202,7 +202,7 @@ const imagensProduto = [
               }}>
                 <div style={{
                   position: 'relative',
-                  paddingTop: '75%',
+                  paddingTop: '100%',
                   overflow: 'hidden'
                 }}>
                   <img
@@ -212,7 +212,7 @@ const imagensProduto = [
                       position: 'absolute',
                       top: '0',
                       left: '0',
-                      width: '100%',
+                      width: '90%',
                       height: '100%',
                       objectFit: 'cover'
                     }}
@@ -234,26 +234,7 @@ const imagensProduto = [
                   }}>
                     {modelo.descricao}
                   </p>
-                  <a
-                    href={`/produtos/rufos/${modelo.nome.toLowerCase().replace(/ /g, '-')}`}
-                    style={{
-                      display: 'inline-block',
-                      padding: '8px 15px',
-                      backgroundColor: 'transparent',
-                      color: '#0095a4',
-                      border: '1px solid #0095a4',
-                      borderRadius: '4px',
-                      textDecoration: 'none',
-                      fontSize: '0.85rem',
-                      transition: 'all 0.3s ease',
-                      ':hover': {
-                        backgroundColor: '#0095a4',
-                        color: 'white'
-                      }
-                    }}
-                  >
-                    Ver Detalhes
-                  </a>
+                  
                 </div>
               </div>
             </Col>
@@ -396,20 +377,7 @@ const imagensProduto = [
               <li style={{ marginBottom: '10px' }}><strong>Cumeeira</strong>: Para o ponto mais alto do telhado</li>
               <li style={{ marginBottom: '10px' }}><strong>Contra-rufo</strong>: Complemento para instalação profissional</li>
             </ul>
-            <div style={{
-              backgroundColor: '#e9f7f9',
-              padding: '20px',
-              borderRadius: '8px',
-              borderLeft: '4px solid #0095a4'
-            }}>
-              <p style={{
-                margin: '0',
-                fontStyle: 'italic',
-                color: '#1D3D52'
-              }}>
-                "A instalação correta dos rufos aumenta em 60% a vida útil do seu telhado."
-              </p>
-            </div>
+           
           </Col>
         </Row>
       </Container>
