@@ -1,5 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Container, Row, Col } from 'react-bootstrap';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -61,6 +63,11 @@ const EstruturasMetalicas = () => {
       <Head>
         <title>Estruturas Metálicas | JE Calhas - Soluções em Coberturas</title>
         <meta name="description" content="Soluções em estruturas metálicas para telhados, galpões e mezaninos com qualidade e durabilidade incomparáveis" />
+        {/* Font Awesome */}
+        <link 
+          rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+        />
       </Head>
 
       {/* Hero Section */}
@@ -103,23 +110,21 @@ const EstruturasMetalicas = () => {
                 fontSize: '0.9rem'
               }}>
                 <li style={{ marginRight: '10px' }}>
-                  <a href="/" style={{
-                    color: '#1D3D52',
-                    textDecoration: 'none',
-                    ':hover': {
-                      textDecoration: 'underline'
-                    }
-                  }}>Home</a>
+                  <Link href="/" passHref legacyBehavior>
+                    <a style={{
+                      color: '#1D3D52',
+                      textDecoration: 'none',
+                    }}>Home</a>
+                  </Link>
                 </li>
                 <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
                 <li style={{ marginRight: '10px' }}>
-                  <a href="/produtos" style={{
-                    color: '#1D3D52',
-                    textDecoration: 'none',
-                    ':hover': {
-                      textDecoration: 'underline'
-                    }
-                  }}>Produtos</a>
+                  <Link href="/produtos" passHref legacyBehavior>
+                    <a style={{
+                      color: '#1D3D52',
+                      textDecoration: 'none',
+                    }}>Produtos</a>
+                  </Link>
                 </li>
                 <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
                 <li style={{ color: '#0095a4' }}>Estruturas Metálicas</li>
@@ -143,20 +148,15 @@ const EstruturasMetalicas = () => {
                   <div key={imagem.id}>
                     <div style={{
                       position: 'relative',
-                      paddingTop: '56.25%',
-                      overflow: 'hidden'
+                      width: '100%',
+                      paddingTop: '56.25%', // Mantém a proporção 16:9
                     }}>
-                      <img
+                      <Image
                         src={imagem.src}
                         alt={imagem.alt}
-                        style={{
-                          position: 'absolute',
-                          top: '0',
-                          left: '0',
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover'
-                        }}
+                        layout="fill"
+                        objectFit="cover"
+                        priority={imagem.id === 1} // Otimiza a primeira imagem
                       />
                     </div>
                   </div>
@@ -204,10 +204,6 @@ const EstruturasMetalicas = () => {
                 boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
                 transition: 'all 0.3s ease',
                 borderTop: '4px solid #0095a4',
-                ':hover': {
-                  transform: 'translateY(-5px)',
-                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)'
-                }
               }}>
                 <div style={{
                   fontSize: '2.5rem',
@@ -264,7 +260,7 @@ const EstruturasMetalicas = () => {
               marginBottom: '20px',
               color: '#333'
             }}>
-              Nossas estruturas metálicas são projetadas com <strong>aço galvanizado de alta resistência</strong>, garantindo durabilidade e segurança. Utilizamos perfis treliçados e vigas "I" que proporcionam a melhor relação resistência/peso do mercado.
+              Nossas estruturas metálicas são projetadas com <strong>aço galvanizado de alta resistência</strong>, garantindo durabilidade e segurança. Utilizamos perfis treliçados e vigas &quot;I&quot; que proporcionam a melhor relação resistência/peso do mercado.
             </p>
             <p style={{
               fontSize: '1.1rem',
@@ -362,9 +358,6 @@ const EstruturasMetalicas = () => {
                   textAlign: 'center',
                   boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
                   transition: 'transform 0.3s ease',
-                  ':hover': {
-                    transform: 'translateY(-5px)'
-                  }
                 }}>
                   <div style={{
                     fontSize: '2.5rem',
@@ -418,26 +411,18 @@ const EstruturasMetalicas = () => {
             <Col key={item} sm={6} md={3}>
               <div style={{
                 position: 'relative',
-                paddingTop: '100%',
+                width: '100%',
+                paddingTop: '100%', // Mantém a proporção 1:1
                 borderRadius: '8px',
                 overflow: 'hidden',
                 boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
                 transition: 'transform 0.3s ease',
-                ':hover': {
-                  transform: 'scale(1.03)'
-                }
               }}>
-                <img
+                <Image
                   src={`/img/Renderizadas/${item}.png`}
                   alt={`Projeto de estrutura metálica ${item}`}
-                  style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover'
-                  }}
+                  layout="fill"
+                  objectFit="cover"
                 />
               </div>
             </Col>
@@ -468,9 +453,8 @@ const EstruturasMetalicas = () => {
           }}>
             Nossos engenheiros estão prontos para desenvolver a solução perfeita para sua necessidade
           </p>
-          <a
-            href="/contato"
-            style={{
+          <Link href="/contato" passHref legacyBehavior>
+            <a style={{
               display: 'inline-block',
               padding: '15px 35px',
               backgroundColor: 'white',
@@ -482,22 +466,17 @@ const EstruturasMetalicas = () => {
               fontSize: '1.1rem',
               transition: 'all 0.3s ease',
               boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
-              ':hover': {
-                backgroundColor: '#f0f0f0',
-                transform: 'translateY(-3px)',
-                boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)'
-              }
-            }}
-          >
-            Solicitar Projeto
-          </a>
+            }}>
+              Solicitar Projeto
+            </a>
+          </Link>
         </Container>
       </div>
 
       <Rodape />
       <WhatsAppButton />
 
-      {/* Estilos */}
+      {/* Estilos Globais para o Slick Carousel */}
       <style jsx global>{`
         .slick-prev:before, .slick-next:before {
           color: #1D3D52 !important;
@@ -505,7 +484,7 @@ const EstruturasMetalicas = () => {
         }
         .slick-dots li button:before {
           font-size: 12px !important;
-          color: white !important;
+          color: #1D3D52 !important; 
           opacity: 0.5 !important;
         }
         .slick-dots li.slick-active button:before {
@@ -514,12 +493,6 @@ const EstruturasMetalicas = () => {
         }
       `}</style>
 
-      {/* Font Awesome */}
-      <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
-      />
-      <WhatsAppButton />
     </Pagina>
   );
 };

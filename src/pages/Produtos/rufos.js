@@ -1,5 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Container, Row, Col } from 'react-bootstrap';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -8,7 +10,7 @@ import Pagina from '@/components/pagina';
 import Rodape from '@/components/Rodape';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
-const rufos = () => {
+const Rufos = () => {
   // Configurações do carrossel
   const sliderSettings = {
     dots: true,
@@ -24,50 +26,16 @@ const rufos = () => {
 
   // Modelos de rufos (baseado na sua imagem)
   const modelosRufos = [
-    {
-      id: 1,
-      nome: 'Rufos de Encosto',
-      descricao: 'Proteção lateral para paredes com acabamento perfeito',
-      imagem: '/img/Renderizadas/1.jpg'
-    },
-    {
-      id: 2,
-      nome: 'Encosto com Pingadeira',
-      descricao: 'Combinação de proteção lateral com sistema de escoamento',
-      imagem: '/img/Renderizadas/2.jpg'
-    },
-    {
-      id: 3,
-      nome: 'Rufos de Capa',
-      descricao: 'Proteção superior com dupla camada de vedação',
-      imagem: '/img/Renderizadas/3.jpg'
-    },
-    {
-      id: 4,
-      nome: 'Contra Rufo',
-      descricao: 'Complemento essencial para instalações profissionais',
-      imagem: '/img/Renderizadas/4.jpg'
-    },
-    {
-      id: 5,
-      nome: 'Rufo Encosto com Capa',
-      descricao: 'Solução completa para proteção lateral e superior',
-      imagem: '/img/Renderizadas/5.jpg'
-    },
-    {
-      id: 6,
-      nome: 'Rufo com 1 Pingadeira',
-      descricao: 'Sistema de escoamento integrado com proteção',
-      imagem: '/img/Renderizadas/6.jpg'
-    },
-    {
-      id: 7,
-      nome: 'Cumeeira',
-      descricao: 'Proteção para o ponto mais alto do telhado',
-      imagem: '/img/Renderizadas/7.jpg'
-    }
+    { id: 1, nome: 'Rufos de Encosto', descricao: 'Proteção lateral para paredes com acabamento perfeito', imagem: '/img/Renderizadas/1.jpg' },
+    { id: 2, nome: 'Encosto com Pingadeira', descricao: 'Combinação de proteção lateral com sistema de escoamento', imagem: '/img/Renderizadas/2.jpg' },
+    { id: 3, nome: 'Rufos de Capa', descricao: 'Proteção superior com dupla camada de vedação', imagem: '/img/Renderizadas/3.jpg' },
+    { id: 4, nome: 'Contra Rufo', descricao: 'Complemento essencial para instalações profissionais', imagem: '/img/Renderizadas/4.jpg' },
+    { id: 5, nome: 'Rufo Encosto com Capa', descricao: 'Solução completa para proteção lateral e superior', imagem: '/img/Renderizadas/5.jpg' },
+    { id: 6, nome: 'Rufo com 1 Pingadeira', descricao: 'Sistema de escoamento integrado com proteção', imagem: '/img/Renderizadas/6.jpg' },
+    { id: 7, nome: 'Cumeeira', descricao: 'Proteção para o ponto mais alto do telhado', imagem: '/img/Renderizadas/7.jpg' }
   ];
-const imagensProduto = [
+
+  const imagensProduto = [
     { id: 1, src: '/img/PHOTO-2024-07-03-21-10-31.jpg', alt: 'Calha Tipo K instalada' },
     { id: 2, src: '/img/PHOTO-2024-07-03-21-10-33.jpg', alt: 'Detalhe da calha' },
     { id: 3, src: '/img/PHOTO-2024-03-31-21-31-29 4.jpg', alt: 'Calha em residência' },
@@ -97,6 +65,11 @@ const imagensProduto = [
       <Head>
         <title>Rufos Profissionais | JE Calhas - Soluções em Coberturas</title>
         <meta name="description" content="Linha completa de rufos para proteção e acabamento perfeito do seu telhado. Conheça nossos 7 modelos profissionais." />
+        {/* Font Awesome */}
+        <link 
+          rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+        />
       </Head>
 
       {/* Hero Section */}
@@ -138,23 +111,21 @@ const imagensProduto = [
                 fontSize: '0.9rem'
               }}>
                 <li style={{ marginRight: '10px' }}>
-                  <a href="/" style={{
-                    color: '#1D3D52',
-                    textDecoration: 'none',
-                    ':hover': {
-                      textDecoration: 'underline'
-                    }
-                  }}>Home</a>
+                  <Link href="/" passHref legacyBehavior>
+                    <a style={{
+                      color: '#1D3D52',
+                      textDecoration: 'none',
+                    }}>Home</a>
+                  </Link>
                 </li>
                 <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
                 <li style={{ marginRight: '10px' }}>
-                  <a href="/produtos" style={{
-                    color: '#1D3D52',
-                    textDecoration: 'none',
-                    ':hover': {
-                      textDecoration: 'underline'
-                    }
-                  }}>Produtos</a>
+                  <Link href="/produtos" passHref legacyBehavior>
+                    <a style={{
+                      color: '#1D3D52',
+                      textDecoration: 'none',
+                    }}>Produtos</a>
+                  </Link>
                 </li>
                 <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
                 <li style={{ color: '#0095a4' }}>Rufos</li>
@@ -195,27 +166,17 @@ const imagensProduto = [
                 boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
                 transition: 'all 0.3s ease',
                 height: '100%',
-                ':hover': {
-                  transform: 'translateY(-5px)',
-                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)'
-                }
               }}>
                 <div style={{
                   position: 'relative',
-                  paddingTop: '100%',
-                  overflow: 'hidden'
+                  width: '100%',
+                  paddingTop: '100%', // Proporção 1:1
                 }}>
-                  <img
+                  <Image
                     src={modelo.imagem}
                     alt={modelo.nome}
-                    style={{
-                      position: 'absolute',
-                      top: '0',
-                      left: '0',
-                      width: '90%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }}
+                    layout="fill"
+                    objectFit="cover"
                   />
                 </div>
                 <div style={{ padding: '20px' }}>
@@ -234,14 +195,15 @@ const imagensProduto = [
                   }}>
                     {modelo.descricao}
                   </p>
-                  
                 </div>
               </div>
             </Col>
           ))}
         </Row>
       </Container>
-   <Container style={{ marginBottom: '60px' }}>
+
+      {/* Carrossel de Imagens */}
+      <Container style={{ marginBottom: '60px' }}>
         <Row>
           <Col lg={8} className="mx-auto">
             <div style={{
@@ -254,20 +216,15 @@ const imagensProduto = [
                   <div key={imagem.id}>
                     <div style={{
                       position: 'relative',
+                      width: '100%',
                       paddingTop: '56.25%', // Proporção 16:9
-                      overflow: 'hidden'
                     }}>
-                      <img
+                      <Image
                         src={imagem.src}
                         alt={imagem.alt}
-                        style={{
-                          position: 'absolute',
-                          top: '0',
-                          left: '0',
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover'
-                        }}
+                        layout="fill"
+                        objectFit="cover"
+                        priority={imagem.id === 1}
                       />
                     </div>
                   </div>
@@ -418,9 +375,6 @@ const imagensProduto = [
                   textAlign: 'center',
                   boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
                   transition: 'transform 0.3s ease',
-                  ':hover': {
-                    transform: 'translateY(-5px)'
-                  }
                 }}>
                   <div style={{
                     fontSize: '2.5rem',
@@ -472,9 +426,8 @@ const imagensProduto = [
           }}>
             Nossos especialistas estão prontos para indicar o modelo ideal para seu projeto
           </p>
-          <a
-            href="/contato"
-            style={{
+          <Link href="/contato" passHref legacyBehavior>
+            <a style={{
               display: 'inline-block',
               padding: '15px 35px',
               backgroundColor: 'white',
@@ -486,15 +439,10 @@ const imagensProduto = [
               fontSize: '1.1rem',
               transition: 'all 0.3s ease',
               boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
-              ':hover': {
-                backgroundColor: '#f0f0f0',
-                transform: 'translateY(-3px)',
-                boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)'
-              }
-            }}
-          >
-            Falar com Especialista
-          </a>
+            }}>
+              Falar com Especialista
+            </a>
+          </Link>
         </Container>
       </div>
 
@@ -509,7 +457,7 @@ const imagensProduto = [
         }
         .slick-dots li button:before {
           font-size: 12px !important;
-          color: white !important;
+          color: #1D3D52 !important;
           opacity: 0.5 !important;
         }
         .slick-dots li.slick-active button:before {
@@ -517,15 +465,8 @@ const imagensProduto = [
           opacity: 1 !important;
         }
       `}</style>
-
-      {/* Font Awesome */}
-      <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
-      />
-      <WhatsAppButton />
     </Pagina>
   );
 };
 
-export default rufos;
+export default Rufos;

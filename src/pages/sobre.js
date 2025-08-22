@@ -4,6 +4,8 @@ import Pagina from '@/components/pagina';
 import Head from 'next/head';
 import Rodape from '@/components/Rodape';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import Image from 'next/image'; // Adicionado
+import Link from 'next/link';   // Adicionado
 
 const Sobre = () => {
   return (
@@ -11,6 +13,11 @@ const Sobre = () => {
       <Head>
         <title>Je Calhas - Sobre Nós</title>
         <meta name="description" content="Conheça a JE Calhas - especialistas em soluções de calhas e sistemas de drenagem com qualidade e compromisso" />
+        {/* Adicionando ícones do Font Awesome */}
+        <link 
+          rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+        />
       </Head>
 
       {/* Banner Hero */}
@@ -38,9 +45,13 @@ const Sobre = () => {
               </p>
             </div>
             <div className="about-image">
-              <img 
+              <Image 
                 src="/img/D485BBC2-80EB-4216-B9B1-7BB6F5B4C78C.png"
                 alt="Equipe Je Calhas" 
+                width={500}
+                height={400}
+                layout="responsive"
+                objectFit="cover"
                 className="responsive-image"
               />
             </div>
@@ -108,25 +119,26 @@ const Sobre = () => {
           </section>
         </div>
       </div>
-<br>
-</br>
+      <br />
+      <br />
       {/* Seção de Contato */}
       <div className="contact-banner">
-        <img 
+        <Image 
           src='/img/call us.jpg' 
           alt='Ligue para a Je Calhas' 
-          className="contact-image"
+          layout="fill"
+          objectFit="cover"
+          priority
         />
         <div className="contact-overlay">
           <div className="contact-content">
             <h2>Pronto para proteger seu imóvel?</h2>
             <p>Nossa equipe está pronta para oferecer a melhor solução em calhas e sistemas de drenagem para sua residência ou empresa.</p>
-            <button
-              className="cta-button"
-              onClick={() => window.location.href = '/contato'}
-            >
-              Solicite um Orçamento
-            </button>
+            <Link href="/contato" passHref legacyBehavior>
+              <a className="cta-button">
+                Solicite um Orçamento
+              </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -134,6 +146,7 @@ const Sobre = () => {
 
       <Rodape />
 
+      {/* O CSS permanece o mesmo */}
       <style jsx>{`
         /* Estilos globais */
         .full-width-container {
@@ -278,13 +291,7 @@ const Sobre = () => {
           width: 100%;
           height: 400px;
         }
-        
-        .contact-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        
+                
         .contact-overlay {
           position: absolute;
           top: 0;
@@ -326,6 +333,7 @@ const Sobre = () => {
           font-weight: bold;
           cursor: pointer;
           transition: all 0.3s ease;
+          text-decoration: none;
         }
         
         .cta-button:hover {
@@ -362,13 +370,6 @@ const Sobre = () => {
           }
         }
       `}</style>
-      
-      {/* Adicionando ícones do Font Awesome */}
-      <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
-      />
-   
     </Pagina>
   );
 };

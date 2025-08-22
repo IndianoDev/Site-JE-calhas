@@ -4,6 +4,7 @@ import Pagina from '@/components/pagina';
 import SobreNos from '@/components/SobreNos';
 import Rodape from '@/components/Rodape';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import Image from 'next/image'; // Adicionado
 
 const Contato = () => {
   // Estado do formulário e feedback
@@ -16,7 +17,7 @@ const Contato = () => {
   const [feedback, setFeedback] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Estilos (mantidos do seu código original)
+  // Estilos
   const styles = {
     formContainer: {
       backgroundColor: '#f8f9fa',
@@ -50,10 +51,6 @@ const Contato = () => {
       width: '100%',
       fontSize: '1rem',
       transition: 'all 0.3s ease',
-      ':focus': {
-        borderColor: '#0095a4',
-        boxShadow: '0 0 0 0.2rem rgba(0, 149, 164, 0.25)'
-      }
     },
     textarea: {
       minHeight: '150px',
@@ -69,10 +66,6 @@ const Contato = () => {
       fontWeight: 'bold',
       cursor: 'pointer',
       transition: 'all 0.3s ease',
-      ':hover': {
-        backgroundColor: '#0095a4',
-        transform: 'translateY(-2px)'
-      }
     },
     imageContainer: {
       display: 'flex',
@@ -208,12 +201,16 @@ const Contato = () => {
             </div>
           </Col>
           
-          {/* Coluna da Imagem (mantida igual) */}
+          {/* Coluna da Imagem */}
           <Col lg={6}>
             <div style={styles.imageContainer}>
-              <img 
+              <Image 
                 src="/img/PHOTO-2024-03-31-16-05-40 2.jpg"
                 alt="Entre em contato"
+                width={500}
+                height={500}
+                layout="responsive"
+                objectFit="cover"
                 style={styles.image}
               />
             </div>
