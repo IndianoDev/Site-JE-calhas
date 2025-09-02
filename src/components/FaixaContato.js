@@ -2,6 +2,9 @@ import React from 'react';
 import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
+import styles from '../styles/FaixaContato.module.css';
+
+
 
 const FaixaContato = () => {
   return (
@@ -9,9 +12,9 @@ const FaixaContato = () => {
       {/* Background image container */}
       <div className="background-image-container">
         {/* Background image - Ajustada para mostrar mais área */}
-        <Image 
-          src='/img/call us.jpg' 
-          alt='Ligue para nós' 
+        <Image
+          src='/img/call us.jpg'
+          alt='Ligue para nós'
           className="background-image"
           width={1920}
           height={1080}
@@ -24,35 +27,34 @@ const FaixaContato = () => {
             filter: 'brightness(0.7)',
           }}
         />
-        
+
         {/* Dark overlay */}
         <div className="dark-overlay"></div>
-        
+
         {/* Contact card - Reduzido em mobile */}
         <div className="contact-card">
           {/* Barra superior decorativa */}
           <div className="decorative-bar" />
-          
+
           <h2 className="contact-title">
             Entre em contato
           </h2>
-          
+
           <p className="contact-description">
             Oferecemos os melhores serviços em nosso campo. Sempre mantemos sua satisfação como principal prioridade.
           </p>
-          
+
           {/* Container dos botões (modificado) */}
           <div className="contact-buttons">
-            <Link
-              href="/contato"
-              className="contact-button email-button"
-            >
-              <FaEnvelope className="button-icon" /> Fale Conosco
-            </Link>
+  <Link href="/contato" className={styles.pulseButton}>
+  <FaPhoneAlt className="button-icon" />
+  <span>Fale Conosco</span>
+</Link>
+
           </div>
         </div>
       </div>
-      
+
       <style jsx>{`
         .contact-banner-container {
           position: relative;
@@ -138,35 +140,62 @@ const FaixaContato = () => {
           margin-top: 1.5rem;
         }
         
-        .contact-button {
-          padding: 0.8rem 1.8rem;
-          font-size: 1rem;
-          color: white;
-          border: none;
-          border-radius: 50px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-weight: 600;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.6rem;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          text-decoration: none;
-        }
-        
-        .email-button {
-          background: #0095a4;
-        }
-        
-        .phone-button {
-          background: #1D3D52;
-        }
-        
-        .contact-button:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        
+   .contact-button {
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  text-decoration: none;  /* remove sublinhado */
+  background: linear-gradient(135deg, #00b8c6, #007a87);
+  position: relative;
+  overflow: hidden;
+  animation: pulse 2s infinite; /* 🔥 animação pulse */
+}
+
+.contact-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.4s ease;
+}
+
+.contact-button:hover::before {
+  left: 100%;
+}
+
+.contact-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔥 animação de pulso */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 184, 198, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(0, 184, 198, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 184, 198, 0);
+  }
+}
+
         .email-button:hover {
           background: #007a87;
         }
