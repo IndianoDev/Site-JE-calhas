@@ -96,23 +96,23 @@ const Sobre = () => {
             <h2 className="section-title light-text">Por que escolher a JE Calhas?</h2>
             <ul className="differentials-list">
               <li>
-                <i className="fas fa-check-circle" style={{color: 'green'}}></i>
+                <i className="fas fa-check-circle" style={{color: 'white'}}></i>
                 <span>Equipe técnica especializada e certificada</span>
               </li>
               <li>
-                <i className="fas fa-check-circle " style={{color: 'green'}}></i>
+                <i className="fas fa-check-circle " style={{color: 'white'}}></i>
                 <span>Materiais de alta resistência e durabilidade</span>
               </li>
               <li>
-                <i className="fas fa-check-circle " style={{color: 'green'}}></i>
+                <i className="fas fa-check-circle " style={{color: 'white'}}></i>
                 <span>Garantia em todos os produtos e serviços</span>
               </li>
               <li>
-                <i className="fas fa-check-circle" style={{color: 'green'}}></i>
+                <i className="fas fa-check-circle" style={{color: 'white'}}></i>
                 <span>Atendimento personalizado em todo o território nacional</span>
               </li>
               <li>
-                <i className="fas fa-check-circle" style={{color: 'green'}}></i>
+                <i className="fas fa-check-circle" style={{color: 'white'}}></i>
                 <span>Soluções customizadas para cada necessidade</span>
               </li>
             </ul>
