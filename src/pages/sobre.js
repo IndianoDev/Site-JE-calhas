@@ -4,8 +4,8 @@ import Pagina from '@/components/pagina';
 import Head from 'next/head';
 import Rodape from '@/components/Rodape';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import Image from 'next/image'; // Adicionado
-import Link from 'next/link';   // Adicionado
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Sobre = () => {
   return (
@@ -13,7 +13,6 @@ const Sobre = () => {
       <Head>
         <title>Je Calhas - Sobre Nós</title>
         <meta name="description" content="Conheça a JE Calhas - especialistas em soluções de calhas e sistemas de drenagem com qualidade e compromisso" />
-        {/* Adicionando ícones do Font Awesome */}
         <link 
           rel="stylesheet" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
@@ -41,7 +40,7 @@ const Sobre = () => {
                 Desde nossa fundação, nos dedicamos a proteger o patrimônio de nossos clientes com produtos duráveis e instalações impecáveis. Nossa equipe é formada por profissionais altamente qualificados, com anos de experiência no mercado, que entendem as particularidades de cada projeto.
               </p>
               <p>
-                Na JE Calhas, não vendemos apenas calhas - oferecemos <strong>proteção, tranquilidade e satisfação</strong> para nossos clientes. Atuamos em todo o território nacional, levando nossa expertise e compromisso com a excelência para cada obra.
+                Na JE Calhas, não vendemos apenas calhas - oferecemos <strong>proteção, tranquilidade e satisfação</strong> para nossos clientes. Atuamos em todo o território de brasilia e em torno, levando nossa expertise e compromisso com a excelência para cada obra.
               </p>
             </div>
             <div className="about-image">
@@ -97,7 +96,7 @@ const Sobre = () => {
             <ul className="differentials-list">
               <li>
                 <i className="fas fa-check-circle" style={{color: 'white'}}></i>
-                <span>Equipe técnica especializada e certificada</span>
+                <span>Equipe técnica especializada</span>
               </li>
               <li>
                 <i className="fas fa-check-circle " style={{color: 'white'}}></i>
@@ -121,30 +120,37 @@ const Sobre = () => {
       </div>
       <br />
       <br />
-      {/* Seção de Contato */}
-      <div className="contact-banner">
-        <Image 
-          src='/img/call us.jpg' 
-          alt='Ligue para a Je Calhas' 
-          layout="fill"
-          objectFit="cover"
-          priority
-        />
-        <div className="contact-overlay">
-          <div className="contact-content">
-            <h2>Pronto para proteger seu imóvel?</h2>
-            <p>Nossa equipe está pronta para oferecer a melhor solução em calhas e sistemas de drenagem para sua residência ou empresa.</p>
-            <Link href="/contato" passHref legacyBehavior>
-              <a className="cta-button">
-                Solicite um Orçamento
-              </a>
-            </Link>
+
+      {/* Seção de Contato - LARGURA TOTAL */}
+      <div className="full-width-container">
+        <div className="contact-banner">
+          <Image 
+            src='/img/call us.jpg' 
+            alt='Ligue para a Je Calhas' 
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
+          <div className="contact-overlay">
+            <div className="contact-content">
+              <h2>Pronto para proteger seu imóvel?</h2>
+              <p>Nossa equipe está pronta para oferecer a melhor solução em calhas e sistemas de drenagem para sua residência ou empresa.</p>
+              <Link href="/contato" passHref legacyBehavior>
+                <a className="cta-button">
+                  Solicite um Orçamento
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
+
       <WhatsAppButton />
 
-      <Rodape />
+      {/* Rodapé com largura total */}
+      <div className="full-width-container">
+        <Rodape />
+      </div>
 
       {/* O CSS permanece o mesmo */}
       <style jsx>{`

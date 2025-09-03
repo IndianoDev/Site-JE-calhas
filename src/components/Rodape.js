@@ -84,11 +84,11 @@ const Rodape = () => {
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {links.map((link, index) => (
                   <li key={index} style={{ marginBottom: '12px' }}>
-                    <Link
-                      href={link.href}
-                      className="footer-link"
-                    >
-                      {link.nome}
+                    {/* AQUI ESTÁ A CORREÇÃO */}
+                    <Link href={link.href} legacyBehavior>
+                      <a className="footer-link">
+                        {link.nome}
+                      </a>
                     </Link>
                   </li>
                 ))}
@@ -206,18 +206,22 @@ const Rodape = () => {
         </div>
 
         <style jsx>{`
-          /* Estilo para os links do footer */
+          /* Estilo para os links do footer (AGORA VAI FUNCIONAR) */
           .footer-link {
             color: white;
-            text-decoration: none;
+            text-decoration: none; /* Remove o sublinhado */
+            padding: 8px 16px; /* Espaçamento interno para parecer um botão */
+            background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil */
+            border-radius: 20px; /* Bordas totalmente arredondadas */
             transition: all 0.3s ease;
-            display: block;
-            padding: 5px 0;
+            display: inline-block; /* Garante que o padding seja aplicado corretamente */
           }
-          
+
           .footer-link:hover {
-            color: #4a90e2;
-            padding-left: 10px;
+            background-color: #4a90e2; /* Cor de destaque ao passar o mouse */
+            color: white; /* Garante que o texto continue branco */
+            transform: translateY(-3px); /* Efeito de "saltar" */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
           }
           
           /* Estilo para os links de contato */

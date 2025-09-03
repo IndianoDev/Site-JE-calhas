@@ -44,7 +44,7 @@ const EstruturasMetalicas = () => {
   const especificacoes = [
     { id: 1, titulo: 'Material', valor: 'Aço galvanizado G-90' },
     { id: 2, titulo: 'Espessura', valor: 'De 0,95mm a 3,00mm' },
-    { id: 3, titulo: 'Garantia', valor: '20 anos contra corrosão' },
+    { id: 3, titulo: 'Garantia', valor: '10 anos contra corrosão' },
     { id: 4, titulo: 'Normas', valor: 'ABNT NBR 6355 e NBR 14762' },
     { id: 5, titulo: 'Cobertura', valor: 'Até 30m de vão livre' },
     { id: 6, titulo: 'Pintura', valor: 'Eletrostática ou galvanização' }
@@ -66,16 +66,22 @@ const EstruturasMetalicas = () => {
         {/* Font Awesome */}
         <link 
           rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0-2.0-beta3/css/all.min.css" 
         />
       </Head>
 
-      {/* Hero Section */}
+      {/* Hero Section - LARGURA TOTAL */}
       <div style={{
         background: 'linear-gradient(135deg, rgba(29, 61, 82, 0.9), rgba(0, 149, 164, 0.8))',
         color: 'white',
         padding: '80px 0',
-        textAlign: 'center'
+        textAlign: 'center',
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
       }}>
         <Container>
           <h1 style={{
@@ -126,7 +132,7 @@ const EstruturasMetalicas = () => {
                     }}>Produtos</a>
                   </Link>
                 </li>
-                <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
+                <li style={{ marginRight: '10px', color: '##0095a4' }}>&gt;</li>
                 <li style={{ color: '#0095a4' }}>Estruturas Metálicas</li>
               </ol>
             </nav>
@@ -154,8 +160,8 @@ const EstruturasMetalicas = () => {
                       <Image
                         src={imagem.src}
                         alt={imagem.alt}
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        style={{ objectFit: 'cover' }}
                         priority={imagem.id === 1} // Otimiza a primeira imagem
                       />
                     </div>
@@ -270,13 +276,12 @@ const EstruturasMetalicas = () => {
             }}>
               Todos os componentes são <strong>pré-fabricados com precisão milimétrica</strong>, permitindo montagem rápida e com mínimo desperdício de material no local da obra.
             </p>
-         
           </Col>
           <Col lg={6}>
             <div style={{
               backgroundColor: '#fff',
               borderRadius: '10px',
-              padding: '30px',                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+              padding: '30px',
               boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
             }}>
               <h3 style={{
@@ -322,11 +327,17 @@ const EstruturasMetalicas = () => {
         </Row>
       </Container>
 
-      {/* Seção Vantagens */}
+      {/* Seção Vantagens - LARGURA TOTAL */}
       <div style={{
         backgroundColor: '#f8f9fa',
         padding: '80px 0',
-        marginBottom: '80px'
+        marginBottom: '80px',
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
       }}>
         <Container>
           <Row className="justify-content-center">
@@ -351,7 +362,7 @@ const EstruturasMetalicas = () => {
             {vantagens.map((vantagem) => (
               <Col key={vantagem.id} md={6} lg={3} className="mb-4">
                 <div style={{
-                  backgroundColor: '#fff',
+                  backgroundColor: '##fff',
                   borderRadius: '8px',
                   padding: '30px 20px',
                   height: '100%',
@@ -386,7 +397,7 @@ const EstruturasMetalicas = () => {
         </Container>
       </div>
 
-      {/* Galeria de Projetos */}
+      {/* Galeria de Projetos - ATUALIZADA */}
       <Container style={{ marginBottom: '80px' }}>
         <Row className="justify-content-center">
           <Col lg={8} className="text-center mb-5">
@@ -411,18 +422,21 @@ const EstruturasMetalicas = () => {
             <Col key={item} sm={6} md={3}>
               <div style={{
                 position: 'relative',
-                width: '100%',
-                paddingTop: '100%', // Mantém a proporção 1:1
+                paddingTop: '66.66%', // Proporção 3:2 (853/1280 = 0.666)
                 borderRadius: '8px',
                 overflow: 'hidden',
                 boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
                 transition: 'transform 0.3s ease',
+                cursor: 'pointer'
               }}>
                 <Image
                   src={`/img/Renderizadas/${item}.png`}
                   alt={`Projeto de estrutura metálica ${item}`}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ 
+                    objectFit: 'cover'
+                  }}
+                  sizes="(max-width: 576px) 100vw, (max-width: 768px) 50vw, 25vw"
                 />
               </div>
             </Col>
@@ -430,12 +444,18 @@ const EstruturasMetalicas = () => {
         </Row>
       </Container>
 
-      {/* CTA Final */}
+      {/* CTA Final - LARGURA TOTAL */}
       <div style={{
         background: 'linear-gradient(135deg, #1D3D52, #0095a4)',
         color: 'white',
         padding: '80px 0',
-        textAlign: 'center'
+        textAlign: 'center',
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
       }}>
         <Container>
           <h2 style={{
@@ -451,7 +471,7 @@ const EstruturasMetalicas = () => {
             margin: '0 auto 30px',
             lineHeight: '1.6'
           }}>
-            Nossos engenheiros estão prontos para desenvolver a solução perfeita para sua necessidade
+            Estaremos prontos para desenvolver a solução perfeita para sua necessidade
           </p>
           <Link href="/contato" passHref legacyBehavior>
             <a style={{
@@ -465,7 +485,7 @@ const EstruturasMetalicas = () => {
               fontWeight: '600',
               fontSize: '1.1rem',
               transition: 'all 0.3s ease',
-              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)'
             }}>
               Solicitar Projeto
             </a>
@@ -473,7 +493,19 @@ const EstruturasMetalicas = () => {
         </Container>
       </div>
 
-      <Rodape />
+      {/* Rodapé com largura total */}
+      <div style={{ 
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw',
+        overflowX: 'hidden'
+      }}>
+        <Rodape />
+      </div>
+
       <WhatsAppButton />
 
       {/* Estilos Globais para o Slick Carousel */}

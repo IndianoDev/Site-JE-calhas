@@ -53,13 +53,19 @@ const Calhas = () => {
         <meta name="description" content="Conheça nossa linha premium de calhas com garantia estendida e alta performance em drenagem" />
       </Head>
 
-      {/* Hero Section */}
+      {/* Hero Section - LARGURA TOTAL */}
       <div style={{
         background: 'linear-gradient(135deg, rgba(29, 61, 82, 0.9), rgba(0, 149, 164, 0.8))',
         color: 'white',
         padding: '80px 0',
         textAlign: 'center',
-        marginBottom: '50px'
+        marginBottom: '50px',
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
       }}>
         <Container>
           <h1 style={{
@@ -81,7 +87,7 @@ const Calhas = () => {
         </Container>
       </div>
 
-      {/* Breadcrumb */}
+      {/* Breadcrumb - COM LARGURA NORMAL */}
       <Container style={{ margin: '30px auto' }}>
         <Row>
           <Col>
@@ -94,26 +100,24 @@ const Calhas = () => {
                 fontSize: '0.9rem'
               }}>
                 <li style={{ marginRight: '10px' }}>
-                  <Link href="/" style={{
-                    color: '#1D3D52',
-                    textDecoration: 'none',
-                    ':hover': {
-                      textDecoration: 'underline'
-                    }
-                  }}>
-                    Home
+                  <Link href="/" legacyBehavior>
+                    <a style={{
+                      color: '#1D3D52',
+                      textDecoration: 'none'
+                    }}>
+                      Home
+                    </a>
                   </Link>
                 </li>
                 <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
                 <li style={{ marginRight: '10px' }}>
-                  <Link href="/produtos" style={{
-                    color: '#1D3D52',
-                    textDecoration: 'none',
-                    ':hover': {
-                      textDecoration: 'underline'
-                    }
-                  }}>
-                    Produtos
+                  <Link href="/produtos" legacyBehavior>
+                    <a style={{
+                      color: '#1D3D52',
+                      textDecoration: 'none'
+                    }}>
+                      Produtos
+                    </a>
                   </Link>
                 </li>
                 <li style={{ marginRight: '10px', color: '#0095a4' }}>&gt;</li>
@@ -124,39 +128,50 @@ const Calhas = () => {
         </Row>
       </Container>
 
-      {/* Carrossel de Imagens */}
-      <Container style={{ marginBottom: '60px' }}>
-        <Row>
-          <Col lg={8} className="mx-auto">
-            <div style={{
-              borderRadius: '10px',
-              overflow: 'hidden',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
-            }}>
-              <Slider {...sliderSettings}>
-                {imagensProduto.map((imagem) => (
-                  <div key={imagem.id}>
-                    <div style={{
-                      position: 'relative',
-                      paddingTop: '56.25%',
-                      overflow: 'hidden'
-                    }}>
-                      <Image
-                        src={imagem.src}
-                        alt={imagem.alt}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                      />
+      {/* Carrossel de Imagens - LARGURA TOTAL */}
+      <div style={{
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw',
+        marginBottom: '60px',
+        padding: '0 20px'
+      }}>
+        <Container>
+          <Row>
+            <Col lg={8} className="mx-auto">
+              <div style={{
+                borderRadius: '10px',
+                overflow: 'hidden',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+              }}>
+                <Slider {...sliderSettings}>
+                  {imagensProduto.map((imagem) => (
+                    <div key={imagem.id}>
+                      <div style={{
+                        position: 'relative',
+                        paddingTop: '56.25%',
+                        overflow: 'hidden'
+                      }}>
+                        <Image
+                          src={imagem.src}
+                          alt={imagem.alt}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </Slider>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+                  ))}
+                </Slider>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
 
-      {/* Seção Sobre o Produto */}
+      {/* Seção Sobre o Produto - LARGURA NORMAL */}
       <Container style={{ marginBottom: '80px' }}>
         <Row className="align-items-center">
           <Col lg={6} className="mb-4 mb-lg-0">
@@ -245,11 +260,17 @@ const Calhas = () => {
         </Row>
       </Container>
 
-      {/* Seção Vantagens */}
+      {/* Seção Vantagens - LARGURA TOTAL */}
       <div style={{
         backgroundColor: '#f8f9fa',
         padding: '80px 0',
-        marginBottom: '80px'
+        marginBottom: '80px',
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
       }}>
         <Container>
           <Row className="justify-content-center">
@@ -309,54 +330,76 @@ const Calhas = () => {
         </Container>
       </div>
 
-      {/* Galeria de Aplicações */}
-      <Container style={{ marginBottom: '80px' }}>
-        <Row className="justify-content-center">
-          <Col lg={8} className="text-center mb-5">
-            <h2 style={{
-              color: '#1D3D52',
-              fontSize: '2rem',
-              fontWeight: '700',
-              marginBottom: '15px'
-            }}>
-              Nossas Calhas em Ação
-            </h2>
-            <p style={{
-              color: '#555',
-              fontSize: '1.1rem'
-            }}>
-              Veja como nossas calhas estão protegendo imóveis em todo o país
-            </p>
-          </Col>
-        </Row>
-        <Row className="g-4">
-          {[5, 27, 8, 20].map((item) => (
-            <Col key={item} sm={6} md={3}>
-              <div style={{
-                position: 'relative',
-                paddingTop: '100%',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
+      {/* Galeria de Aplicações - LARGURA TOTAL */}
+      <div style={{
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw',
+        marginBottom: '80px',
+        padding: '0 20px'
+      }}>
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={8} className="text-center mb-5">
+              <h2 style={{
+                color: '#1D3D52',
+                fontSize: '2rem',
+                fontWeight: '700',
+                marginBottom: '15px'
               }}>
-                <Image
-                  src={`/img/Renderizadas/${item}.png`}
-                  alt={`Aplicação de calhas ${item}`}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
+                Nossas Calhas em Ação
+              </h2>
+              <p style={{
+                color: '#555',
+                fontSize: '1.1rem'
+              }}>
+                Veja como nossas calhas estão protegendo imóveis em todo o país
+              </p>
             </Col>
-          ))}
-        </Row>
-      </Container>
+          </Row>
+          <Row className="g-4">
+            {[5, 27, 8, 20].map((item) => (
+              <Col key={item} sm={6} md={3}>
+                <div style={{
+                  position: 'relative',
+                  paddingTop: '66.66%',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
+                }}>
+                  <Image
+                    src={`/img/Renderizadas/${item}.png`}
+                    alt={`Aplicação de calhas ${item}`}
+                    fill
+                    style={{ 
+                      objectFit: 'cover',
+                      width: '100%',
+                      height: '100%'
+                    }}
+                    sizes="(max-width: 576px) 100vw, (max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
 
-      {/* CTA Final */}
+      {/* CTA Final - LARGURA TOTAL */}
       <div style={{
         background: 'linear-gradient(135deg, #1D3D52, #0095a4)',
         color: 'white',
         padding: '80px 0',
-        textAlign: 'center'
+        textAlign: 'center',
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
       }}>
         <Container>
           <h2 style={{
@@ -374,9 +417,8 @@ const Calhas = () => {
           }}>
             Solicite um orçamento sem compromisso e receba a visita de um de nossos especialistas
           </p>
-          <Link
-            href="/contato"
-            style={{
+          <Link href="/contato" legacyBehavior>
+            <a style={{
               display: 'inline-block',
               padding: '15px 35px',
               backgroundColor: 'white',
@@ -388,9 +430,9 @@ const Calhas = () => {
               fontSize: '1.1rem',
               transition: 'all 0.3s ease',
               boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)'
-            }}
-          >
-            Solicitar Orçamento
+            }}>
+              Solicitar Orçamento
+            </a>
           </Link>
         </Container>
       </div>
@@ -424,6 +466,11 @@ const Calhas = () => {
         .slick-dots li.slick-active button:before {
           color: #0095a4 !important;
           opacity: 1 !important;
+        }
+        
+        /* Estilos para hover dos links */
+        a:hover {
+          text-decoration: underline;
         }
       `}</style>
 

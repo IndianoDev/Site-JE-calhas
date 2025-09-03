@@ -4,7 +4,7 @@ import Pagina from '@/components/pagina';
 import SobreNos from '@/components/SobreNos';
 import Rodape from '@/components/Rodape';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import Image from 'next/image'; // Adicionado
+import Image from 'next/image';
 
 const Contato = () => {
   // Estado do formulário e feedback
@@ -133,6 +133,40 @@ const Contato = () => {
 
   return (
     <Pagina titulo="Contato">
+      {/* Hero Section - LARGURA TOTAL */}
+      <div style={{
+        background: 'linear-gradient(135deg, rgba(29, 61, 82, 0.9), rgba(0, 149, 164, 0.8))',
+        color: 'white',
+        padding: '60px 0',
+        textAlign: 'center',
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw',
+        marginBottom: '50px'
+      }}>
+        <Container>
+          <h1 style={{
+            fontSize: '2.5rem',
+            fontWeight: '700',
+            marginBottom: '15px'
+          }}>
+            Entre em Contato
+          </h1>
+          <p style={{
+            fontSize: '1.2rem',
+            maxWidth: '800px',
+            margin: '0 auto',
+            opacity: '0.9'
+          }}>
+            Estamos prontos para atender suas necessidades em estruturas metálicas e sistemas de cobertura
+          </p>
+        </Container>
+      </div>
+
+      {/* Formulário de Contato */}
       <Container className="my-5">
         <Row className="align-items-center">
           {/* Coluna do Formulário */}
@@ -217,9 +251,32 @@ const Contato = () => {
           </Col>
         </Row>
       </Container>
-      
-      <SobreNos />
-      <Rodape />
+
+      {/* Seção SobreNos - LARGURA TOTAL */}
+      <div style={{
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
+      }}>
+        <SobreNos />
+      </div>
+
+      {/* Rodapé com largura total */}
+      <div style={{ 
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw',
+        overflowX: 'hidden'
+      }}>
+        <Rodape />
+      </div>
+
       <WhatsAppButton />
     </Pagina>
   );

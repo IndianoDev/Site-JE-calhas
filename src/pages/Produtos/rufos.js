@@ -72,12 +72,18 @@ const Rufos = () => {
         />
       </Head>
 
-      {/* Hero Section */}
+      {/* Hero Section - LARGURA TOTAL */}
       <div style={{
         background: 'linear-gradient(135deg, rgba(29, 61, 82, 0.9), rgba(0, 149, 164, 0.8))',
         color: 'white',
         padding: '60px 0',
-        textAlign: 'center'
+        textAlign: 'center',
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
       }}>
         <Container>
           <h1 style={{
@@ -339,11 +345,17 @@ const Rufos = () => {
         </Row>
       </Container>
 
-      {/* Seção Vantagens */}
+      {/* Seção Vantagens - LARGURA TOTAL */}
       <div style={{
         backgroundColor: '#f8f9fa',
         padding: '80px 0',
-        marginBottom: '80px'
+        marginBottom: '80px',
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
       }}>
         <Container>
           <Row className="justify-content-center">
@@ -403,12 +415,18 @@ const Rufos = () => {
         </Container>
       </div>
 
-      {/* CTA Final */}
+      {/* CTA Final - LARGURA TOTAL */}
       <div style={{
         background: 'linear-gradient(135deg, #1D3D52, #0095a4)',
         color: 'white',
         padding: '80px 0',
-        textAlign: 'center'
+        textAlign: 'center',
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
       }}>
         <Container>
           <h2 style={{
@@ -446,7 +464,19 @@ const Rufos = () => {
         </Container>
       </div>
 
-      <Rodape />
+      {/* Rodapé com largura total */}
+      <div style={{ 
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw',
+        overflowX: 'hidden'
+      }}>
+        <Rodape />
+      </div>
+
       <WhatsAppButton />
 
       {/* Estilos */}

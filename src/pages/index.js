@@ -16,26 +16,26 @@ const Index = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   const data = [
-    { 
-      id: '1', 
-      image: '/img/1.png', 
+    {
+      id: '1',
+      image: '/img/1.png',
       imageMobile: '/img/1-mobile.png',
-      title: 'Soluções em Calhas', 
-      subtitle: 'Telhado, Calhas, Rufos e Coifa' 
+      title: 'Soluções em Calhas',
+      subtitle: 'Telhado, Calhas, Rufos e Coifa'
     },
-    { 
-      id: '2', 
-      image: '/img/2.png', 
+    {
+      id: '2',
+      image: '/img/2.png',
       imageMobile: '/img/2-mobile.png',
-      title: 'Serralheria em Geral', 
-      subtitle: 'Portões, grades etc.' 
+      title: 'Serralheria em Geral',
+      subtitle: 'Portões, grades etc.'
     },
-    { 
-      id: '3', 
-      image: '/img/3.png', 
+    {
+      id: '3',
+      image: '/img/3.png',
       imageMobile: '/img/3-mobile.png',
-      title: 'Estrutura Metálicas', 
-      subtitle: 'Montagem de Telhado, galpão e Mezanino.' 
+      title: 'Estrutura Metálicas',
+      subtitle: 'Montagem de Telhado, galpão e Mezanino.'
     },
   ];
 
@@ -64,21 +64,21 @@ const Index = () => {
 
   useEffect(() => {
     setIsClient(true);
-    
+
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Componente de imagem responsiva ATUALIZADO
   const ResponsiveSliderImage = ({ item }) => {
     const imageSrc = isMobile ? item.imageMobile : item.image;
-    
+
     return (
       <Image
         src={imageSrc}
@@ -105,8 +105,8 @@ const Index = () => {
       <Pagina />
 
       {isClient && (
-        <div style={{ 
-          position: 'relative', 
+        <div style={{
+          position: 'relative',
           overflow: 'hidden',
           height: isMobile ? '50vh' : '80vh',
           maxHeight: isMobile ? '500px' : '800px'
@@ -120,33 +120,45 @@ const Index = () => {
                   maxHeight: isMobile ? '500px' : '800px'
                 }}>
                   <ResponsiveSliderImage item={item} />
-                  
+
+                  {/* Gradiente fixo na base do slide */}
                   <div style={{
                     position: 'absolute',
                     bottom: 0,
                     left: 0,
                     right: 0,
+                    height: isMobile ? '30%' : '40%', // controla o tamanho da sombra
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%)',
+                    zIndex: 1
+                  }} />
+
+                  {/* Texto e botão sobre a sombra */}
+                  <div style={{
+                    position: 'absolute',
+                    bottom: isMobile ? '15%' : '20%',
+                    left: 0,
+                    right: 0,
                     padding: isMobile ? '15px' : '40px',
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)',
                     color: 'white',
                     textAlign: 'center',
                     zIndex: 2
                   }}>
+
                     <h1 style={{
                       fontSize: isMobile ? '1.5rem' : '3rem',
                       fontWeight: 700,
                       marginBottom: isMobile ? '5px' : '10px',
-                      textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+                      textShadow: '2px 2px 6px rgba(0,0,0,0.9)',
                       lineHeight: '1.2'
                     }}>{item.title}</h1>
-                    
+
                     <p style={{
                       fontSize: isMobile ? '0.9rem' : '1.5rem',
                       marginBottom: isMobile ? '15px' : '20px',
-                      textShadow: '1px 1px 3px rgba(0,0,0,0.8)',
+                      textShadow: '1px 1px 4px rgba(0,0,0,0.9)',
                       opacity: 0.95
                     }}>{item.subtitle}</p>
-                    
+
                     <Link href="/contato" passHref legacyBehavior>
                       <a style={{
                         textDecoration: 'none',
@@ -189,7 +201,7 @@ const Index = () => {
         }}>
           Conheça nossos
         </div>
-        
+
         <h2 style={{
           fontSize: isMobile ? '1.8rem' : '2.5rem',
           fontWeight: 'bold',
@@ -253,7 +265,8 @@ const Index = () => {
                 Soluções robustas e personalizadas para telhados, galpões e mezaninos.
               </p>
               <Link href="/Produtos/EstruturasMetalicas" passHref legacyBehavior>
-                <a style={{ textDecoration: 'none',
+                <a style={{
+                  textDecoration: 'none',
                   display: 'inline-block',
                   padding: isMobile ? '8px 16px' : '12px 30px',
                   backgroundColor: 'transparent',
@@ -318,7 +331,7 @@ const Index = () => {
                   fontWeight: '600',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease'
-                  }}>
+                }}>
                   Ver Detalhes
                 </a>
               </Link>
