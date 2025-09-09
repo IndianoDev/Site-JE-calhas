@@ -1,150 +1,78 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import { TiArrowSortedDown } from 'react-icons/ti';
-// Ícones adicionados para o dropdown
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { FaRulerCombined, FaWarehouse, FaGripHorizontal } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Cabecalho = () => {
-  const [expanded, setExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY;
-      setScrolled(offset > 50);
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Itens da navbar com ícones adicionados aos sub-itens
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Sobre', href: '/sobre' },
-    {
-      name: 'Produtos ',
-      href: '/Produtos/ProdutosPage',
-      subItems: [
-        { name: 'Calhas', href: '/Produtos/calhas', icon: <FaGripHorizontal /> },
-        { name: 'Rufos', href: '/Produtos/rufos', icon: <FaRulerCombined /> },
-        { name: 'Telhado e Estrutura', href: '/Produtos/EstruturasMetalicas', icon: <FaWarehouse /> }
-      ]
-    }
-  ];
-
   return (
     <>
-      <div style={{ height: scrolled ? '15px' : '35px', transition: 'height 0.3s ease' }}></div>
-
+      <div style={{ height: scrolled ? '80px' : '100px', transition: 'height 0.3s ease' }}></div>
       <Navbar
-        onToggle={() => setExpanded(!expanded)}
-        expanded={expanded}
-        expand="lg"
         collapseOnSelect
+        expand="lg"
         fixed="top"
-        style={{
-          backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.1)' : '0 2px 10px rgba(0, 0, 0, 0.05)',
-          padding: '10px 0',
-          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          zIndex: 1030
-        }}
+        className={`custom-navbar ${scrolled ? 'scrolled' : ''}`}
       >
         <Container style={{ maxWidth: '1200px' }}>
           <Link href="/" passHref legacyBehavior>
-            <Navbar.Brand style={{ marginRight: '40px' }}>
+            <Navbar.Brand>
               <Image
                 src="/img/logo.png"
                 width={scrolled ? 70 : 80}
                 height={scrolled ? 70 : 80}
                 alt="Logo"
-                style={{
-                  borderRadius: '50%',
-                  objectFit: 'cover',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-                  transform: scrolled ? 'scale(0.95)' : 'scale(1)',
-                }}
-                className="d-inline-block align-top"
+                className="logo-image"
               />
             </Navbar.Brand>
           </Link>
 
-          <Navbar.Toggle
-            aria-controls="navbar-nav"
-            className="custom-toggler"
-          >
-            {/* Mantive sua animação original do Toggler */}
-            <span />
-            <span />
-            <span />
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" className="custom-toggler">
+            <div className="toggler-icon-wrapper"></div>
           </Navbar.Toggle>
+          
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ms-auto align-items-center" style={{ gap: '0.5rem' }}>
+              <Link href="/" passHref legacyBehavior>
+                <Nav.Link className="nav-link-custom">Home</Nav.Link>
+              </Link>
+              <Link href="/sobre" passHref legacyBehavior>
+                <Nav.Link className="nav-link-custom">Sobre</Nav.Link>
+              </Link>
+              
+              {/* COMPONENTE DROPDOWN CORRIGIDO E FINAL */}
+              <NavDropdown title="Produtos" id="produtos-dropdown" className="nav-link-custom">
+                <Link href="/Produtos/ProdutosPage" passHref legacyBehavior>
+                  <NavDropdown.Item className="dropdown-item-custom main-product-link">
+                    Ver Todos os Produtos
+                  </NavDropdown.Item>
+                </Link>
+                <NavDropdown.Divider />
+                <Link href="/Produtos/calhas" passHref legacyBehavior>
+                  <NavDropdown.Item className="dropdown-item-custom"><FaGripHorizontal className="dropdown-icon" /> Calhas</NavDropdown.Item>
+                </Link>
+                <Link href="/Produtos/rufos" passHref legacyBehavior>
+                  <NavDropdown.Item className="dropdown-item-custom"><FaRulerCombined className="dropdown-icon" /> Rufos</NavDropdown.Item>
+                </Link>
+                <Link href="/Produtos/EstruturasMetalicas" passHref legacyBehavior>
+                  <NavDropdown.Item className="dropdown-item-custom"><FaWarehouse className="dropdown-icon" /> Estruturas</NavDropdown.Item>
+                </Link>
+              </NavDropdown>
 
-          <Navbar.Collapse id="navbar-nav">
-            <Nav className="ms-auto align-items: center" style={{ gap: '15px' }}>
-              {navItems.map((item, index) => (
-                <div
-                  key={index}
-                  style={{ position: 'relative' }}
-                  onMouseEnter={() => setHoveredItem(index)}
-                  onMouseLeave={() => setHoveredItem(null)}
-                >
-                  <div
-                    style={{
-                      position: 'absolute',
-                      bottom: '-5px',
-                      left: '0',
-                      width: '100%',
-                      height: '3px',
-                      background: 'linear-gradient(90deg, #0095a4, #1D3D52)',
-                      borderRadius: '3px',
-                      transform: hoveredItem === index ? 'scaleX(1)' : 'scaleX(0)',
-                      transformOrigin: 'left center',
-                      transition: 'transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1)',
-                      opacity: hoveredItem === index ? '1' : '0',
-                      boxShadow: '0 2px 10px rgba(0, 149, 164, 0.4)'
-                    }}
-                  />
-
-                  <Link href={item.href} legacyBehavior>
-                    <a
-                      className="nav-link-custom"
-                      onClick={() => setExpanded(false)}
-                    >
-                      {item.name}
-                      {item.subItems && <TiArrowSortedDown style={{ fontSize: '1rem', marginLeft: '5px' }} />}
-                    </a>
-                  </Link>
-
-                  {/* ----- DROPDOWN MELHORADO AQUI ----- */}
-                  {item.subItems && hoveredItem === index && (
-                    <div className="dropdown-menu-custom">
-                      <div className="dropdown-arrow"></div>
-                      {item.subItems.map((subItem, subIndex) => (
-                        <Link key={subIndex} href={subItem.href} legacyBehavior>
-                          <a
-                            className="dropdown-item-custom"
-                            onClick={() => setExpanded(false)}
-                          >
-                            <span className="dropdown-icon">{subItem.icon}</span>
-                            {subItem.name}
-                          </a>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-
-              <Link href="/contato" legacyBehavior>
-                <a className="cta-button" onClick={() => setExpanded(false)}>
+              <Link href="/contato" passHref legacyBehavior>
+                <Nav.Link className="cta-button">
                   Peça seu Orçamento
-                </a>
+                </Nav.Link>
               </Link>
             </Nav>
           </Navbar.Collapse>
@@ -152,123 +80,139 @@ const Cabecalho = () => {
       </Navbar>
 
       <style jsx global>{`
-        /* --- ESTILOS DO DROPDOWN MELHORADO --- */
-        .dropdown-menu-custom {
+        /* --- Estilos Gerais da Navbar --- */
+        .custom-navbar {
+          background-color: rgba(255, 255, 255, 0.8) !important;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          transition: all 0.3s ease-in-out !important;
+          padding-top: ${scrolled ? '10px' : '15px'} !important;
+          padding-bottom: ${scrolled ? '10px' : '15px'} !important;
+        }
+        .custom-navbar.scrolled {
+          background-color: rgba(255, 255, 255, 0.95) !important;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        .logo-image {
+          border-radius: 50%;
+          transition: all 0.3s ease-in-out !important;
+        }
+
+        /* --- Estilo dos Links --- */
+        .nav-link-custom {
+          color: #1D3D52 !important;
+          font-weight: 600 !important;
+          position: relative;
+          padding: 8px 15px !important;
+        }
+        .nav-link-custom::after {
+          content: '';
           position: absolute;
-          top: 100%;
+          bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          background-color: white;
-          border-radius: 12px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-          min-width: 240px;
-          z-index: 1000;
-          padding: 10px;
-          border: 1px solid #f0f0f0;
-          margin-top: 15px;
-          animation: fadeInDropdown 0.3s ease-out forwards;
+          width: 0%;
+          height: 2px;
+          background-color: #0095a4;
+          transition: width 0.3s ease;
         }
-        
-        /* Seta que aponta para o link "Produtos" */
-        .dropdown-menu-custom .dropdown-arrow {
-          position: absolute;
-          top: -6px;
-          left: 50%;
-          transform: translateX(-50%) rotate(45deg);
-          width: 12px;
-          height: 12px;
-          background-color: white;
-          border-top: 1px solid #f0f0f0;
-          border-left: 1px solid #f0f0f0;
+        .nav-link-custom:hover::after {
+          width: 50%;
         }
 
+        /* --- Dropdown de Produtos --- */
+        /* Remove a seta padrão do Bootstrap */
+        #produtos-dropdown::after {
+          display: none !important;
+        }
+        .dropdown-menu {
+          border-radius: 12px !important;
+          border: 1px solid #f0f0f0 !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+          margin-top: 10px !important;
+          animation: fadeInDropdown 0.3s ease forwards;
+          padding: 10px !important;
+        }
+        /* Faz o dropdown aparecer no HOVER em telas de DESKTOP */
+        @media (min-width: 992px) {
+          .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+          }
+        }
         @keyframes fadeInDropdown {
-          from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
-          to { opacity: 1; transform: translateX(-50%) translateY(0); }
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-
         .dropdown-item-custom {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          padding: 12px 20px;
-          color: #1D3D52;
-          text-decoration: none;
+          display: flex !important;
+          align-items: center !important;
+          gap: 12px !important;
+          padding: 12px 20px !important;
+          font-weight: 500 !important;
+          color: #333 !important;
           transition: all 0.2s ease;
           border-radius: 8px;
-          font-weight: 500;
+        }
+        .main-product-link {
+          font-weight: 700 !important;
+          color: #1D3D52 !important;
         }
         .dropdown-item-custom:hover {
-          background-color: #f0f8ff; /* Azul bem claro */
-          color: #0095a4;
-          transform: translateX(5px);
+          background-color: #f0f8ff !important;
+          color: #0095a4 !important;
         }
         .dropdown-icon {
           color: #0095a4;
-          font-size: 1.1rem;
         }
-        /* ------------------------------------------- */
 
+        /* --- Botão de Orçamento (CTA) --- */
         .cta-button {
-          display: inline-block;
-          padding: 12px 28px;
           background: linear-gradient(45deg, #0095a4, #00b8c8);
-          color: white;
-          border: none;
-          border-radius: 50px;
-          font-weight: 600;
-          font-size: 1rem;
-          text-decoration: none;
+          color: white !important;
+          border-radius: 50px !important;
+          padding: 12px 28px !important;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(0, 149, 164, 0.3);
         }
         .cta-button:hover {
           transform: translateY(-3px);
-          box-shadow: 0 7px 20px rgba(0, 149, 164, 0.4);
+          box-shadow: 0 6px 20px rgba(0, 149, 164, 0.4);
         }
-
-        .nav-link-custom {
-          color: #1D3D52;
-          font-weight: 600;
-          font-size: 1rem;
-          padding: 8px 15px;
-          border-radius: 6px;
-          transition: all 0.3s ease;
-          position: relative;
-          text-decoration: none;
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
+        .cta-button::after {
+          display: none !important;
         }
         
+        /* --- Toggler (Hambúrguer) Customizado --- */
         .custom-toggler {
           border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
           padding: 0 !important;
-          background-color: transparent !important;
         }
         .navbar-toggler-icon { display: none; }
-
-        .custom-toggler span {
-          display: block;
+        .toggler-icon-wrapper {
           width: 25px;
+          height: 18px;
+          position: relative;
+        }
+        .toggler-icon-wrapper::before,
+        .toggler-icon-wrapper::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          width: 100%;
           height: 3px;
           background-color: #1D3D52;
-          margin: 5px 0;
+          border-radius: 3px;
           transition: all 0.3s ease;
-          border-radius: 2px;
         }
-        .navbar-toggler[aria-expanded="true"] span:nth-of-type(1) {
-          transform: rotate(45deg) translate(5px, 5px);
+        .toggler-icon-wrapper::before { top: 0; }
+        .toggler-icon-wrapper::after { bottom: 0; }
+        .navbar-toggler[aria-expanded="true"] .toggler-icon-wrapper::before {
+           transform: translateY(7.5px) rotate(45deg);
         }
-        .navbar-toggler[aria-expanded="true"] span:nth-of-type(2) {
-          opacity: 0;
-        }
-        .navbar-toggler[aria-expanded="true"] span:nth-of-type(3) {
-          transform: rotate(-45deg) translate(5px, -5px);
-        }
-        
-        a {
-          text-decoration: none !important;
+        .navbar-toggler[aria-expanded="true"] .toggler-icon-wrapper::after {
+            transform: translateY(-7.5px) rotate(-45deg);
         }
       `}</style>
     </>
