@@ -10,33 +10,18 @@ import SobreNos from '@/components/SobreNos';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FiDollarSign } from "react-icons/fi";
+import { FaArrowRight } from 'react-icons/fa';
+import { FiClipboard } from "react-icons/fi";
 
 const Index = () => {
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   const data = [
-    {
-      id: '1',
-      image: '/img/1.png',
-      imageMobile: '/img/1-mobile.png',
-      title: 'Soluções em Calhas',
-      subtitle: 'Telhado, Calhas, Rufos e Coifa'
-    },
-    {
-      id: '2',
-      image: '/img/2.png',
-      imageMobile: '/img/2-mobile.png',
-      title: 'Serralheria em Geral',
-      subtitle: 'Portões, grades etc.'
-    },
-    {
-      id: '3',
-      image: '/img/3.png',
-      imageMobile: '/img/3-mobile.png',
-      title: 'Estrutura Metálicas',
-      subtitle: 'Montagem de Telhado, galpão e Mezanino.'
-    },
+    { id: '1', image: '/img/1.png', imageMobile: '/img/1-mobile.png', title: 'Soluções em Calhas', subtitle: 'Telhado, Calhas, Rufos e Coifa' },
+    { id: '2', image: '/img/2.png', imageMobile: '/img/2-mobile.png', title: 'Serralheria em Geral', subtitle: 'Portões, grades etc.' },
+    { id: '3', image: '/img/3.png', imageMobile: '/img/3-mobile.png', title: 'Estrutura Metálicas', subtitle: 'Montagem de Telhado, galpão e Mezanino.' },
   ];
 
   const settings = {
@@ -75,9 +60,8 @@ const Index = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Componente de imagem responsiva ATUALIZADO
   const ResponsiveSliderImage = ({ item }) => {
-    const imageSrc = isMobile ? item.imageMobile : item.image;
+    const imageSrc = isMobile && item.imageMobile ? item.imageMobile : item.image;
 
     return (
       <Image
@@ -99,7 +83,6 @@ const Index = () => {
       <Head>
         <title>JE Calhas - Soluções em Coberturas e Calhas</title>
         <meta name="description" content="Especialistas em calhas e coberturas com qualidade superior e instalação profissional" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
       </Head>
 
       <Pagina />
@@ -120,19 +103,15 @@ const Index = () => {
                   maxHeight: isMobile ? '500px' : '800px'
                 }}>
                   <ResponsiveSliderImage item={item} />
-
-                  {/* Gradiente fixo na base do slide */}
                   <div style={{
                     position: 'absolute',
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    height: isMobile ? '30%' : '40%', // controla o tamanho da sombra
+                    height: isMobile ? '30%' : '40%',
                     background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%)',
                     zIndex: 1
                   }} />
-
-                  {/* Texto e botão sobre a sombra */}
                   <div style={{
                     position: 'absolute',
                     bottom: isMobile ? '15%' : '20%',
@@ -143,38 +122,27 @@ const Index = () => {
                     textAlign: 'center',
                     zIndex: 2
                   }}>
-
                     <h1 style={{
                       fontSize: isMobile ? '1.5rem' : '3rem',
                       fontWeight: 700,
                       marginBottom: isMobile ? '5px' : '10px',
-                      textShadow: '2px 2px 6px rgba(0,0,0,0.9)',
+                      textShadow: '2px 2px 6px rgba(0,0,0,0.10)',
                       lineHeight: '1.2'
                     }}>{item.title}</h1>
-
                     <p style={{
                       fontSize: isMobile ? '0.9rem' : '1.5rem',
                       marginBottom: isMobile ? '15px' : '20px',
-                      textShadow: '1px 1px 4px rgba(0,0,0,0.9)',
+                      textShadow: '1px 1px 4px rgba(0,0,0,2.9)',
                       opacity: 0.95
                     }}>{item.subtitle}</p>
-
+                    
+                    {/* BOTÃO "FAÇA UM ORÇAMENTO" MELHORADO */}
                     <Link href="/contato" passHref legacyBehavior>
-                      <a style={{
-                        textDecoration: 'none',
-                        padding: isMobile ? '8px 16px' : '12px 30px',
-                        backgroundColor: '#0095a4',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '4px',
-                        fontSize: isMobile ? '0.8rem' : '1rem',
-                        fontWeight: 600,
-                        cursor: 'pointer',
-                        transition: 'all 0.3s ease',
-                        display: 'inline-block',
-                        minWidth: isMobile ? '140px' : 'auto'
-                      }}>
+                      <a className="hero-button">
                         Faça um Orçamento
+                        <span className="hero-button-icon">
+                            <FiClipboard />
+                        </span>
                       </a>
                     </Link>
                   </div>
@@ -185,219 +153,224 @@ const Index = () => {
         </div>
       )}
 
-      {/* Seção de Serviços em Destaque - IMAGENS CORRIGIDAS */}
+      {/* Seção de Serviços em Destaque */}
       <div style={{
         textAlign: 'center',
         margin: isMobile ? '40px 0' : '80px 0',
         padding: '0 20px',
         fontFamily: '"Montserrat", sans-serif'
       }}>
-        <div style={{
-          fontSize: isMobile ? '0.8rem' : '1rem',
-          color: '#0095a4',
-          textTransform: 'uppercase',
-          letterSpacing: '2px',
-          marginBottom: '10px'
-        }}>
-          Conheça nossos
-        </div>
-
-        <h2 style={{
-          fontSize: isMobile ? '1.8rem' : '2.5rem',
-          fontWeight: 'bold',
-          color: '#1D3D52',
-          margin: '0 0 30px 0',
-          position: 'relative',
-          display: 'inline-block'
-        }}>
-          Serviços em Destaque
-          <span style={{
-            position: 'absolute',
-            bottom: '-10px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: isMobile ? '60px' : '80px',
-            height: '3px',
-            backgroundColor: '#0095a4',
-          }}></span>
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '30px',
-          marginTop: '50px',
-          maxWidth: '1200px',
-          margin: '50px auto 0'
-        }}>
-          {/* Card 1 - Estruturas Metálicas (IMAGEM CORRIGIDA) */}
-          <div style={{
-            backgroundColor: '#fff',
-            borderRadius: '16px',
-            overflow: 'hidden',
-            boxShadow: '0 10px 30px rgba(29, 61, 82, 0.1)',
-            transition: 'all 0.4s ease',
-          }}>
-            <div style={{
-              position: 'relative',
-              height: isMobile ? '180px' : '220px',
-              overflow: 'hidden'
-            }}>
-              <Image
-                src="/img/PHOTO-2024-03-31-15-56-42 2.jpg"
-                alt="Estruturas Metálicas"
-                fill={true}
-                style={{
-                  objectFit: 'cover'
-                }}
-              />
-              <div style={{
-                position: 'absolute', zIndex: 2,
-                bottom: '0', left: '0', right: '0',
-                background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
-                padding: '20px', color: 'white', textAlign: 'left'
-              }}>
-                <h3 style={{ fontSize: isMobile ? '1.2rem' : '1.5rem', margin: '0', fontWeight: '600', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>Estruturas Metálicas</h3>
-              </div>
-            </div>
-            <div style={{ padding: '25px' }}>
-              <p style={{ color: '#666', marginBottom: '25px', fontSize: isMobile ? '0.9rem' : '1rem', lineHeight: '1.6' }}>
-                Soluções robustas e personalizadas para telhados, galpões e mezaninos.
-              </p>
-              <Link href="/Produtos/EstruturasMetalicas" passHref legacyBehavior>
-                <a style={{
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  padding: isMobile ? '8px 16px' : '12px 30px',
-                  backgroundColor: 'transparent',
-                  color: '#0095a4',
-                  border: '2px solid #0095a4',
-                  borderRadius: '50px',
-                  fontSize: isMobile ? '0.8rem' : '1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease'
-                }}>
-                  Ver Detalhes
-                </a>
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 2 - Calhas (IMAGEM CORRIGIDA) */}
-          <div style={{
-            backgroundColor: '#fff',
-            borderRadius: '16px',
-            overflow: 'hidden',
-            boxShadow: '0 10px 30px rgba(29, 61, 82, 0.1)',
-            transition: 'all 0.4s ease',
-          }}>
-            <div style={{
-              position: 'relative',
-              height: isMobile ? '180px' : '220px',
-              overflow: 'hidden'
-            }}>
-              <Image
-                src="/img/foto de calha 1 (2).jpg"
-                alt="Calhas"
-                fill={true}
-                style={{
-                  objectFit: 'cover'
-                }}
-              />
-              <div style={{
-                position: 'absolute', zIndex: 2,
-                bottom: '0', left: '0', right: '0',
-                background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
-                padding: '20px', color: 'white', textAlign: 'left'
-              }}>
-                <h3 style={{ fontSize: isMobile ? '1.2rem' : '1.5rem', margin: '0', fontWeight: '600', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>Calhas Premium</h3>
-              </div>
-            </div>
-            <div style={{ padding: '25px' }}>
-              <p style={{ color: '#666', marginBottom: '25px', fontSize: isMobile ? '0.9rem' : '1rem', lineHeight: '1.6' }}>
-                Sistemas completos de drenagem com alta durabilidade e acabamento impecável.
-              </p>
-              <Link href="/Produtos/calhas" passHref legacyBehavior>
-                <a style={{
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  padding: isMobile ? '8px 16px' : '12px 30px',
-                  backgroundColor: 'transparent',
-                  color: '#1D3D52',
-                  border: '2px solid #1D3D52',
-                  borderRadius: '50px',
-                  fontSize: isMobile ? '0.8rem' : '1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease'
-                }}>
-                  Ver Detalhes
-                </a>
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 3 - Rufos (IMAGEM CORRIGIDA) */}
-          <div style={{
-            backgroundColor: '#fff',
-            borderRadius: '16px',
-            overflow: 'hidden',
-            boxShadow: '0 10px 30px rgba(29, 61, 82, 0.1)',
-            transition: 'all 0.4s ease',
-          }}>
-            <div style={{
-              position: 'relative',
-              height: isMobile ? '180px' : '220px',
-              overflow: 'hidden'
-            }}>
-              <Image
-                src="/img/PHOTO-2024-03-31-21-31-30 2.jpg"
-                alt="Rufos"
-                fill={true}
-                style={{
-                  objectFit: 'cover'
-                }}
-              />
-              <div style={{
-                position: 'absolute', zIndex: 2,
-                bottom: '0', left: '0', right: '0',
-                background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
-                padding: '20px', color: 'white', textAlign: 'left'
-              }}>
-                <h3 style={{ fontSize: isMobile ? '1.2rem' : '1.5rem', margin: '0', fontWeight: '600', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>Rufos Profissionais</h3>
-              </div>
-            </div>
-            <div style={{ padding: '25px' }}>
-              <p style={{ color: '#666', marginBottom: '25px', fontSize: isMobile ? '0.9rem' : '1rem', lineHeight: '1.6' }}>
-                Proteção perfeita para as junções do seu telhado com 7 modelos diferentes.
-              </p>
-              <Link href="/Produtos/rufos" passHref legacyBehavior>
-                <a style={{
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  padding: isMobile ? '8px 16px' : '12px 30px',
-                  backgroundColor: 'transparent',
-                  color: '#0095a4',
-                  border: '2px solid #0095a4',
-                  borderRadius: '50px',
-                  fontSize: isMobile ? '0.8rem' : '1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease'
-                }}>
-                  Ver Detalhes
-                </a>
-              </Link>
-            </div>
-          </div>
-        </div>
+        {/* ... (código da seção de serviços que não foi alterado) ... */}
+         <div style={{
+        fontSize: isMobile ? '0.8rem' : '1rem',
+        color: '#0095a4',
+        textTransform: 'uppercase',
+        letterSpacing: '2px',
+        marginBottom: '10px'
+      }}>
+        Conheça nossos
       </div>
+      <h2 style={{
+        fontSize: isMobile ? '1.8rem' : '2.5rem',
+        fontWeight: 'bold',
+        color: '#1D3D52',
+        margin: '0 0 30px 0',
+        position: 'relative',
+        display: 'inline-block'
+      }}>
+        Serviços em Destaque
+        <span style={{
+          position: 'absolute',
+          bottom: '-10px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: isMobile ? '60px' : '80px',
+          height: '3px',
+          backgroundColor: '#0095a4',
+        }}></span>
+      </h2>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: '30px',
+        marginTop: '50px',
+        maxWidth: '1200px',
+        margin: '50px auto 0'
+      }}>
+          {/* ... (código dos cards de serviço que não foi alterado) ... */}
+           {/* Card 1 - Estruturas Metálicas */}
+           <div className="service-card">
+            <div style={{ position: 'relative', height: isMobile ? '180px' : '220px', overflow: 'hidden' }}>
+              <Image src="/img/PHOTO-2024-03-31-15-56-42 2.jpg" alt="Estruturas Metálicas" fill={true} style={{ objectFit: 'cover' }} />
+              <div className="card-overlay">
+                <h3 style={{ fontSize: isMobile ? '1.2rem' : '1.5rem' }}>Estruturas Metálicas</h3>
+              </div>
+            </div>
+            <div className="card-content">
+              <p>Soluções robustas e personalizadas para telhados, galpões e mezaninos.</p>
+              <Link href="/Produtos/EstruturasMetalicas" passHref legacyBehavior>
+                <a className="service-button teal">
+                  Ver Detalhes <FaArrowRight />
+                </a>
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 2 - Calhas */}
+          <div className="service-card">
+            <div style={{ position: 'relative', height: isMobile ? '180px' : '220px', overflow: 'hidden' }}>
+              <Image src="/img/foto de calha 1 (2).jpg" alt="Calhas" fill={true} style={{ objectFit: 'cover' }} />
+              <div className="card-overlay">
+                <h3 style={{ fontSize: isMobile ? '1.2rem' : '1.5rem' }}>Calhas Premium</h3>
+              </div>
+            </div>
+            <div className="card-content">
+              <p>Sistemas completos de drenagem com alta durabilidade e acabamento impecável.</p>
+              <Link href="/Produtos/calhas" passHref legacyBehavior>
+                <a className="service-button dark-blue">
+                  Ver Detalhes <FaArrowRight />
+                </a>
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 3 - Rufos */}
+          <div className="service-card">
+            <div style={{ position: 'relative', height: isMobile ? '180px' : '220px', overflow: 'hidden' }}>
+              <Image src="/img/PHOTO-2024-03-31-21-31-30 2.jpg" alt="Rufos" fill={true} style={{ objectFit: 'cover' }} />
+              <div className="card-overlay">
+                <h3 style={{ fontSize: isMobile ? '1.2rem' : '1.5rem' }}>Rufos Profissionais</h3>
+              </div>
+            </div>
+            <div className="card-content">
+              <p>Proteção perfeita para as junções do seu telhado com 7 modelos diferentes.</p>
+              <Link href="/Produtos/rufos" passHref legacyBehavior>
+                <a className="service-button teal">
+                  Ver Detalhes <FaArrowRight />
+                </a>
+              </Link>
+            </div>
+          </div>
+      </div>
+      </div>
+
 
       <FaixaContato />
       <SobreNos />
       <Rodape />
       <WhatsAppButton />
+
+      <style jsx>{`
+        .service-card {
+          background-color: #fff;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 10px 30px rgba(29, 61, 82, 0.1);
+          transition: all 0.4s ease;
+        }
+        .service-card:hover {
+          transform: translateY(-5px);
+        }
+        .card-overlay {
+          position: absolute;
+          z-index: 2;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+          padding: 20px;
+          color: white;
+          text-align: left;
+        }
+        .card-overlay h3 {
+          margin: 0;
+          font-weight: 600;
+          text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .card-content {
+          padding: 25px;
+        }
+        .card-content p {
+          color: #666;
+          margin-bottom: 25px;
+          font-size: ${isMobile ? '0.9rem' : '1rem'};
+          line-height: 1.6;
+        }
+        
+        .service-button {
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: ${isMobile ? '8px 16px' : '12px 30px'};
+          background-color: transparent;
+          border: 2px solid;
+          border-radius: 50px;
+          font-size: ${isMobile ? '0.8rem' : '1rem'};
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .service-button.teal {
+          color: #0095a4;
+          border-color: #0095a4;
+        }
+        
+        .service-button.dark-blue {
+          color: #1D3D52;
+          border-color: #1D3D52;
+        }
+
+        .service-button:hover {
+          color: white;
+          transform: translateY(-3px);
+        }
+
+        .service-button.teal:hover {
+          background-color: #0095a4;
+          box-shadow: 0 4px 15px rgba(0, 149, 164, 0.3);
+        }
+
+        .service-button.dark-blue:hover {
+          background-color: #1D3D52;
+          box-shadow: 0 4px 15px rgba(29, 61, 82, 0.3);
+        }
+
+        /* --- ESTILOS PARA O BOTÃO DO SLIDE --- */
+        .hero-button {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: ${isMobile ? '10px 20px' : '14px 35px'};
+            background: linear-gradient(45deg, #0095a4, #00c2d4);
+            color: white;
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.3); /* Efeito de brilho */
+            border-radius: 50px;
+            font-size: ${isMobile ? '0.9rem' : '1.1rem'};
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 149, 164, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 149, 164, 0.5);
+            background: linear-gradient(45deg, #00a8b8, #00d4e4);
+        }
+        
+        .hero-button-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-button:hover .hero-button-icon {
+            transform: translateX(5px);
+        }
+      `}</style>
     </>
   );
 };

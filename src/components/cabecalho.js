@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { TiArrowSortedDown } from 'react-icons/ti';
+// Ícones adicionados para o dropdown
+import { FaRulerCombined, FaWarehouse, FaGripHorizontal } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -19,7 +21,7 @@ const Cabecalho = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Itens da navbar
+  // Itens da navbar com ícones adicionados aos sub-itens
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Sobre', href: '/sobre' },
@@ -27,9 +29,9 @@ const Cabecalho = () => {
       name: 'Produtos ',
       href: '/Produtos/ProdutosPage',
       subItems: [
-        { name: 'Calhas', href: '/Produtos/calhas' },
-        { name: 'Rufos', href: '/Produtos/rufos' },
-        { name: 'Telhado e Estrutura', href: '/Produtos/EstruturasMetalicas' }
+        { name: 'Calhas', href: '/Produtos/calhas', icon: <FaGripHorizontal /> },
+        { name: 'Rufos', href: '/Produtos/rufos', icon: <FaRulerCombined /> },
+        { name: 'Telhado e Estrutura', href: '/Produtos/EstruturasMetalicas', icon: <FaWarehouse /> }
       ]
     }
   ];
@@ -39,6 +41,8 @@ const Cabecalho = () => {
       <div style={{ height: scrolled ? '15px' : '35px', transition: 'height 0.3s ease' }}></div>
 
       <Navbar
+        onToggle={() => setExpanded(!expanded)}
+        expanded={expanded}
         expand="lg"
         collapseOnSelect
         fixed="top"
@@ -52,62 +56,37 @@ const Cabecalho = () => {
         }}
       >
         <Container style={{ maxWidth: '1200px' }}>
-          <Navbar.Brand href="/" style={{ marginRight: '40px' }}>
-            <Image
-              src="/img/logo.png"
-              width={scrolled ? 70 : 80}
-              height={scrolled ? 70 : 80}
-              alt="Logo"
-              style={{
-                borderRadius: '50%',
-                objectFit: 'cover',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-                transform: scrolled ? 'scale(0.95)' : 'scale(1)',
-              }}
-              className="d-inline-block align-top"
-            />
-          </Navbar.Brand>
+          <Link href="/" passHref legacyBehavior>
+            <Navbar.Brand style={{ marginRight: '40px' }}>
+              <Image
+                src="/img/logo.png"
+                width={scrolled ? 70 : 80}
+                height={scrolled ? 70 : 80}
+                alt="Logo"
+                style={{
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                  transform: scrolled ? 'scale(0.95)' : 'scale(1)',
+                }}
+                className="d-inline-block align-top"
+              />
+            </Navbar.Brand>
+          </Link>
 
           <Navbar.Toggle
             aria-controls="navbar-nav"
-            style={{
-              border: 'none',
-              padding: '10px 15px',
-              backgroundColor: 'transparent',
-            }}
+            className="custom-toggler"
           >
-            <span style={{
-              display: 'block',
-              width: '25px',
-              height: '3px',
-              backgroundColor: '#1D3D52',
-              margin: '5px 0',
-              transition: 'all 0.3s ease',
-              transform: expanded ? 'rotate(45deg) translate(5px, 5px)' : 'none'
-            }}></span>
-            <span style={{
-              display: 'block',
-              width: '25px',
-              height: '3px',
-              backgroundColor: '#1D3D52',
-              margin: '5px 0',
-              opacity: expanded ? '0' : '1',
-              transition: 'all 0.3s ease'
-            }}></span>
-            <span style={{
-              display: 'block',
-              width: '25px',
-              height: '3px',
-              backgroundColor: '#1D3D52',
-              margin: '5px 0',
-              transition: 'all 0.3s ease',
-              transform: expanded ? 'rotate(-45deg) translate(5px, -5px)' : 'none'
-            }}></span>
+            {/* Mantive sua animação original do Toggler */}
+            <span />
+            <span />
+            <span />
           </Navbar.Toggle>
 
           <Navbar.Collapse id="navbar-nav">
-            <Nav className="ms-auto align-items-center" style={{ gap: '15px' }}>
+            <Nav className="ms-auto align-items: center" style={{ gap: '15px' }}>
               {navItems.map((item, index) => (
                 <div
                   key={index}
@@ -132,58 +111,29 @@ const Cabecalho = () => {
                     }}
                   />
 
-                  <Link
-                    href={item.href}
-                    style={{
-                      color: '#1D3D52',
-                      fontWeight: '600',
-                      fontSize: '1rem',
-                      padding: '8px 15px',
-                      borderRadius: '6px',
-                      transition: 'all 0.3s ease',
-                      position: 'relative',
-                      textDecoration: 'none',
-                    }}
-                    onClick={() => setExpanded(false)}
-                  >
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                  <Link href={item.href} legacyBehavior>
+                    <a
+                      className="nav-link-custom"
+                      onClick={() => setExpanded(false)}
+                    >
                       {item.name}
-                      {item.subItems && <TiArrowSortedDown style={{ fontSize: '1rem' }} />}
-                    </span>
+                      {item.subItems && <TiArrowSortedDown style={{ fontSize: '1rem', marginLeft: '5px' }} />}
+                    </a>
                   </Link>
 
+                  {/* ----- DROPDOWN MELHORADO AQUI ----- */}
                   {item.subItems && hoveredItem === index && (
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '100%',
-                        left: '0',
-                        backgroundColor: 'white',
-                        borderRadius: '8px',
-                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-                        minWidth: '200px',
-                        zIndex: 1000,
-                        padding: '15px 0',
-                        border: '1px solid rgba(0, 0, 0, 0.1)',
-                        animation: 'fadeIn 0.3s ease-out',
-                        marginTop: '10px',
-                      }}
-                    >
+                    <div className="dropdown-menu-custom">
+                      <div className="dropdown-arrow"></div>
                       {item.subItems.map((subItem, subIndex) => (
-                        <Link
-                          key={subIndex}
-                          href={subItem.href}
-                          style={{
-                            display: 'block',
-                            padding: '8px 20px',
-                            color: '#1D3D52',
-                            textDecoration: 'none',
-                            transition: 'all 0.2s ease',
-                            position: 'relative',
-                          }}
-                          onClick={() => setExpanded(false)}
-                        >
-                          {subItem.name}
+                        <Link key={subIndex} href={subItem.href} legacyBehavior>
+                          <a
+                            className="dropdown-item-custom"
+                            onClick={() => setExpanded(false)}
+                          >
+                            <span className="dropdown-icon">{subItem.icon}</span>
+                            {subItem.name}
+                          </a>
                         </Link>
                       ))}
                     </div>
@@ -191,57 +141,134 @@ const Cabecalho = () => {
                 </div>
               ))}
 
-              <div
-                style={{ position: 'relative' }}
-                onMouseEnter={() => setHoveredItem(navItems.length)}
-                onMouseLeave={() => setHoveredItem(null)}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: '-5px',
-                    left: '0',
-                    width: '100%',
-                    height: '3px',
-                    background: 'linear-gradient(90deg, #1D3D52, #0095a4)',
-                    borderRadius: '3px',
-                    transform: hoveredItem === navItems.length ? 'scaleX(1)' : 'scaleX(0)',
-                    transformOrigin: 'left center',
-                    transition: 'transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1)',
-                    opacity: hoveredItem === navItems.length ? '1' : '0',
-                    boxShadow: '0 2px 10px rgba(29, 61, 82, 0.4)'
-                  }}
-                />
-
-                <Link
-                  href="/contato"
-                  style={{
-                    backgroundColor: '#0095a4',
-                    border: 'none',
-                    borderRadius: '6px',
-                    padding: '10px 25px',
-                    fontWeight: '600',
-                    fontSize: '1rem',
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 4px 12px rgba(0, 149, 164, 0.3)',
-                    color: 'white',
-                    textDecoration: 'none',
-                    display: 'inline-block',
-                  }}
-                  onClick={() => setExpanded(false)}
-                >
+              <Link href="/contato" legacyBehavior>
+                <a className="cta-button" onClick={() => setExpanded(false)}>
                   Peça seu Orçamento
-                </Link>
-              </div>
+                </a>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
       <style jsx global>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
+        /* --- ESTILOS DO DROPDOWN MELHORADO --- */
+        .dropdown-menu-custom {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: white;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          min-width: 240px;
+          z-index: 1000;
+          padding: 10px;
+          border: 1px solid #f0f0f0;
+          margin-top: 15px;
+          animation: fadeInDropdown 0.3s ease-out forwards;
+        }
+        
+        /* Seta que aponta para o link "Produtos" */
+        .dropdown-menu-custom .dropdown-arrow {
+          position: absolute;
+          top: -6px;
+          left: 50%;
+          transform: translateX(-50%) rotate(45deg);
+          width: 12px;
+          height: 12px;
+          background-color: white;
+          border-top: 1px solid #f0f0f0;
+          border-left: 1px solid #f0f0f0;
+        }
+
+        @keyframes fadeInDropdown {
+          from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+          to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .dropdown-item-custom {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          padding: 12px 20px;
+          color: #1D3D52;
+          text-decoration: none;
+          transition: all 0.2s ease;
+          border-radius: 8px;
+          font-weight: 500;
+        }
+        .dropdown-item-custom:hover {
+          background-color: #f0f8ff; /* Azul bem claro */
+          color: #0095a4;
+          transform: translateX(5px);
+        }
+        .dropdown-icon {
+          color: #0095a4;
+          font-size: 1.1rem;
+        }
+        /* ------------------------------------------- */
+
+        .cta-button {
+          display: inline-block;
+          padding: 12px 28px;
+          background: linear-gradient(45deg, #0095a4, #00b8c8);
+          color: white;
+          border: none;
+          border-radius: 50px;
+          font-weight: 600;
+          font-size: 1rem;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(0, 149, 164, 0.3);
+        }
+        .cta-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 7px 20px rgba(0, 149, 164, 0.4);
+        }
+
+        .nav-link-custom {
+          color: #1D3D52;
+          font-weight: 600;
+          font-size: 1rem;
+          padding: 8px 15px;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+          position: relative;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+        }
+        
+        .custom-toggler {
+          border: none !important;
+          padding: 0 !important;
+          background-color: transparent !important;
+        }
+        .navbar-toggler-icon { display: none; }
+
+        .custom-toggler span {
+          display: block;
+          width: 25px;
+          height: 3px;
+          background-color: #1D3D52;
+          margin: 5px 0;
+          transition: all 0.3s ease;
+          border-radius: 2px;
+        }
+        .navbar-toggler[aria-expanded="true"] span:nth-of-type(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        .navbar-toggler[aria-expanded="true"] span:nth-of-type(2) {
+          opacity: 0;
+        }
+        .navbar-toggler[aria-expanded="true"] span:nth-of-type(3) {
+          transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        a {
+          text-decoration: none !important;
         }
       `}</style>
     </>
