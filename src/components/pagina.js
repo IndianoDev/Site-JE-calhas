@@ -20,10 +20,7 @@ const Pagina = (props) => {
 
   return (
     <>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anta&display=swap" />
-      <div style={{ backgroundColor: '#1D3D52', fontSize: '1rem', paddingTop: '100px', marginBottom: '60px' }} className='text-white py-1 text-center mb-3'>
- 
-  <h1 style={estiloTitulo}>{props.titulo}</h1>
+    <div className="top-bar">
 </div>
 <br>
 </br>
