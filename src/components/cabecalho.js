@@ -52,11 +52,7 @@ const Cabecalho = () => {
               
               {/* COMPONENTE DROPDOWN CORRIGIDO E FINAL */}
               <NavDropdown title="Produtos" id="produtos-dropdown" className="nav-link-custom">
-                <Link href="/Produtos/ProdutosPage" passHref legacyBehavior>
-                  <NavDropdown.Item className="dropdown-item-custom main-product-link">
-                    Ver Todos os Produtos
-                  </NavDropdown.Item>
-                </Link>
+               
                 <NavDropdown.Divider />
                 <Link href="/Produtos/calhas" passHref legacyBehavior>
                   <NavDropdown.Item className="dropdown-item-custom"><FaGripHorizontal className="dropdown-icon" /> Calhas</NavDropdown.Item>
@@ -121,15 +117,13 @@ const Cabecalho = () => {
         }
 
         /* --- Dropdown de Produtos --- */
-        /* Remove a seta padrão do Bootstrap */
-        #produtos-dropdown::after {
-          display: none !important;
-        }
+       
+      
         .dropdown-menu {
           border-radius: 12px !important;
           border: 1px solid #f0f0f0 !important;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
-          margin-top: 10px !important;
+          margin-top: !important;
           animation: fadeInDropdown 0.3s ease forwards;
           padding: 10px !important;
         }

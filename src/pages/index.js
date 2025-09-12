@@ -10,9 +10,9 @@ import SobreNos from '@/components/SobreNos';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiDollarSign } from "react-icons/fi";
+
 import { FaArrowRight } from 'react-icons/fa';
-import { FiClipboard } from "react-icons/fi";
+
 
 const Index = () => {
   const [isClient, setIsClient] = useState(false);
@@ -139,10 +139,7 @@ const Index = () => {
                     {/* BOTÃO "FAÇA UM ORÇAMENTO" MELHORADO */}
                     <Link href="/contato" passHref legacyBehavior>
                       <a className="hero-button">
-                        Faça um Orçamento
-                        <span className="hero-button-icon">
-                            <FiClipboard />
-                        </span>
+                        Faça um Orçamento!
                       </a>
                     </Link>
                   </div>
