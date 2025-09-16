@@ -119,11 +119,7 @@ const Rodape = () => {
         </div>
 
         {/* Botão Voltar ao Topo */}
-        {isVisible && (
-          <button onClick={scrollToTop} className="back-to-top" title="Voltar ao topo">
-            <IoArrowUp /> {/* ÍCONE ALTERADO AQUI */}
-          </button>
-        )}
+        
       </footer>
 
       <style jsx>{`
