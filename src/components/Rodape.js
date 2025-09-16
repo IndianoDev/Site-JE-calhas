@@ -14,7 +14,6 @@ const Rodape = () => {
     { nome: 'Orçamento', href: '/contato' }
   ];
 
-  // Lógica para o botão "Voltar ao Topo"
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
@@ -126,6 +125,7 @@ const Rodape = () => {
       </footer>
 
       <style jsx>{`
+        /* ... (todos os outros estilos do seu rodapé continuam aqui) ... */
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
@@ -145,6 +145,8 @@ const Rodape = () => {
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 20px;
+          position: relative;
+          z-index: 2;
         }
 
         .logo-section {
@@ -178,7 +180,6 @@ const Rodape = () => {
           position: relative;
         }
 
-        /* Linha divisória sutil para Desktop */
         @media (min-width: 992px) {
           .footer-col:not(:first-child)::before {
             content: '';
@@ -282,11 +283,11 @@ const Rodape = () => {
           opacity: 0.7;
         }
 
-        /* Botão Voltar ao Topo */
+        /* --- BOTÃO VOLTAR AO TOPO (COM A CORREÇÃO) --- */
         .back-to-top {
           position: fixed;
           bottom: 20px;
-          right: 20px;
+          left: 20px; /* Alterado de 'right' para 'left' */
           background-color: #0095a4;
           color: white;
           border: none;
