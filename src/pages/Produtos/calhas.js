@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Pagina from '@/components/pagina';
 import Rodape from '@/components/Rodape';
+import FaixaContato from '@/components/FaixaContato';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Calhas = () => {
