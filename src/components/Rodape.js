@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import { FaInstagram, FaFacebook, FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaArrowUp } from 'react-icons/fa';
+// Ícone da seta para cima foi trocado
+import { FaInstagram, FaFacebook, FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { IoArrowUp } from 'react-icons/io5'; // Usando um ícone mais compatível
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -119,18 +121,17 @@ const Rodape = () => {
         {/* Botão Voltar ao Topo */}
         {isVisible && (
           <button onClick={scrollToTop} className="back-to-top" title="Voltar ao topo">
-            <FaArrowUp />
+            <IoArrowUp /> {/* ÍCONE ALTERADO AQUI */}
           </button>
         )}
       </footer>
 
       <style jsx>{`
-        /* ... (todos os outros estilos do seu rodapé continuam aqui) ... */
+        /* ... (todos os seus outros estilos do rodapé continuam aqui) ... */
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        
         .footer-container {
           background: #1D3D52;
           color: rgba(255, 255, 255, 0.8);
@@ -140,7 +141,6 @@ const Rodape = () => {
           width: 100%;
           animation: fadeIn 0.8s ease-out;
         }
-
         .footer-content {
           max-width: 1200px;
           margin: 0 auto;
@@ -148,38 +148,32 @@ const Rodape = () => {
           position: relative;
           z-index: 2;
         }
-
         .logo-section {
           display: flex;
           flex-direction: column;
           align-items: center;
         }
-
         :global(.footer-logo) {
           border-radius: 50%;
           border: 3px solid #0095a4;
           box-shadow: 0 0 15px rgba(0, 149, 164, 0.5);
           margin-bottom: 1rem;
         }
-
         .footer-company-name {
           color: white;
           font-weight: 700;
           font-size: 1.5rem;
           margin-bottom: 0.5rem;
         }
-
         .footer-slogan {
           font-size: 0.9rem;
           opacity: 0.7;
           max-width: 250px;
         }
-        
         .footer-col {
           padding-left: 2rem;
           position: relative;
         }
-
         @media (min-width: 992px) {
           .footer-col:not(:first-child)::before {
             content: '';
@@ -191,7 +185,6 @@ const Rodape = () => {
             background: rgba(255, 255, 255, 0.1);
           }
         }
-        
         .footer-title {
           color: white;
           font-size: 1.3rem;
@@ -200,7 +193,6 @@ const Rodape = () => {
           position: relative;
           padding-bottom: 10px;
         }
-        
         .footer-title::after {
           content: '';
           position: absolute;
@@ -211,48 +203,39 @@ const Rodape = () => {
           background-color: #0095a4;
           border-radius: 3px;
         }
-        
         .footer-list {
           list-style: none;
           padding: 0;
           margin: 0;
         }
-
         .footer-list li {
           margin-bottom: 15px;
         }
-
         .contact-list li {
           display: flex;
           align-items: center;
           gap: 15px;
         }
-        
         .contact-icon {
           color: #0095a4;
           font-size: 1.1rem;
         }
-
         .footer-link {
           color: rgba(255, 255, 255, 0.8);
           text-decoration: none;
           transition: all 0.3s ease;
         }
-        
         .footer-link:hover {
           color: #0095a4;
           padding-left: 5px;
         }
-
         .footer-social-text {
           margin-bottom: 1rem;
         }
-        
         .social-icons-container {
           display: flex;
           gap: 15px;
         }
-        
         .social-icon {
           color: #1D3D52;
           font-size: 1.5rem;
@@ -266,14 +249,12 @@ const Rodape = () => {
           transition: all 0.3s ease;
           text-decoration: none;
         }
-        
         .social-icon:hover {
           transform: translateY(-5px) scale(1.1);
           background-color: #0095a4;
           color: white;
           box-shadow: 0 8px 15px rgba(0, 149, 164, 0.3);
         }
-        
         .footer-bottom {
           text-align: center;
           margin-top: 40px;
@@ -282,12 +263,10 @@ const Rodape = () => {
           font-size: 0.9rem;
           opacity: 0.7;
         }
-
-        /* --- BOTÃO VOLTAR AO TOPO (COM A CORREÇÃO) --- */
         .back-to-top {
           position: fixed;
           bottom: 20px;
-          left: 20px; /* Alterado de 'right' para 'left' */
+          left: 20px;
           background-color: #0095a4;
           color: white;
           border: none;
@@ -305,7 +284,6 @@ const Rodape = () => {
           opacity: ${isVisible ? 1 : 0};
           transform: ${isVisible ? 'translateY(0)' : 'translateY(20px)'};
         }
-        
         .back-to-top:hover {
           background-color: #1D3D52;
           transform: scale(1.1);
