@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import { FaInstagram, FaFacebook, FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaArrowUp } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Rodape = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   const links = [
     { nome: 'Home', href: '/' },
     { nome: 'Empresa', href: '/sobre' },
@@ -12,83 +14,57 @@ const Rodape = () => {
     { nome: 'Orçamento', href: '/contato' }
   ];
 
+  // Lógica para o botão "Voltar ao Topo"
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <div style={{ overflowX: 'hidden' }}>
-      <footer style={{
-        background: 'linear-gradient(135deg, #1D3D52 0%, #2a5475 100%)',
-        color: 'white',
-        padding: '60px 0 20px',
-        marginTop: '60px',
-        boxShadow: '0 -4px 10px rgba(0,0,0,0.1)',
-        width: '100vw',
-        position: 'relative',
-        left: '50%',
-        right: '50%',
-        marginLeft: '-50vw',
-        marginRight: '-50vw'
-      }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 20px'
-        }}>
-          <Row className="align-items-start">
+    <>
+      <footer className="footer-container">
+        <div className="footer-content">
+          <Row className="align-items-start gy-5">
             {/* Coluna da Logo */}
-            <Col lg={3} md={6} className="mb-4 mb-lg-0">
-              <div style={{ textAlign: 'center' }}>
+            <Col lg={3} md={6} className="text-center text-md-start">
+              <div className="logo-section">
                 <Image
                   src="/img/logo.png"
                   alt="JE Calhas"
-                  width={150}
-                  height={150}
-                  style={{
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    border: '3px solid white',
-                    transition: 'transform 0.3s ease',
-                    marginBottom: '15px'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.05)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }}
+                  width={120}
+                  height={120}
+                  className="footer-logo"
                 />
-                <p style={{ marginTop: '15px', fontSize: '0.9rem', opacity: '0.9' }}>
-                  Excelência em serviços de calhas, rufos e coifas há mais de 10 anos.
+                <h4 className="footer-company-name">JE Calhas</h4>
+                <p className="footer-slogan">
+                  Protegendo seu patrimônio com qualidade e expertise.
                 </p>
               </div>
             </Col>
 
             {/* Coluna Institucional */}
-            <Col lg={3} md={6} className="mb-4 mb-lg-0">
-              <h5 style={{
-                color: 'white',
-                fontSize: '1.2rem',
-                fontWeight: '600',
-                marginBottom: '20px',
-                position: 'relative',
-                paddingBottom: '10px'
-              }}>
-                Institucional
-                <div style={{
-                  position: 'absolute',
-                  bottom: '0',
-                  left: '0',
-                  width: '40px',
-                  height: '2px',
-                  backgroundColor: '#4a90e2'
-                }} />
-              </h5>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {links.map((link, index) => (
-                  <li key={index} style={{ marginBottom: '12px' }}>
-                    {/* AQUI ESTÁ A CORREÇÃO */}
+            <Col lg={3} md={6} xs={12} className="footer-col">
+              <h5 className="footer-title">Institucional</h5>
+              <ul className="footer-list">
+                {links.map((link) => (
+                  <li key={link.nome}>
                     <Link href={link.href} legacyBehavior>
-                      <a className="footer-link">
-                        {link.nome}
-                      </a>
+                      <a className="footer-link">{link.nome}</a>
                     </Link>
                   </li>
                 ))}
@@ -96,179 +72,245 @@ const Rodape = () => {
             </Col>
 
             {/* Coluna Contato */}
-            <Col lg={3} md={6} className="mb-4 mb-lg-0">
-              <h5 style={{
-                color: 'white',
-                fontSize: '1.2rem',
-                fontWeight: '600',
-                marginBottom: '20px',
-                position: 'relative',
-                paddingBottom: '10px'
-              }}>
-                Contato
-                <div style={{
-                  position: 'absolute',
-                  bottom: '0',
-                  left: '0',
-                  width: '40px',
-                  height: '2px',
-                  backgroundColor: '#4a90e2'
-                }} />
-              </h5>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
-                  <FaPhone style={{ marginRight: '10px', color: '#4a90e2' }} />
-                  <a href="tel:+5561991530796" className="contact-link">
-                    (61) 99153-0796
-                  </a>
+            <Col lg={3} md={6} xs={12} className="footer-col">
+              <h5 className="footer-title">Contato</h5>
+              <ul className="footer-list contact-list">
+                <li>
+                  <FaPhone className="contact-icon" />
+                  <a href="tel:+5561991530796" className="footer-link">(61) 99153-0796</a>
                 </li>
-                <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
-                  <FaPhone style={{ marginRight: '10px', color: '#4a90e2' }} />
-                  <a href="tel:+556132733582" className="contact-link">
-                    (61) 3273-3582
-                  </a>
+                <li>
+                  <FaPhone className="contact-icon" />
+                  <a href="tel:+556132733582" className="footer-link">(61) 3273-3582</a>
                 </li>
-                <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
-                  <FaEnvelope style={{ marginRight: '10px', color: '#4a90e2' }} />
-                  <a href="mailto:jecalhas@gmail.com" className="contact-link">
-                    jecalhas@gmail.com
-                  </a>
+                <li>
+                  <FaEnvelope className="contact-icon" />
+                  <a href="mailto:jecalhas@gmail.com" className="footer-link">jecalhas@gmail.com</a>
                 </li>
-                <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
-                  <FaMapMarkerAlt style={{ marginRight: '10px', color: '#4a90e2' }} />
-                  <span>SHSN-Ceilandia</span>
+                <li>
+                  <FaMapMarkerAlt className="contact-icon" />
+                  <span>SHSN - Ceilândia, DF</span>
                 </li>
               </ul>
             </Col>
 
             {/* Coluna Redes Sociais */}
-            <Col lg={3} md={6} className="mb-4 mb-lg-0">
-              <h5 style={{
-                color: 'white',
-                fontSize: '1.2rem',
-                fontWeight: '600',
-                marginBottom: '20px',
-                position: 'relative',
-                paddingBottom: '10px'
-              }}>
-                Redes Sociais
-                <div style={{
-                  position: 'absolute',
-                  bottom: '0',
-                  left: '0',
-                  width: '40px',
-                  height: '2px',
-                  backgroundColor: '#4a90e2'
-                }} />
-              </h5>
-              <div style={{ display: 'flex', gap: '15px' }}>
-                <a
-                  href="https://www.instagram.com/jecalhasbsb"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon instagram"
-                >
+            <Col lg={3} md={6} xs={12} className="footer-col">
+              <h5 className="footer-title">Redes Sociais</h5>
+              <p className="footer-social-text">Acompanhe nosso trabalho:</p>
+              <div className="social-icons-container">
+                <a href="https://www.instagram.com/jecalhasbsb" target="_blank" rel="noopener noreferrer" className="social-icon">
                   <FaInstagram />
                 </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=61558145102309"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon facebook"
-                >
+                <a href="https://www.facebook.com/profile.php?id=61558145102309" target="_blank" rel="noopener noreferrer" className="social-icon">
                   <FaFacebook />
                 </a>
-                <a
-                  href="https://wa.me/5561991530796"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon whatsapp"
-                >
+                <a href="https://wa.me/5561991530796" target="_blank" rel="noopener noreferrer" className="social-icon">
                   <FaWhatsapp />
                 </a>
               </div>
             </Col>
           </Row>
 
-          <Row>
-            <Col className="text-center">
-              <hr style={{
-                margin: '30px 0',
-                borderColor: 'rgba(255,255,255,0.1)'
-              }} />
-              <p style={{
-                margin: 0,
-                fontSize: '0.9rem',
-                opacity: 0.8
-              }}>© {new Date().getFullYear()} JE Calhas. Todos os direitos reservados.</p>
-            </Col>
-          </Row>
+          <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} JE Calhas. Todos os direitos reservados.</p>
+          </div>
         </div>
 
-        <style jsx>{`
-          /* Estilo para os links do footer (AGORA VAI FUNCIONAR) */
-          .footer-link {
-            color: white;
-            text-decoration: none; /* Remove o sublinhado */
-            padding: 8px 16px; /* Espaçamento interno para parecer um botão */
-            background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil */
-            border-radius: 20px; /* Bordas totalmente arredondadas */
-            transition: all 0.3s ease;
-            display: inline-block; /* Garante que o padding seja aplicado corretamente */
-          }
-
-          .footer-link:hover {
-            background-color: #4a90e2; /* Cor de destaque ao passar o mouse */
-            color: white; /* Garante que o texto continue branco */
-            transform: translateY(-3px); /* Efeito de "saltar" */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          }
-          
-          /* Estilo para os links de contato */
-          .contact-link {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-          }
-          
-          .contact-link:hover {
-            color: #4a90e2;
-          }
-          
-          /* Estilo para os ícones sociais */
-          .social-icon {
-            color: white;
-            font-size: 24px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-          }
-          
-          .social-icon:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255,255,255,0.2);
-          }
-          
-          .instagram {
-            color: #E1306C;
-          }
-          
-          .facebook {
-            color: #1877F2;
-          }
-          
-          .whatsapp {
-            color: #25D366;
-          }
-        `}</style>
+        {/* Botão Voltar ao Topo */}
+        {isVisible && (
+          <button onClick={scrollToTop} className="back-to-top" title="Voltar ao topo">
+            <FaArrowUp />
+          </button>
+        )}
       </footer>
-    </div>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .footer-container {
+          background: #1D3D52;
+          color: rgba(255, 255, 255, 0.8);
+          padding: 80px 0 20px;
+          margin-top: 60px;
+          position: relative;
+          width: 100%;
+          animation: fadeIn 0.8s ease-out;
+        }
+
+        .footer-content {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        .logo-section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        :global(.footer-logo) {
+          border-radius: 50%;
+          border: 3px solid #0095a4;
+          box-shadow: 0 0 15px rgba(0, 149, 164, 0.5);
+          margin-bottom: 1rem;
+        }
+
+        .footer-company-name {
+          color: white;
+          font-weight: 700;
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .footer-slogan {
+          font-size: 0.9rem;
+          opacity: 0.7;
+          max-width: 250px;
+        }
+        
+        .footer-col {
+          padding-left: 2rem;
+          position: relative;
+        }
+
+        /* Linha divisória sutil para Desktop */
+        @media (min-width: 992px) {
+          .footer-col:not(:first-child)::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.1);
+          }
+        }
+        
+        .footer-title {
+          color: white;
+          font-size: 1.3rem;
+          font-weight: 600;
+          margin-bottom: 25px;
+          position: relative;
+          padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 40px;
+          height: 3px;
+          background-color: #0095a4;
+          border-radius: 3px;
+        }
+        
+        .footer-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .footer-list li {
+          margin-bottom: 15px;
+        }
+
+        .contact-list li {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
+        
+        .contact-icon {
+          color: #0095a4;
+          font-size: 1.1rem;
+        }
+
+        .footer-link {
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+          color: #0095a4;
+          padding-left: 5px;
+        }
+
+        .footer-social-text {
+          margin-bottom: 1rem;
+        }
+        
+        .social-icons-container {
+          display: flex;
+          gap: 15px;
+        }
+        
+        .social-icon {
+          color: #1D3D52;
+          font-size: 1.5rem;
+          background-color: white;
+          border-radius: 50%;
+          width: 45px;
+          height: 45px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          text-decoration: none;
+        }
+        
+        .social-icon:hover {
+          transform: translateY(-5px) scale(1.1);
+          background-color: #0095a4;
+          color: white;
+          box-shadow: 0 8px 15px rgba(0, 149, 164, 0.3);
+        }
+        
+        .footer-bottom {
+          text-align: center;
+          margin-top: 40px;
+          padding-top: 20px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          font-size: 0.9rem;
+          opacity: 0.7;
+        }
+
+        /* Botão Voltar ao Topo */
+        .back-to-top {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background-color: #0095a4;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          z-index: 1000;
+          transition: all 0.4s ease;
+          opacity: ${isVisible ? 1 : 0};
+          transform: ${isVisible ? 'translateY(0)' : 'translateY(20px)'};
+        }
+        
+        .back-to-top:hover {
+          background-color: #1D3D52;
+          transform: scale(1.1);
+        }
+      `}</style>
+    </>
   );
 };
 

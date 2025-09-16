@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
-import { FaRulerCombined, FaWarehouse, FaGripHorizontal } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -55,13 +54,13 @@ const Cabecalho = () => {
                
                 <NavDropdown.Divider />
                 <Link href="/Produtos/calhas" passHref legacyBehavior>
-                  <NavDropdown.Item className="dropdown-item-custom"><FaGripHorizontal className="dropdown-icon" /> Calhas</NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-custom"> Calhas</NavDropdown.Item>
                 </Link>
                 <Link href="/Produtos/rufos" passHref legacyBehavior>
-                  <NavDropdown.Item className="dropdown-item-custom"><FaRulerCombined className="dropdown-icon" /> Rufos</NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-custom"> Rufos</NavDropdown.Item>
                 </Link>
                 <Link href="/Produtos/EstruturasMetalicas" passHref legacyBehavior>
-                  <NavDropdown.Item className="dropdown-item-custom"><FaWarehouse className="dropdown-icon" /> Estruturas</NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-custom"> Estruturas</NavDropdown.Item>
                 </Link>
               </NavDropdown>
 
