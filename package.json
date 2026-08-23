@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^14.1.2",
     "bootstrap": "^5.3.3",
     "firebase": "^10.10.0",
     "googleapis": "^150.0.1",
