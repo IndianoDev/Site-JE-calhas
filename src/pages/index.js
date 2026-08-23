@@ -15,7 +15,6 @@ import { FaArrowRight } from 'react-icons/fa';
 
 
 const Index = () => {
-  const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   const data = [
@@ -48,35 +47,37 @@ const Index = () => {
   };
 
   useEffect(() => {
-    setIsClient(true);
-
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     checkMobile();
     window.addEventListener('resize', checkMobile);
-
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const ResponsiveSliderImage = ({ item }) => {
-    const imageSrc = isMobile && item.imageMobile ? item.imageMobile : item.image;
-
-    return (
+  // ✅ Duas imagens com controle via CSS (sem CLS) — classes em cabecalho.css
+  const ResponsiveSliderImage = ({ item }) => (
+    <>
       <Image
-        src={imageSrc}
+        src={item.image}
         alt={item.title}
-        fill={true}
-        style={{
-          objectFit: 'cover',
-          objectPosition: isMobile ? "center top" : "center"
-        }}
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'center' }}
+        className="slider-img-desktop"
         priority={item.id === '1'}
-        loading={item.id === '1' ? 'eager' : 'lazy'}
       />
-    );
-  };
+      {item.imageMobile && (
+        <Image
+          src={item.imageMobile}
+          alt={item.title}
+          fill
+          style={{ objectFit: 'cover', objectPosition: 'center top' }}
+          className="slider-img-mobile"
+          priority={item.id === '1'}
+        />
+      )}
+    </>
+  );
 
   return (
     <>
@@ -87,13 +88,13 @@ const Index = () => {
 
       <Pagina />
 
-      {isClient && (
-        <div style={{
-          position: 'relative',
-          overflow: 'hidden',
-          height: isMobile ? '50vh' : '80vh',
-          maxHeight: isMobile ? '500px' : '800px'
-        }}>
+      {/* ✅ isClient removido — slider renderiza no servidor (elimina CLS) */}
+      <div style={{
+        position: 'relative',
+        overflow: 'hidden',
+        height: isMobile ? '50vh' : '80vh',
+        maxHeight: isMobile ? '500px' : '800px'
+      }}>
           <Slider {...settings}>
             {data.map((item) => (
               <div key={item.id}>
@@ -136,11 +137,9 @@ const Index = () => {
                       opacity: 0.95
                     }}>{item.subtitle}</p>
                     
-                    {/* BOTÃO "FAÇA UM ORÇAMENTO" MELHORADO */}
-                    <Link href="/contato" passHref legacyBehavior>
-                      <a className="hero-button">
-                        Faça um Orçamento!
-                      </a>
+                    {/* BOTÃO "FAÇA UM ORÇAMENTO" */}
+                    <Link href="/contato" className="hero-button">
+                      Faça um Orçamento!
                     </Link>
                   </div>
                 </div>
@@ -148,7 +147,6 @@ const Index = () => {
             ))}
           </Slider>
         </div>
-      )}
 
       {/* Seção de Serviços em Destaque */}
       <div style={{
@@ -205,15 +203,12 @@ const Index = () => {
             </div>
             <div className="card-content">
               <p>Soluções robustas e personalizadas para telhados, galpões e mezaninos.</p>
-              <Link href="/Produtos/EstruturasMetalicas" passHref legacyBehavior>
-                <a className="service-button teal">
-                  Ver Detalhes <FaArrowRight />
-                </a>
+              <Link href="/Produtos/EstruturasMetalicas" className="service-button teal">
+                Ver Detalhes <FaArrowRight />
               </Link>
             </div>
           </div>
 
-          {/* Card 2 - Calhas */}
           <div className="service-card">
             <div style={{ position: 'relative', height: isMobile ? '180px' : '220px', overflow: 'hidden' }}>
               <Image src="/img/foto de calha 1 (2).jpg" alt="Calhas" fill={true} style={{ objectFit: 'cover' }} />
@@ -223,10 +218,8 @@ const Index = () => {
             </div>
             <div className="card-content">
               <p>Sistemas completos de drenagem com alta durabilidade e acabamento impecável.</p>
-              <Link href="/Produtos/calhas" passHref legacyBehavior>
-                <a className="service-button dark-blue">
-                  Ver Detalhes <FaArrowRight />
-                </a>
+              <Link href="/Produtos/calhas" className="service-button dark-blue">
+                Ver Detalhes <FaArrowRight />
               </Link>
             </div>
           </div>
@@ -241,10 +234,8 @@ const Index = () => {
             </div>
             <div className="card-content">
               <p>Proteção perfeita para as junções do seu telhado com 7 modelos diferentes.</p>
-              <Link href="/Produtos/rufos" passHref legacyBehavior>
-                <a className="service-button teal">
-                  Ver Detalhes <FaArrowRight />
-                </a>
+              <Link href="/Produtos/rufos" className="service-button teal">
+                Ver Detalhes <FaArrowRight />
               </Link>
             </div>
           </div>
@@ -257,6 +248,7 @@ const Index = () => {
       <Rodape />
       <WhatsAppButton />
 
+      {/* ✅ Estilos migrados para src/styles/cabecalho.css */}
       <style jsx>{`
         .service-card {
           background-color: #fff;

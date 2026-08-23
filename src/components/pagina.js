@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { Container } from 'react-bootstrap';
@@ -20,13 +19,6 @@ const Pagina = (props) => {
 
   return (
     <>
-    <div className="top-bar">
-</div>
-<br>
-</br>
-<br>
-</br>
-
       <Cabecalho />
       <Container className='mb-6'>{props.children}</Container>
     </>
